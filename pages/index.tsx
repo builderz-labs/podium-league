@@ -133,8 +133,7 @@ const Homecontainer = () => {
             <div className="BG-[#FFED8] mt-[35px] h-[10px] w-full border-2"></div>
 
             <p className="align-center mt-[40px] text-center text-[20px] font-[400]">
-              Intrigued by what you've seen? Join our main league to participate
-              in exciting races and earn rewards!
+              {"Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"}
             </p>
             <button className="outline-black-100 mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 text-[20px] outline outline-1 outline-offset-2">
               View league
