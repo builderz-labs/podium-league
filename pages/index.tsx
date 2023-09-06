@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { players } from "../constants";
-import Button  from "../components/Button";
+import Button from "../components/Button";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import podium from "../public/images/podium.png";
@@ -15,18 +15,24 @@ const Homecontainer = () => {
   const [currentIndex3, setCurrentIndex3] = useState(0);
 
   // Function to handle forward click
-  const handleForwardClick = (setCurrentIndex: (index: number) => void, currentIndex: number) => {
+  const handleForwardClick = (
+    setCurrentIndex: (index: number) => void,
+    currentIndex: number,
+  ) => {
     if (currentIndex < players.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
 
   // Function to handle backward click
-    const handleBackwardClick = (setCurrentIndex: (index: number) => void, currentIndex: number) => {
-        if (currentIndex > 0) {
-          setCurrentIndex(currentIndex - 1);
-        }
-      };
+  const handleBackwardClick = (
+    setCurrentIndex: (index: number) => void,
+    currentIndex: number,
+  ) => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
 
   return (
     <div className="flex h-auto w-full flex-col items-center justify-center">
@@ -43,10 +49,9 @@ const Homecontainer = () => {
           <div className="mb-25 container w-[600px] p-5">
             <p className="flex flex-row items-center text-[20px] font-[400]">
               Pick your racer{" "}
-              
             </p>
 
-            <div className="mt-3 grid w-350 grid-cols-1 justify-start gap-2">
+            <div className="w-350 mt-3 grid grid-cols-1 justify-start gap-2">
               <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
                 <span className="w-[15%] text-center text-[30px]">1st</span>
                 <Button
@@ -98,7 +103,6 @@ const Homecontainer = () => {
           </div>
           <div className="container min-h-[400px]">
             <div className="relative">
-                
               {/* <img
                 src={podium}
                 className="container h-[400px] rounded-xl border-2 border-green-400 bg-green-100"
@@ -138,9 +142,7 @@ const Homecontainer = () => {
           </div>
         </div>
 
-        <div className="bg-red absolute bottom-1 right-[20px]">
-         
-        </div>
+        <div className="bg-red absolute bottom-1 right-[20px]"></div>
       </section>
     </div>
   );

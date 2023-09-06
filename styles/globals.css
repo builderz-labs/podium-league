@@ -28,10 +28,6 @@ body {
   overflow-x: hidden;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   .font-outline-2 {
     /* -webkit-text-stroke: 8px white; */
@@ -51,3 +47,7 @@ body {
   bottom: 0;
   width: 100%;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

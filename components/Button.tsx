@@ -18,7 +18,6 @@ const Button: React.FC<ButtonProps> = ({
   color,
   onSelectName,
 }) => {
-  
   const currentName = players[currentIndex];
   return (
     <button
@@ -26,12 +25,12 @@ const Button: React.FC<ButtonProps> = ({
       className={` bg-[${color}] outline-black-100  flex h-[70px] w-[300px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2`}
     >
       <BsArrowLeftCircle
-  onClick={() => currentIndex !== 0 && onBackwardClick()}
-/>
+        onClick={() => currentIndex !== 0 && onBackwardClick()}
+      />
       {currentName}
       <BsArrowRightCircle
-  onClick={() => currentIndex !== players.length - 1 && onForwardClick()}
-/>
+        onClick={() => currentIndex !== players.length - 1 && onForwardClick()}
+      />
     </button>
   );
 };

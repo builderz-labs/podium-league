@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
 
-import  Link  from "next/link";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -11,10 +11,10 @@ const Header = () => {
       {/* desktop and tablet */}
       <div className="hidden h-full w-full items-center justify-between md:flex">
         <Link
-        href='/'
+          href="/"
           className="flex items-center gap-2 rounded-md border-2 border-green-300 bg-green-100 p-2"
         >
-          <p className="text-xl font-bold uppercase text-headingColor">
+          <p className="text-headingColor text-xl font-bold uppercase">
             Sporting labs
           </p>
         </Link>
@@ -26,10 +26,10 @@ const Header = () => {
             exit={{ opacity: 0, x: 200 }}
             className="flex items-center gap-8"
           >
-            <li className="cursor-pointer text-base text-textColor transition-all duration-100 ease-in-out hover:text-headingColor">
+            <li className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out">
               Rules
             </li>
-            <li className="cursor-pointer text-base text-textColor transition-all duration-100 ease-in-out hover:text-headingColor">
+            <li className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out">
               Leaderboard
             </li>
             <li>
@@ -48,10 +48,10 @@ const Header = () => {
       {/* mobile */}
       <div className="flex h-full w-full md:hidden">
         <Link
-         href="/"
+          href="/"
           className="flex items-center gap-2 rounded-md border-2 border-green-300 bg-green-100 p-2"
         >
-          <p className="text-[10px] font-bold uppercase text-headingColor">
+          <p className="text-headingColor text-[10px] font-bold uppercase">
             Sporting labs
           </p>
         </Link>
@@ -63,10 +63,10 @@ const Header = () => {
             exit={{ opacity: 0, x: 200 }}
             className="flex items-center gap-8"
           >
-            <li className="cursor-pointer text-base text-textColor transition-all duration-100 ease-in-out hover:text-headingColor">
+            <li className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out">
               Rules
             </li>
-            <li className="cursor-pointer text-base text-textColor transition-all duration-100 ease-in-out hover:text-headingColor">
+            <li className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out">
               Leaderboard
             </li>
             <li>
