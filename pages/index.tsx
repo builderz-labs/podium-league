@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { players } from "../constants";
 import Button from "../components/Button";
 import { BsTwitter } from "react-icons/bs";
@@ -13,6 +12,8 @@ const Homecontainer = () => {
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
   const [currentIndex3, setCurrentIndex3] = useState(0);
+
+
 
   // Function to handle forward click
   const handleForwardClick = (
@@ -49,6 +50,10 @@ const Homecontainer = () => {
           <div className="mb-25 container w-[600px] p-5">
             <p className="flex flex-row items-center text-[20px] font-[400]">
               Pick your racer{" "}
+              <Image src={helmet} className="h-[50px] w-[50px]" alt="" 
+               width={53}
+               height={59}
+              />
             </p>
 
             <div className="w-350 mt-3 grid grid-cols-1 justify-start gap-2">
@@ -102,12 +107,12 @@ const Homecontainer = () => {
             </div>
           </div>
           <div className="container min-h-[400px]">
-            <div className="relative">
-              {/* <img
-                src={podium}
-                className="container h-[400px] rounded-xl border-2 border-green-400 bg-green-100"
-                alt=""
-              /> */}
+            <div className="relative  w-full">
+            <Image src={podium} className="container h-[400px] rounded-xl border-2 border-green-400 bg-green-100"
+                alt="" 
+                width={800}
+                height={400}
+                />
               <div className="absolute left-[100px] top-[280px] p-4 ">
                 {players[currentIndex2].split("(")[0]}
               </div>
@@ -133,7 +138,9 @@ const Homecontainer = () => {
             <div className="BG-[#FFED8] mt-[35px] h-[10px] w-full border-2"></div>
 
             <p className="align-center mt-[40px] text-center text-[20px] font-[400]">
-              {"Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"}
+              {
+                "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
+              }
             </p>
             <button className="outline-black-100 mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 text-[20px] outline outline-1 outline-offset-2">
               View league
@@ -141,7 +148,12 @@ const Homecontainer = () => {
           </div>
         </div>
 
-        <div className="bg-red absolute bottom-1 right-[20px]"></div>
+        <div className="bg-red absolute bottom-1 right-[20px]">
+          <Image src={racer} alt="" 
+           width={198}
+           height={112}
+          />
+        </div>
       </section>
     </div>
   );
