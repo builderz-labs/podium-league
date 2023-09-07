@@ -6,8 +6,21 @@ import Image from "next/image";
 import podium from "../public/images/podium.png";
 import racer from "../public/images/racercar.png";
 import helmet from "../public/images/helmet.png";
+import Leaderboard from "../components/modals/leaderboard";
+import Rules from "../components/modals/rules";
+import Mint from "../components/modals/mint";
 
-const Homecontainer = () => {
+type HomeContainerProps = {
+  isLeaderboardOpen: boolean;
+  toggleLeaderboard: () => void;
+  isRulesOpen: boolean;
+  toggleRules: () => void;
+  isMintOpen: boolean; 
+  toggleMint: () => void; 
+};
+
+
+const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggleLeaderboard, isRulesOpen, toggleRules, isMintOpen, toggleMint }) => {
   // State for each button's currentIndex
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
@@ -37,13 +50,13 @@ const Homecontainer = () => {
 
   return (
     <div className="flex h-auto w-full flex-col items-center justify-center">
-      <section className="container relative flex h-auto flex-col items-center justify-center bg-orange-100">
+      <section className="container  relative flex h-auto flex-col items-center justify-center bg-orange-100">
         <div className="-mt-12">
-          <p className=" font-outline-2 text-[70px] font-black text-green-700">
+          <p className=" font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PODIUM
           </p>
         </div>
-        <div className="bg-orange-200 p-2">
+        <div className="bg-[#FFEFD8] p-2 rounded-2xl">
           <p>The on-chain mini league</p>
         </div>
         <div className="my-12 mb-36 flex flex-row items-center justify-center">
@@ -60,6 +73,7 @@ const Homecontainer = () => {
               <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
                 <span className="w-[15%] text-center text-[30px]">1st</span>
                 <Button
+                color={"#F6EAC2"}
                   players={players}
                   currentIndex={currentIndex1}
                   onSelectName={() => {}}
@@ -69,7 +83,7 @@ const Homecontainer = () => {
                   onBackwardClick={() =>
                     handleBackwardClick(setCurrentIndex1, currentIndex1)
                   }
-                  color={"#F6EAC2"}
+                  
                 />
               </div>
 
@@ -123,7 +137,7 @@ const Homecontainer = () => {
                 {players[currentIndex3].split("(")[0]}
               </div>
             </div>
-            <button className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg">
+            <button onClick={toggleMint} className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg">
               Mint!
             </button>
           </div>
@@ -155,6 +169,9 @@ const Homecontainer = () => {
           />
         </div>
       </section>
+      <Leaderboard isLeaderboardOpen={isLeaderboardOpen} players={players} toggleLeaderboard={toggleLeaderboard} />
+      <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules}/>
+      <Mint isMintOpen={isMintOpen} toggleMint={toggleMint} />
     </div>
   );
 };

@@ -22,7 +22,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={() => onSelectName(currentName)}
-      className={` bg-[${color}] outline-black-100  flex h-[70px] w-[300px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2`}
+      style={{ backgroundColor: color }}
+      className={` bg-[${color}] outline-black-100  flex h-[70px] w-[400px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2`}
     >
       <BsArrowLeftCircle
         onClick={() => currentIndex !== 0 && onBackwardClick()}
