@@ -1,12 +1,12 @@
 import "../styles/globals.css";
 import React from "react";
-
+import { SessionProvider } from "next-auth/react";
 import { AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import Index from "./index";
 import Footer from "../components/Footer";
 
-const App = () => {
+const App = ({ Component, pageProps, session }: any) => {
   const [isLeaderboardOpen, setIsLeaderboardOpen] = React.useState(false);
   const [isRulesOpen, setIsRulesOpen] = React.useState(false);
   const [isMintOpen, setIsMintOpen] = React.useState(false);
@@ -23,6 +23,7 @@ const App = () => {
     setIsMintOpen(!isMintOpen);
   };
   return (
+    <SessionProvider session={session}>
     <AnimatePresence>
       <div className="flex h-auto w-screen flex-col">
         <Header toggleLeaderboard={toggleLeaderboard} toggleRules={toggleRules} />
@@ -40,6 +41,7 @@ const App = () => {
         <Footer />
       </div>
     </AnimatePresence>
+    </SessionProvider>
   );
 };
 
