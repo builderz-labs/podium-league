@@ -31,7 +31,7 @@ const useUser = () => {
             },
           );
           console.log(response);
-          setUser(response.data);
+          setUser({ ...response.data, walletPda: linkPda });
         } catch (error) {
           console.log(error);
         }
