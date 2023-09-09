@@ -9,9 +9,7 @@ import axios from "axios";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
-const context = createUmi(
-  process.env.NEXT_PUBLIC_HELIUS_PROXY!
-);
+const context = createUmi(process.env.NEXT_PUBLIC_HELIUS_PROXY!);
 
 router.post(async (req, res) => {
   const session = await getServerSession(req, res, authOptions);
@@ -20,27 +18,31 @@ router.post(async (req, res) => {
 
   const linkPda = findLinkPda(context, { identifier: session.user.email })[0];
 
-  const name = "Podium"
-  const symbol = "PD"
+  const name = "Podium";
+  const symbol = "PD";
 
-  await axios.post(
-    "https://api.underdogprotocol.com/v2/projects/4/nfts",
+  const createRes = await axios.post(
+    "https://api.underdogprotocol.com/v2/projects/1/nfts",
     {
       name,
       symbol,
-      image: "https://i.pinimg.com/originals/20/6c/7e/206c7e5bf9d5d1a97a51cb2fbe174050.png",
+      image:
+        "https://i.pinimg.com/originals/20/6c/7e/206c7e5bf9d5d1a97a51cb2fbe174050.png",
       receiverAddress: linkPda,
     },
-    { headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}` } }
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
+      },
+    },
   );
+
+  console.log(createRes.data);
 
   res.status(202).send({ message: "OK" });
 });
 
 export default router.handler();
-
-
-
 
 // import { useSession } from "next-auth/react";
 // import { findLinkPda } from "@underdog-protocol/underdog-identity-sdk";
@@ -50,9 +52,6 @@ export default router.handler();
 // const collectionDescription: string =
 //   "This Collection is to show the participation of Superteam Bounties";
 // const nftName: string = "Podium";
-
-
-
 
 // export const mint = () => {
 //   const Createcollection = async (custom: { value: boolean; projectId: number }) => {
@@ -77,7 +76,7 @@ export default router.handler();
 //     try {
 //       if (custom.value) {
 //         console.log("project id", custom.projectId);
-  
+
 //         return custom.projectId;
 //       } else {
 //         const res = await fetch(`${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`, options);
@@ -101,5 +100,3 @@ export default router.handler();
 //     return Createcollection
 //   };
 // }
-
-  
