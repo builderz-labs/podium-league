@@ -9,6 +9,10 @@ import helmet from "../public/images/helmet.png";
 import Leaderboard from "../components/modals/leaderboard";
 import Rules from "../components/modals/rules";
 import Mint from "../components/modals/mint";
+import { useNftsByOwnerAddress } from "../hooks/useNftsByOwnerAddress";
+
+import axios from "axios";
+
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
@@ -21,12 +25,13 @@ type HomeContainerProps = {
 
 
 const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggleLeaderboard, isRulesOpen, toggleRules, isMintOpen, toggleMint }) => {
+  
   // State for each button's currentIndex
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
   const [currentIndex3, setCurrentIndex3] = useState(0);
 
-
+  
 
   // Function to handle forward click
   const handleForwardClick = (
@@ -46,6 +51,22 @@ const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggle
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     }
+  };
+  
+
+
+  const { data, isLoading, refetch } = useNftsByOwnerAddress();
+  const handleMintNft = async () => {
+    
+
+    await axios.post("/api/create-nft");
+
+    for (let i = 0; i < 9; i++) {
+      await refetch();
+      
+    }
+
+  
   };
 
   return (
@@ -137,7 +158,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggle
                 {players[currentIndex3].split("(")[0]}
               </div>
             </div>
-            <button onClick={toggleMint} className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg">
+            <button onClick={handleMintNft} className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg">
               Mint!
             </button>
           </div>
