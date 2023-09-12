@@ -24,7 +24,7 @@ router.post(async (req, res) => {
   const symbol = "PD"
 
   await axios.post(
-    "https://api.underdogprotocol.com/v2/projects/4/nfts",
+    "https://api.underdogprotocol.com/v2/projects/1/nfts",
     {
       name,
       symbol,

@@ -1,13 +1,13 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 
-interface MintProps {
-    isMintOpen: boolean;
-    toggleMint: () => void;
+interface UnofficialProps {
+    isUnofficialOpen: boolean;
+    toggleUnofficial: () => void;
   }
 
-const mint = ({ isMintOpen, toggleMint }: MintProps) => {
-    if (!isMintOpen) return null;
+const Unofficial = ({ isUnofficialOpen, toggleUnofficial }: UnofficialProps) => {
+    if (!isUnofficialOpen) return null;
 
      
   return (
@@ -22,13 +22,13 @@ const mint = ({ isMintOpen, toggleMint }: MintProps) => {
                 {/*header*/}
                 <div className="flex items-center justify-center relative">
           <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
-            
+          unofficial application
           </p>
           <div className="flex right-0 absolute items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className=" w-[40px] h-[40px] rounded-sm border border-black flex items-center justify-center ease-linear transition-all duration-150"
                     type="button"
-                    onClick={toggleMint}
+                    onClick={toggleUnofficial}
                   >
                     <AiOutlineClose />
                   </button>
@@ -36,20 +36,15 @@ const mint = ({ isMintOpen, toggleMint }: MintProps) => {
         </div>
                 {/*body*/}
                <div className="flex flex-col m-[35px] p-10 rounded-[20px] bg-green-100 border border-black">
-                    <div></div>
-                    
                     <div>
-                        <button></button>
+                    
                     </div>
+                    
 
                 </div>
                 {/*footer*/}
                 <div className="">
-                        <button
-                        className="outline-black-100  flex h-[70px] w-[400px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2"
-                        >
-                      <FcGoogle />  Login to claim
-                        </button>
+                       
                     </div>
               </div>
             </div>
@@ -60,7 +55,7 @@ const mint = ({ isMintOpen, toggleMint }: MintProps) => {
   )
 }
 
-export default mint
+export default Unofficial;
 
 
 

@@ -9,9 +9,10 @@ import helmet from "../public/images/helmet.png";
 import Leaderboard from "../components/modals/leaderboard";
 import Rules from "../components/modals/rules";
 import Mint from "../components/modals/mint";
-import { useNftsByOwnerAddress } from "../hooks/useNftsByOwnerAddress";
-
+import Disclaimer from "../components/modals/disclaimer";
+import Unofficial from "../components/modals/unofficial";
 import axios from "axios";
+
 
 
 type HomeContainerProps = {
@@ -21,11 +22,20 @@ type HomeContainerProps = {
   toggleRules: () => void;
   isMintOpen: boolean; 
   toggleMint: () => void; 
+  isDisclaimerOpen: boolean;
+  toggleDisclaimer: () => void;
+  isUnofficialOpen: boolean;
+  toggleUnofficial: () => void;
 };
 
 
-const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggleLeaderboard, isRulesOpen, toggleRules, isMintOpen, toggleMint }) => {
-  
+const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggleLeaderboard, isRulesOpen, toggleRules, isDisclaimerOpen, toggleDisclaimer, isUnofficialOpen, toggleUnofficial}) => {
+  const [isMintOpen, setIsMintOpen] = React.useState(false);
+
+  const toggleMint = () => {
+    setIsMintOpen(!isMintOpen);
+  };
+
   // State for each button's currentIndex
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
@@ -55,16 +65,16 @@ const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggle
   
 
 
-  const { data, isLoading, refetch } = useNftsByOwnerAddress();
+  // const { data, isLoading, refetch } = useNftsByOwnerAddress();
   const handleMintNft = async () => {
     
 
     await axios.post("/api/create-nft");
 
-    for (let i = 0; i < 9; i++) {
-      await refetch();
+    // for (let i = 0; i < 9; i++) {
+    //   await refetch();
       
-    }
+    // }
 
   
   };
@@ -158,9 +168,10 @@ const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggle
                 {players[currentIndex3].split("(")[0]}
               </div>
             </div>
-            <button onClick={handleMintNft} className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg">
+            <button onClick={toggleMint} className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg">
               Mint!
             </button>
+            <p  className="font-[400] text-[16px] text-[#282828] text-center mt-[10px]">Dont keep the Podium fun to yourself - mint and share away!</p>
           </div>
 
           <div className="container flex w-[800px] flex-col items-center justify-center p-5">
@@ -193,6 +204,8 @@ const Homecontainer: React.FC<HomeContainerProps> = ({ isLeaderboardOpen, toggle
       <Leaderboard isLeaderboardOpen={isLeaderboardOpen} players={players} toggleLeaderboard={toggleLeaderboard} />
       <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules}/>
       <Mint isMintOpen={isMintOpen} toggleMint={toggleMint} />
+      <Disclaimer isDisclaimerOpen={isDisclaimerOpen} toggleDisclaimer={toggleDisclaimer} />
+      <Unofficial isUnofficialOpen={isUnofficialOpen} toggleUnofficial={toggleUnofficial} />
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 
-interface MintProps {
-    isMintOpen: boolean;
-    toggleMint: () => void;
+interface DisclaimerProps {
+    isDisclaimerOpen: boolean;
+    toggleDisclaimer: () => void;
   }
 
-const mint = ({ isMintOpen, toggleMint }: MintProps) => {
-    if (!isMintOpen) return null;
+const Disclaimer = ({ isDisclaimerOpen, toggleDisclaimer }: DisclaimerProps) => {
+    if (!isDisclaimerOpen) return null;
 
      
   return (
@@ -22,13 +22,13 @@ const mint = ({ isMintOpen, toggleMint }: MintProps) => {
                 {/*header*/}
                 <div className="flex items-center justify-center relative">
           <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
-            
+          Disclaimer
           </p>
           <div className="flex right-0 absolute items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className=" w-[40px] h-[40px] rounded-sm border border-black flex items-center justify-center ease-linear transition-all duration-150"
                     type="button"
-                    onClick={toggleMint}
+                    onClick={toggleDisclaimer}
                   >
                     <AiOutlineClose />
                   </button>
@@ -36,20 +36,15 @@ const mint = ({ isMintOpen, toggleMint }: MintProps) => {
         </div>
                 {/*body*/}
                <div className="flex flex-col m-[35px] p-10 rounded-[20px] bg-green-100 border border-black">
-                    <div></div>
-                    
                     <div>
-                        <button></button>
+                    Sporting Labs is not affiliated or associated with Formula 1 or any of its related companies. The terms F1, FORMULA ONE, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX, and related marks are trademarks owned by Formula One Licensing B.V. While Sporting Labs may provide information, services, or products related to sports or motorsports, it is important to note that any references made to Formula 1 are purely for informational purposes. Sporting Labs operates independently and does not have any official endorsement or sponsorship from Formula 1 or association with the athletes or brands featured in our applications.
                     </div>
+                    
 
                 </div>
                 {/*footer*/}
                 <div className="">
-                        <button
-                        className="outline-black-100  flex h-[70px] w-[400px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2"
-                        >
-                      <FcGoogle />  Login to claim
-                        </button>
+                       
                     </div>
               </div>
             </div>
@@ -60,7 +55,7 @@ const mint = ({ isMintOpen, toggleMint }: MintProps) => {
   )
 }
 
-export default mint
+export default Disclaimer;
 
 
 

@@ -3,6 +3,8 @@ import { signIn, useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
+import Logo from '../public/images/logo.png'
+import Image from "next/image";
 
 import Link from "next/link";
 import useUser from "../hooks/useUser";
@@ -26,9 +28,9 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
           href="/"
           className="flex items-center gap-2 rounded-md border-2 border-green-300 bg-green-100 p-2"
         >
-          <p className="text-headingColor text-xl font-bold uppercase">
-            Sporting labs
-          </p>
+          <div className="w-[270px] h-[45px] border-[#B5EAD6] border flex justify-center items-center bg-[#E2FFF4]">
+          <Image alt="Sporting Lab Logo" src={Logo} width={240} height={35} />
+          </div>
         </Link>
 
         <div className="flex items-center gap-8">
