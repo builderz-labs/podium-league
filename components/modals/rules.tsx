@@ -1,78 +1,64 @@
 import { AiOutlineClose } from "react-icons/ai";
 
 interface RulesProps {
-    isRulesOpen: boolean;
-    toggleRules: () => void;
-  }
+  isRulesOpen: boolean;
+  toggleRules: () => void;
+}
 
 const rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
-    if (!isRulesOpen) return null;
+  if (!isRulesOpen) return null;
 
-    
   return (
     <div>
-        <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
-              <div className="bg-orange-50 border-0 rounded-lg shadow-lg relative flex flex-col w-full  outline-none focus:outline-none">
-                {/*header*/}
-                <div className="flex items-center justify-center relative">
-          <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
-            Rules
-          </p>
-          <div className="flex right-0 absolute items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+      <>
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+          <div className="relative mx-auto my-6 w-auto max-w-3xl">
+            {/*content*/}
+            <div className="relative flex w-full flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
+              {/*header*/}
+              <div className="relative flex items-center justify-center">
+                <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
+                  Rules
+                </p>
+                <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
                   <button
-                    className=" w-[40px] h-[40px] rounded-sm border border-black flex items-center justify-center ease-linear transition-all duration-150"
+                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-sm border border-black transition-all duration-150 ease-linear"
                     type="button"
                     onClick={toggleRules}
                   >
                     <AiOutlineClose />
                   </button>
                 </div>
-        </div>
-                {/*body*/}
-               <div className="flex flex-col m-[35px] p-10 rounded-[20px] bg-green-100 border border-black">
-                    <p>Welcome to Podium: The on-chain mini league by Sporting labs</p>
-                    <p>Before every race weekend you can mint a prediction for who 
-you think is going to come on the podium. 1st place gets 25 points, 
-2nd gets 18, and 3rd place gets 15 points. Watch Formula 1 all season,
- make your predictions, share with friends, & climb the leaderboard!</p>
-<p>Steps:</p>
-<ol>
-    <li>
-    Pick your racers
-    </li>
-    <li>
-    Mint your predictions for free
-    </li>
-    <li>
-    Share with friends!
-    </li>
-    <li>
-    Check your point/leaderboard after every race
-    </li>
-    <li>
-        Have fun!
-    </li>
-</ol>
-
-                </div>
-                {/*footer*/}
-               
               </div>
+              {/*body*/}
+              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
+                <p>
+                  Welcome to Podium: The on-chain mini league by Sporting labs
+                </p>
+                <p>
+                  Before every race weekend you can mint a prediction for who 
+                  you think is going to come on the podium. 1st place gets 25
+                  points,  2nd gets 18, and 3rd place gets 15 points. Watch
+                  Formula 1 all season,  make your predictions, share with
+                  friends, & climb the leaderboard!
+                </p>
+                <p>Steps:</p>
+                <ol>
+                  <li>Pick your racers</li>
+                  <li>Mint your predictions for free</li>
+                  <li>Share with friends!</li>
+                  <li>Check your point/leaderboard after every race</li>
+                  <li>Have fun!</li>
+                </ol>
+              </div>
+              {/*footer*/}
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
+        </div>
+        <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+      </>
     </div>
-  )
-}
+  );
+};
 
-export default rules
-
-
-
-
+export default rules;

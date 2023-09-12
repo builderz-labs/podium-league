@@ -3,7 +3,7 @@ import { signIn, useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
-import Logo from '../public/images/logo.png'
+import Logo from "../public/images/logo.png";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
   const session = useSession();
 
   const user = useUser();
-  
+
   console.log(user);
 
   return (
@@ -28,8 +28,8 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
           href="/"
           className="flex items-center gap-2 rounded-md border-2 border-green-300 bg-green-100 p-2"
         >
-          <div className="w-[270px] h-[45px] border-[#B5EAD6] border flex justify-center items-center bg-[#E2FFF4]">
-          <Image alt="Sporting Lab Logo" src={Logo} width={240} height={35} />
+          <div className="flex h-[45px] w-[270px] items-center justify-center border border-[#B5EAD6] bg-[#E2FFF4]">
+            <Image alt="Sporting Lab Logo" src={Logo} width={240} height={35} />
           </div>
         </Link>
 

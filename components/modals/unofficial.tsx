@@ -2,61 +2,51 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 
 interface UnofficialProps {
-    isUnofficialOpen: boolean;
-    toggleUnofficial: () => void;
-  }
+  isUnofficialOpen: boolean;
+  toggleUnofficial: () => void;
+}
 
-const Unofficial = ({ isUnofficialOpen, toggleUnofficial }: UnofficialProps) => {
-    if (!isUnofficialOpen) return null;
+const Unofficial = ({
+  isUnofficialOpen,
+  toggleUnofficial,
+}: UnofficialProps) => {
+  if (!isUnofficialOpen) return null;
 
-     
   return (
     <div>
-        <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none  "
-          >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
-              <div className="bg-orange-50 border-0 rounded-lg shadow-lg relative flex flex-col w-[500px]  outline-none focus:outline-none">
-                {/*header*/}
-                <div className="flex items-center justify-center relative">
-          <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
-          unofficial application
-          </p>
-          <div className="flex right-0 absolute items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+      <>
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none  ">
+          <div className="relative mx-auto my-6 w-auto max-w-3xl">
+            {/*content*/}
+            <div className="relative flex w-[500px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
+              {/*header*/}
+              <div className="relative flex items-center justify-center">
+                <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
+                  unofficial application
+                </p>
+                <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
                   <button
-                    className=" w-[40px] h-[40px] rounded-sm border border-black flex items-center justify-center ease-linear transition-all duration-150"
+                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-sm border border-black transition-all duration-150 ease-linear"
                     type="button"
                     onClick={toggleUnofficial}
                   >
                     <AiOutlineClose />
                   </button>
                 </div>
-        </div>
-                {/*body*/}
-               <div className="flex flex-col m-[35px] p-10 rounded-[20px] bg-green-100 border border-black">
-                    <div>
-                    
-                    </div>
-                    
-
-                </div>
-                {/*footer*/}
-                <div className="">
-                       
-                    </div>
               </div>
+              {/*body*/}
+              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
+                <div></div>
+              </div>
+              {/*footer*/}
+              <div className=""></div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
+        </div>
+        <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+      </>
     </div>
-  )
-}
+  );
+};
 
 export default Unofficial;
-
-
-
-

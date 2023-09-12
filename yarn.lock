@@ -1870,11 +1870,6 @@
   dependencies:
     "axios" "^1.2.3"
 
-"helius@^1.0.0":
-  "integrity" "sha512-d01R9JClXkdm7v8Wd2io6KR7f1+GKf3vGNwf2e6KnXnWtG+LwRXs93CtEepR3+pALeRlJcj7DqRVzrcDjH+Djg=="
-  "resolved" "https://registry.npmjs.org/helius/-/helius-1.0.0.tgz"
-  "version" "1.0.0"
-
 "humanize-ms@^1.2.1":
   "integrity" "sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ=="
   "resolved" "https://registry.npmjs.org/humanize-ms/-/humanize-ms-1.2.1.tgz"

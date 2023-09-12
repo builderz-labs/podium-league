@@ -1,72 +1,68 @@
 import { AiOutlineClose } from "react-icons/ai";
 type LeaderboardProps = {
-    isLeaderboardOpen: boolean;
-    toggleLeaderboard: () => void;
-    players: string[];
-  };
+  isLeaderboardOpen: boolean;
+  toggleLeaderboard: () => void;
+  players: string[];
+};
 
-const leaderboard = ({ isLeaderboardOpen, toggleLeaderboard, players }: LeaderboardProps) => {
-    if (!isLeaderboardOpen) return null;
+const leaderboard = ({
+  isLeaderboardOpen,
+  toggleLeaderboard,
+  players,
+}: LeaderboardProps) => {
+  if (!isLeaderboardOpen) return null;
 
-    const newplayers = players.slice(0, 7);
+  const newplayers = players.slice(0, 7);
 
   return (
     <div>
-    <>
-      <div
-        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-      >
-        <div className="relative w-auto my-6 mx-auto max-w-3xl">
-          {/*content*/}
-          <div className="bg-orange-50 border-0 rounded-lg shadow-lg relative flex flex-col w-full  outline-none focus:outline-none">
-            {/*header*/}
-            <div className="flex items-center justify-center relative">
-      <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
-        LEADERBOARD
-      </p>
-      <div className="flex right-0 absolute items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-              <button
-                className=" w-[40px] h-[40px] rounded-sm border border-black flex items-center justify-center ease-linear transition-all duration-150"
-                type="button"
-                onClick={toggleLeaderboard}
-              >
-                <AiOutlineClose />
-              </button>
-            </div>
-    </div>
-            {/*body*/}
-           <div className="flex flex-col m-[35px]">
-                {
-                  newplayers.map((player, i) => {
-                    return (
-                      
-              <div key={i} className="mx-[20px] my-[10px] flex flex-row gap-4">
-                      <div className="w-[50px] h-[50px] border border-black items-center rounded-[10px] justify-center flex text-[15px] text-center">
-                  {i+1}
-                </div>
-                <div className="bg-orange-200 w-[400px] h-[50px] border border-black items-center rounded-[10px] justify-between px-4 flex text-[15px] text-center"> 
-                  <p>{player}</p>
-                  <p>245 Points</p>
+      <>
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+          <div className="relative mx-auto my-6 w-auto max-w-3xl">
+            {/*content*/}
+            <div className="relative flex w-full flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
+              {/*header*/}
+              <div className="relative flex items-center justify-center">
+                <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
+                  LEADERBOARD
+                </p>
+                <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
+                  <button
+                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-sm border border-black transition-all duration-150 ease-linear"
+                    type="button"
+                    onClick={toggleLeaderboard}
+                  >
+                    <AiOutlineClose />
+                  </button>
                 </div>
               </div>
-                    )
-                  })
-                }
-                
+              {/*body*/}
+              <div className="m-[35px] flex flex-col">
+                {newplayers.map((player, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className="mx-[20px] my-[10px] flex flex-row gap-4"
+                    >
+                      <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[10px] border border-black text-center text-[15px]">
+                        {i + 1}
+                      </div>
+                      <div className="flex h-[50px] w-[400px] items-center justify-between rounded-[10px] border border-black bg-orange-200 px-4 text-center text-[15px]">
+                        <p>{player}</p>
+                        <p>245 Points</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {/*footer*/}
             </div>
-            {/*footer*/}
-           
           </div>
         </div>
-      </div>
-      <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-    </></div>
-  )
-}
+        <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+      </>
+    </div>
+  );
+};
 
-export default leaderboard
-
-
-
-
-
+export default leaderboard;
