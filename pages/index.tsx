@@ -12,6 +12,7 @@ import Mint from "../components/modals/mint";
 import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
 import axios from "axios";
+import { Spin } from "antd";
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
@@ -36,7 +37,8 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   isUnofficialOpen,
   toggleUnofficial,
 }) => {
-  const [isMintOpen, setIsMintOpen] = React.useState(false);
+  const [isMintOpen, setIsMintOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toggleMint = () => {
     setIsMintOpen(!isMintOpen);
@@ -69,12 +71,22 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
 
   // const { data, isLoading, refetch } = useNftsByOwnerAddress();
   const handleMintNft = async () => {
-    await axios.post("/api/create-nft");
+    setLoading(true);
 
-    // for (let i = 0; i < 9; i++) {
-    //   await refetch();
+    try {
+      const res = await axios.post("/api/create-nft", {
+        first: players[currentIndex1],
+        second: players[currentIndex2],
+        third: players[currentIndex3],
+      });
+      console.log(res.data);
 
-    // }
+      setIsMintOpen(true);
+    } catch (error) {
+      console.log(error);
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -152,6 +164,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
             </div>
           </div>
           <div className="container min-h-[400px]">
+            {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
             <div className="relative  w-full">
               <Image
                 src={podium}
@@ -174,7 +187,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               onClick={handleMintNft}
               className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg"
             >
-              Mint!
+              {loading && <Spin />} Mint!
             </button>
             <p className="mt-[10px] text-center text-[16px] font-[400] text-[#282828]">
               Dont keep the Podium fun to yourself - mint and share away!
@@ -211,7 +224,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         toggleLeaderboard={toggleLeaderboard}
       />
       <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
-      <Mint isMintOpen={isMintOpen} toggleMint={toggleMint} />
+      <Mint isMintOpen={isMintOpen} toggleMint={toggleMint} currentIndex1={currentIndex1} currentIndex2={currentIndex2} currentIndex3={currentIndex3} />
       <Disclaimer
         isDisclaimerOpen={isDisclaimerOpen}
         toggleDisclaimer={toggleDisclaimer}

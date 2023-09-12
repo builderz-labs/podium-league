@@ -12,7 +12,7 @@ const useUser = () => {
   const context = createUmi(process.env.NEXT_PUBLIC_HELIUS_PROXY!);
 
   useEffect(() => {
-    if (session && session.data?.user?.name) {
+    if (session.data?.user?.name) {
       const fetchUser = async () => {
         console.log("Fetching user");
 
@@ -40,7 +40,7 @@ const useUser = () => {
       };
       fetchUser();
     }
-  }, [session, context]);
+  }, [session.data?.user, context]);
 
   return { user, loading };
 };

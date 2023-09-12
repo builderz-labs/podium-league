@@ -18,8 +18,6 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
 
   const user = useUser();
 
-  console.log(user);
-
   return (
     <header className="fixed z-50 w-screen bg-white p-3 px-4 md:p-4 md:px-16">
       {/* desktop and tablet */}
