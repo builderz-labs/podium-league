@@ -55,7 +55,7 @@ router.post(async (req, res) => {
     } else if (session.user.email) {
       // Mint directly to user wallet
       const linkPda = findLinkPda(context, {
-        identifier: "podium-authority",
+        identifier: session.user.email,
       })[0];
 
       const createRes = await axios.post(
