@@ -67,15 +67,15 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     }
   };
 
-  // const { data, isLoading, refetch } = useNftsByOwnerAddress();
-  const handleMintNft = async () => {
-    await axios.post("/api/create-nft");
+  // // const { data, isLoading, refetch } = useNftsByOwnerAddress();
+  // const handleMintNft = async () => {
+  //   await axios.post("/api/create-nft");
 
-    // for (let i = 0; i < 9; i++) {
-    //   await refetch();
+  //   // for (let i = 0; i < 9; i++) {
+  //   //   await refetch();
 
-    // }
-  };
+  //   // }
+  // };
 
   return (
     <div className="flex h-auto w-full flex-col items-center justify-center">
@@ -171,7 +171,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </div>
             </div>
             <button
-              onClick={handleMintNft}
+              onClick={toggleMint}
               className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg"
             >
               Mint!

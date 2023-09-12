@@ -40,7 +40,7 @@ const useUser = () => {
       };
       fetchUser();
     }
-  }, [session, context]);
+  }, [session]);
 
   return { user, loading };
 };

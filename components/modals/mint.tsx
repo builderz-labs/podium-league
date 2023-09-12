@@ -6,7 +6,7 @@ interface MintProps {
   toggleMint: () => void;
 }
 
-const mint = ({ isMintOpen, toggleMint }: MintProps) => {
+const Mint = ({ isMintOpen, toggleMint }: MintProps) => {
   if (!isMintOpen) return null;
 
   return (
@@ -52,4 +52,4 @@ const mint = ({ isMintOpen, toggleMint }: MintProps) => {
   );
 };
 
-export default mint;
+export default Mint;

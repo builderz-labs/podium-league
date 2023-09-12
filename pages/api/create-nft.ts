@@ -37,7 +37,7 @@ router.post(async (req, res) => {
     },
   );
 
-  console.log(createRes.data);
+  //console.log(createRes.data);
 
   res.status(202).send({ message: "OK" });
 });

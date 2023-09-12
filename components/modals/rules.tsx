@@ -5,7 +5,7 @@ interface RulesProps {
   toggleRules: () => void;
 }
 
-const rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
+const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
   if (!isRulesOpen) return null;
 
   return (
@@ -61,4 +61,4 @@ const rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
   );
 };
 
-export default rules;
+export default Rules;

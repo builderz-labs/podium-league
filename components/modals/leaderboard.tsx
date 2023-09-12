@@ -5,7 +5,7 @@ type LeaderboardProps = {
   players: string[];
 };
 
-const leaderboard = ({
+const Leaderboard = ({
   isLeaderboardOpen,
   toggleLeaderboard,
   players,
@@ -65,4 +65,4 @@ const leaderboard = ({
   );
 };
 
-export default leaderboard;
+export default Leaderboard;
