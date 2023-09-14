@@ -40,7 +40,7 @@ const App = ({ Component, pageProps, session }: any) => {
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <AnimatePresence>
-          <div className="flex h-auto w-screen flex-col">
+          <div className="flex h-auto w-full flex-col justify-between items-center">
             <Header
               toggleLeaderboard={toggleLeaderboard}
               toggleRules={toggleRules}
@@ -59,7 +59,6 @@ const App = ({ Component, pageProps, session }: any) => {
                 toggleUnofficial={toggleUnofficial}
               />
             </main>
-
             <Footer
               toggleDisclaimer={toggleDisclaimer}
               toggleUnofficial={toggleUnofficial}

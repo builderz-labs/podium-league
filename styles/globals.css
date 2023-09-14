@@ -1,3 +1,9 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
 * {
@@ -21,6 +27,9 @@ body {
     "Helvetica Neue",
     sans-serif;
 }
+body::-webkit-scrollbar {
+  width: 0px;
+}
 
 html,
 body {
@@ -32,22 +41,19 @@ body {
   .font-outline-2 {
     /* -webkit-text-stroke: 8px white; */
     text-shadow:
-      4px 0 #fff,
-      -4px 0 #fff,
-      0 4px #fff,
-      0 -4px #fff,
-      2px 2px #fff,
-      -2px -2px #fff,
-      2px -2px #fff,
-      -2px 2px #fff;
+      8px 0 #fff,
+      -8px 0 #fff,
+      0 8px #fff,
+      0 -8px #fff,
+      4px 4px #fff,
+      -4px -4px #fff,
+      4px -4px #fff,
+      -4px 4px #fff;
   }
 }
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+.text-shadow-stroke {
+  color: transparent;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

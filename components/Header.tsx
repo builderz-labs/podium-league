@@ -19,9 +19,9 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
   const user = useUser();
 
   return (
-    <header className="fixed z-50 w-screen bg-white p-3 px-4 md:p-4 md:px-16">
+    <header className="fixed z-50 w-screen  p-3 px-4 md:p-4 md:px-16 bg-white md:bg-transparent">
       {/* desktop and tablet */}
-      <div className="hidden h-full w-full items-center justify-between md:flex">
+      <div className="flex h-full w-full items-center justify-between">
         <Link
           href="/"
           className="flex items-center gap-2 rounded-md border-2 border-green-300 bg-green-100 p-2"
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
           </div>
         </Link>
 
-        <div className="flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8">
           <motion.ul
             initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
@@ -80,44 +80,15 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
             )}
           </motion.ul>
         </div>
-      </div>
 
-      {/* mobile */}
-      <div className="flex h-full w-full md:hidden">
-        <Link
-          href="/"
-          className="flex items-center gap-2 rounded-md border-2 border-green-300 bg-green-100 p-2"
-        >
-          <p className="text-headingColor text-[10px] font-bold uppercase">
-            Sporting labs
-          </p>
-        </Link>
-
-        <div className="flex items-center gap-8">
-          <motion.ul
-            initial={{ opacity: 0, x: 200 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 200 }}
-            className="flex items-center gap-8"
-          >
-            <li
-              onClick={toggleRules}
-              className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out"
-            >
-              Rules
-            </li>
-            <li
-              onClick={toggleLeaderboard}
-              className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out"
-            >
-              Leaderboard
-            </li>
-            <li>
-              <button>Login</button>
-            </li>
-          </motion.ul>
+        <div className="flex md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
         </div>
       </div>
+
+
     </header>
   );
 };
