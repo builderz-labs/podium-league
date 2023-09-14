@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react";
 import { AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import Index from "./index";
+import Profile from "./index";
 import Footer from "../components/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -40,7 +41,7 @@ const App = ({ Component, pageProps, session }: any) => {
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <AnimatePresence>
-          <div className="flex h-auto w-screen flex-col">
+          <div className="flex h-auto w-full flex-col items-center justify-between">
             <Header
               toggleLeaderboard={toggleLeaderboard}
               toggleRules={toggleRules}
@@ -59,7 +60,6 @@ const App = ({ Component, pageProps, session }: any) => {
                 toggleUnofficial={toggleUnofficial}
               />
             </main>
-
             <Footer
               toggleDisclaimer={toggleDisclaimer}
               toggleUnofficial={toggleUnofficial}

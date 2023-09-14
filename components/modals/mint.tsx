@@ -4,8 +4,10 @@ import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import podium from "../../public/images/podium.png";
 import { players } from "../../constants";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
+import UnderdogLogo from "../../public/images/underdog.png";
+import KrakenLogo from "../../public/images/kraken.png";
 
 interface MintProps {
   isMintOpen: boolean;
@@ -15,20 +17,26 @@ interface MintProps {
   currentIndex3: number;
 }
 
-const Mint = ({ isMintOpen, toggleMint, currentIndex1, currentIndex2, currentIndex3 }: MintProps) => {
+const Mint = ({
+  isMintOpen,
+  toggleMint,
+  currentIndex1,
+  currentIndex2,
+  currentIndex3,
+}: MintProps) => {
   const session = useSession();
 
   const handleDownload = () => {
     // TODO:
-  }
+  };
 
   const handleShare = () => {
     // TODO:
-  }
+  };
 
   const handleLoginAndTransfer = () => {
     // TODO
-  }
+  };
 
   if (!isMintOpen) return null;
 
@@ -54,42 +62,117 @@ const Mint = ({ isMintOpen, toggleMint, currentIndex1, currentIndex2, currentInd
               </div>
               {/*body*/}
               <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
+                <div className="-mt-9">
+                  <p className=" rowdies-400 font-outline-2 ml-12 p-6 text-[45px] font-black text-[#55CBCD]">
+                    PODIUM
+                  </p>
+                </div>
                 {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
-            <div className="relative w-full">
-              <Image
-                src={podium}
-                className="container h-[400px] rounded-xl border-2 border-green-400 bg-green-100"
-                alt=""
-                width={800}
-                height={400}
-              />
-              <div className="absolute left-[100px] top-[100px] p-4 text-sm">
-                {players[currentIndex2].split("(")[0]}
-              </div>
-              <div className="absolute left-[20px] top-[110px] p-4 text-sm">
-                {players[currentIndex1].split("(")[0]}
-              </div>
-              <div className="absolute left-[210px] top-[110px] p-4 text-sm">
-                {players[currentIndex3].split("(")[0]}
-              </div>
-            </div>
+                <div className="relative h-[328px] w-[362px]">
+                  <div className="flex w-full items-center justify-center">
+                    <div className="mx-auto h-full min-h-[350px] w-full rounded-lg border border-black  bg-background-illustration bg-cover bg-center bg-no-repeat md:h-1/3 md:min-h-[320px]"></div>
+                  </div>
 
-                <div>
-                  <button></button>
+                  <div className="absolute inset-0 flex h-full w-full flex-row items-end justify-center gap-4 p-4">
+                    <div className="flex w-1/3 flex-col items-center justify-center">
+                      <img
+                        src="/images/racer.png"
+                        alt=""
+                        className="relative z-10 h-full w-[80%]"
+                      />
+                      <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-6 text-center">
+                        {players[currentIndex2].split("(")[0]}
+                      </div>
+                    </div>
+                    <div className="-mt-12 flex w-1/3 flex-col items-center justify-center">
+                      <img
+                        src="/images/racer.png"
+                        alt=""
+                        className="relative z-10 h-full w-[90%]"
+                      />
+                      <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-8 text-center">
+                        {players[currentIndex1].split("(")[0]}
+                      </div>
+                    </div>
+                    <div className="flex w-1/3 flex-col items-center justify-center">
+                      <img
+                        src="/images/racer.png"
+                        alt=""
+                        className="relative z-10 h-full w-[80%]"
+                      />
+                      <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
+                        {players[currentIndex3].split("(")[0]}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-row gap-4">
+                    <div className="mb-2 mt-3 ">Supported by</div>
+                    <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center">
+                      <Image
+                        src={UnderdogLogo}
+                        alt="'Underdog logo"
+                        width={136}
+                        height={17}
+                      />
+                    </div>
+                    <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center ">
+                      <Image
+                        src={KrakenLogo}
+                        alt="'Underdog logo"
+                        width={80}
+                        height={17}
+                      />
+                    </div>
+                  </div>
+
+                  {/* <Image
+                    src={podium}
+                    className="container h-[400px] object-cover rounded-xl border-2 border-green-400 bg-green-100"
+                    alt=""
+                    width={800}
+                    height={400}
+                  />
+                  <div className="absolute left-[100px] top-[100px] p-4 text-sm">
+                    {players[currentIndex2].split("(")[0]}
+                  </div>
+                  <div className="absolute left-[20px] top-[110px] p-4 text-sm">
+                    {players[currentIndex1].split("(")[0]}
+                  </div>
+                  <div className="absolute left-[210px] top-[110px] p-4 text-sm">
+                    {players[currentIndex3].split("(")[0]}
+                  </div> */}
                 </div>
               </div>
               {/*footer*/}
               {/* Login Button -> Only shown when user is not logged in */}
-              {session.status !== "authenticated" && <div className="">
-                <button onClick={handleLoginAndTransfer} className="outline-black-100  flex h-[70px] w-[400px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2">
-                  <FcGoogle /> Login to claim
-                </button>
-              </div>}
-              <div className="flex w-full space-x-4">
-                <button onClick={handleShare} className="outline-black-100 flex h-[70px] w-4/5 items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2">
-                  <BsTwitter /> Share on Twitter
-                </button>
-                <button onClick={handleDownload} className="outline-black-100 flex h-[70px] rounded-xl p-2 outline outline-1 outline-offset-2"><BsDownload /></button>
+              <div className="mb-5 flex w-full flex-col items-center justify-center gap-6 ">
+                {session.status !== "authenticated" && (
+                  <div className="">
+                    <button
+                      onClick={handleLoginAndTransfer}
+                      className="outline-black-100  flex h-[63px] w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 outline outline-1 outline-offset-2"
+                    >
+                      <FcGoogle className="h-[26px] w-[26px]" /> Login to claim
+                    </button>
+                  </div>
+                )}
+                <div className="mb-4 flex space-x-6">
+                  <button
+                    onClick={handleShare}
+                    className="outline-black-100 flex h-[63px] w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 outline outline-1 outline-offset-2"
+                  >
+                    <p className="flex items-center ">
+                      <BsTwitter className="h-[17px] w-[21px] text-[#1D9BF0]" />{" "}
+                      Share on Twitter
+                    </p>
+                  </button>
+                  <button
+                    onClick={handleDownload}
+                    className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px]  bg-white p-2 outline outline-1 outline-offset-2"
+                  >
+                    <BsDownload className=" h-[32px] w-[32px] justify-center" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>

@@ -90,19 +90,20 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center">
-      <section className="container  relative flex flex-col items-center justify-center bg-orange-100">
+    <div className="mt-0 flex h-auto w-full flex-col items-center justify-start md:-mt-10">
+      <section className="container  relative flex h-auto flex-col items-center justify-start rounded-md bg-bg-light">
         <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PODIUM
           </p>
         </div>
-        <div className="rounded-2xl bg-[#FFEFD8] p-2">
+        <div className="rounded-2xl bg-bg-mid p-2 px-4">
           <p>The on-chain mini league</p>
         </div>
-        <div className="my-4 mb-36 flex flex-row items-center justify-center">
-          <div className="mb-25 container p-5">
-            <p className="flex flex-row items-center text-[20px] font-[400]">
+
+        <div className=" flex w-full flex-col items-center justify-center gap-8 p-8 md:flex-row md:items-start md:gap-16">
+          <div className=" container h-full w-full md:w-1/3">
+            <p className="flex w-full flex-row items-center text-[20px] font-[400]">
               Pick your racer{" "}
               <Image
                 src={helmet}
@@ -113,9 +114,11 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               />
             </p>
 
-            <div className="w-350 mt-3 grid grid-cols-1 justify-start gap-2">
+            <div className="mt-3 grid w-full grid-cols-1 justify-start gap-2">
               <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
-                <span className=" num w-[15%] text-center text-[30px] rowdies-300">1st</span>
+                <span className=" num rowdies-300 w-[15%] text-center text-[30px]">
+                  1st
+                </span>
                 <Button
                   color={"#F6EAC2"}
                   players={players}
@@ -131,7 +134,9 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </div>
 
               <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
-                <span className="w-[15%] text-center text-[30px]">2nd</span>
+                <span className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  2nd
+                </span>
                 <Button
                   players={players}
                   currentIndex={currentIndex2}
@@ -147,7 +152,9 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </div>
 
               <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
-                <span className="w-[15%] text-center text-[30px]">3rd</span>
+                <span className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  3rd
+                </span>
                 <Button
                   players={players}
                   currentIndex={currentIndex3}
@@ -163,58 +170,85 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </div>
             </div>
           </div>
-          <div className="container w-full flex justify-center items-center flex-col min-h-[300px]">
+
+          <div className="container mx-auto flex h-full w-full flex-col gap-4 ">
             {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
-            <div className="relative flex justify-center items-center w-full">
-              <Image
-                src={podium}
-                className="container h-[300px] rounded-xl border-2 border-green-400 bg-green-100"
-                alt=""
-                width={600}
-                height={300}
-              />
-              <div className="absolute left-[350px] top-[200px] p-4 ">
-                {players[currentIndex2].split("(")[0]}
+            <div className="relative  w-full">
+              <div className="flex w-full items-center justify-center">
+                <div className="mx-auto h-full min-h-[350px] w-full rounded-lg border border-black  bg-background-illustration bg-cover bg-center bg-no-repeat md:h-1/3 md:min-h-[520px]"></div>
               </div>
-              <div className="absolute left-[530px] top-[200px] p-4 ">
-                {players[currentIndex1].split("(")[0]}
-              </div>
-              <div className="absolute right-[330px] top-[210px] p-4 ">
-                {players[currentIndex3].split("(")[0]}
+
+              <div className="absolute inset-0 flex h-full w-full flex-row items-end justify-center gap-4 p-4">
+                <div className="flex w-1/3 flex-col items-center justify-center">
+                  <img
+                    src="/images/racer.png"
+                    alt="racer"
+                    className="relative z-10 h-full w-[80%]"
+                  />
+                  <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-6 text-center">
+                    {players[currentIndex2].split("(")[0]}
+                  </div>
+                </div>
+                <div className="-mt-12 flex w-1/3 flex-col items-center justify-center">
+                  <img
+                    src="/images/racer.png"
+                    alt=""
+                    className="relative z-10 h-full w-[90%]"
+                  />
+                  <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-8 text-center">
+                    {players[currentIndex1].split("(")[0]}
+                  </div>
+                </div>
+                <div className="flex w-1/3 flex-col items-center justify-center">
+                  <img
+                    src="/images/racer.png"
+                    alt=""
+                    className="relative z-10 h-full w-[80%]"
+                    
+                  />
+                  <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
+                    {players[currentIndex3].split("(")[0]}
+                  </div>
+                </div>
               </div>
             </div>
-            <button
-              onClick={handleMintNft}
-              className="mt-[30px] h-[90px] w-[600px] rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg"
-            >
-              {loading && <Spin />} Mint!
-            </button>
+
+            <div className="relative">
+              <button
+                onClick={handleMintNft}
+                className="relative z-20 h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[#FFF6EA] active:translate-x-[0px]
+                     active:translate-y-[0px] active:rounded-2xl active:shadow-none"
+              >
+                {loading && <Spin />} Mint!
+              </button>
+              <div className="absolute -bottom-1 z-10 h-full w-full rounded-2xl bg-[#B5EAD6]"></div>
+            </div>
             <p className="mt-[10px] text-center text-[16px] font-[400] text-[#282828]">
               Dont keep the Podium fun to yourself - mint and share away!
             </p>
           </div>
 
-          <div className="container flex flex-col items-center justify-center p-5">
+          <div className="container flex h-full w-1/3 flex-col items-center justify-center gap-2">
             <p className="align-center mt-[40px] text-center text-[20px] font-[400]">
               Share your strategy!
             </p>
-            <button className="border-1 flex h-[70px] w-[70px] items-center justify-center rounded-[5px] border border-black bg-[#C7E8FF]">
-              <BsTwitter className="h-[30px] w-[35px] text-[#1D9BF0]" />
+            <button className="border-1 flex items-center justify-center rounded-2xl border border-black bg-[#C7E8FF] p-3">
+              <BsTwitter className="h-[48px] w-[48px] text-[#1D9BF0]" />
             </button>
-            <div className="BG-[#FFED8] mt-[35px] h-[10px] w-full border-2"></div>
+            <div className="mt-[35px] h-[10px] w-full rounded-2xl bg-[#FFEFD8]"></div>
 
             <p className="align-center mt-[40px] text-center text-[20px] font-[400]">
               {
                 "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
               }
             </p>
-            <button className="outline-black-100 mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 text-[20px] outline outline-1 outline-offset-2">
+            <button className="outline-black-100 mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2">
               View league
             </button>
           </div>
         </div>
 
-        <div className="bg-red absolute bottom-1 right-[20px]">
+        <div className="bg-red absolute bottom-8 right-8">
           <Image src={racer} alt="" width={198} height={112} />
         </div>
       </section>
@@ -224,7 +258,13 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         toggleLeaderboard={toggleLeaderboard}
       />
       <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
-      <Mint isMintOpen={isMintOpen} toggleMint={toggleMint} currentIndex1={currentIndex1} currentIndex2={currentIndex2} currentIndex3={currentIndex3} />
+      <Mint
+        isMintOpen={isMintOpen}
+        toggleMint={toggleMint}
+        currentIndex1={currentIndex1}
+        currentIndex2={currentIndex2}
+        currentIndex3={currentIndex3}
+      />
       <Disclaimer
         isDisclaimerOpen={isDisclaimerOpen}
         toggleDisclaimer={toggleDisclaimer}
