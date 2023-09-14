@@ -5,12 +5,18 @@ import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
 import Logo from "../public/images/logo.png";
 import Image from "next/image";
-
 import Link from "next/link";
 import useUser from "../hooks/useUser";
+
+
+
 interface HeaderProps {
   toggleLeaderboard: MouseEventHandler;
   toggleRules: MouseEventHandler;
+}
+
+const handleSignOut = () => {
+
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
@@ -18,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
 
   const user = useUser();
 
-  console.log(user);
+  console.log(user)
 
   return (
     <header className="fixed z-50 w-screen bg-white p-3 px-4 md:p-4 md:px-16">
@@ -78,7 +84,16 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
                 </li>
               </>
             ) : (
-              <li>Logged In</li>
+              <div className="dropdown inline-block relative">
+              <button className="bg-[#FFF6EA] border border-[#282828] rounded-[16px] text-[#282828] font-semibold py-2 px-4 inline-flex items-center">
+                <span className="mr-1">{session.data?.user?.name}</span>
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+              </button>
+              <ul className="dropdown-menu absolute hidden text-[#282828] w-full pt-1">
+                <li className=""><a className="rounded-t bg-[#FFF6EA] py-2 px-4 block whitespace-no-wrap" href="#">Profile</a></li>
+                <li className=""><a className="bg-[#FFF6EA] py-2 px-4 block whitespace-no-wrap" href="#">Logout</a></li>
+              </ul>
+            </div>
             )}
           </motion.ul>
         </div>

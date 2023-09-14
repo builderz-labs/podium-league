@@ -1,12 +1,35 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { BsTwitter } from "react-icons/bs";
+import Image from "next/image";
+import podium from "../../public/images/podium.png";
+import { players } from "../../constants";
+import { useSession } from "next-auth/react";
+import { BsDownload } from "react-icons/bs";
 
 interface MintProps {
   isMintOpen: boolean;
   toggleMint: () => void;
+  currentIndex1: number;
+  currentIndex2: number;
+  currentIndex3: number;
 }
 
-const Mint = ({ isMintOpen, toggleMint }: MintProps) => {
+const Mint = ({ isMintOpen, toggleMint, currentIndex1, currentIndex2, currentIndex3 }: MintProps) => {
+  const session = useSession();
+
+  const handleDownload = () => {
+    // TODO:
+  }
+
+  const handleShare = () => {
+    // TODO:
+  }
+
+  const handleLoginAndTransfer = () => {
+    // TODO
+  }
+
   if (!isMintOpen) return null;
 
   return (
@@ -31,17 +54,42 @@ const Mint = ({ isMintOpen, toggleMint }: MintProps) => {
               </div>
               {/*body*/}
               <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
-                <div></div>
+                {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
+            <div className="relative w-full">
+              <Image
+                src={podium}
+                className="container h-[400px] rounded-xl border-2 border-green-400 bg-green-100"
+                alt=""
+                width={800}
+                height={400}
+              />
+              <div className="absolute left-[100px] top-[100px] p-4 text-sm">
+                {players[currentIndex2].split("(")[0]}
+              </div>
+              <div className="absolute left-[20px] top-[110px] p-4 text-sm">
+                {players[currentIndex1].split("(")[0]}
+              </div>
+              <div className="absolute left-[210px] top-[110px] p-4 text-sm">
+                {players[currentIndex3].split("(")[0]}
+              </div>
+            </div>
 
                 <div>
                   <button></button>
                 </div>
               </div>
               {/*footer*/}
-              <div className="">
-                <button className="outline-black-100  flex h-[70px] w-[400px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2">
+              {/* Login Button -> Only shown when user is not logged in */}
+              {session.status !== "authenticated" && <div className="">
+                <button onClick={handleLoginAndTransfer} className="outline-black-100  flex h-[70px] w-[400px] items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2">
                   <FcGoogle /> Login to claim
                 </button>
+              </div>}
+              <div className="flex w-full space-x-4">
+                <button onClick={handleShare} className="outline-black-100 flex h-[70px] w-4/5 items-center justify-between rounded-xl p-2 outline outline-1 outline-offset-2">
+                  <BsTwitter /> Share on Twitter
+                </button>
+                <button onClick={handleDownload} className="outline-black-100 flex h-[70px] rounded-xl p-2 outline outline-1 outline-offset-2"><BsDownload /></button>
               </div>
             </div>
           </div>

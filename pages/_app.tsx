@@ -45,7 +45,7 @@ const App = ({ Component, pageProps, session }: any) => {
               toggleLeaderboard={toggleLeaderboard}
               toggleRules={toggleRules}
             />
-            <main className="mt-24 w-full p-8">
+            <main className="mt-20 w-full p-8">
               <Index
                 isLeaderboardOpen={isLeaderboardOpen}
                 toggleLeaderboard={toggleLeaderboard}

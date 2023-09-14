@@ -12,6 +12,7 @@ import Mint from "../components/modals/mint";
 import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
 import axios from "axios";
+import { Spin } from "antd";
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
@@ -36,7 +37,8 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   isUnofficialOpen,
   toggleUnofficial,
 }) => {
-  const [isMintOpen, setIsMintOpen] = React.useState(false);
+  const [isMintOpen, setIsMintOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toggleMint = () => {
     setIsMintOpen(!isMintOpen);
@@ -67,29 +69,39 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     }
   };
 
-  // // const { data, isLoading, refetch } = useNftsByOwnerAddress();
-  // const handleMintNft = async () => {
-  //   await axios.post("/api/create-nft");
+  // const { data, isLoading, refetch } = useNftsByOwnerAddress();
+  const handleMintNft = async () => {
+    setLoading(true);
 
-  //   // for (let i = 0; i < 9; i++) {
-  //   //   await refetch();
+    try {
+      const res = await axios.post("/api/create-nft", {
+        first: players[currentIndex1],
+        second: players[currentIndex2],
+        third: players[currentIndex3],
+      });
+      console.log(res.data);
 
-  //   // }
-  // };
+      setIsMintOpen(true);
+    } catch (error) {
+      console.log(error);
+    }
+
+    setLoading(false);
+  };
 
   return (
-    <div className="flex h-auto w-full flex-col items-center justify-center">
-      <section className="container  relative flex h-auto flex-col items-center justify-center bg-orange-100">
+    <div className="flex w-full flex-col items-center justify-center">
+      <section className="container  relative flex flex-col items-center justify-center bg-orange-100">
         <div className="-mt-12">
-          <p className=" font-outline-2 text-[70px] font-black text-[#55CBCD]">
+          <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PODIUM
           </p>
         </div>
         <div className="rounded-2xl bg-[#FFEFD8] p-2">
           <p>The on-chain mini league</p>
         </div>
-        <div className="my-12 mb-36 flex flex-row items-center justify-center">
-          <div className="mb-25 container w-[600px] p-5">
+        <div className="my-4 mb-36 flex flex-row items-center justify-center">
+          <div className="mb-25 container p-5">
             <p className="flex flex-row items-center text-[20px] font-[400]">
               Pick your racer{" "}
               <Image
@@ -103,7 +115,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
 
             <div className="w-350 mt-3 grid grid-cols-1 justify-start gap-2">
               <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
-                <span className="w-[15%] text-center text-[30px]">1st</span>
+                <span className=" num w-[15%] text-center text-[30px] rowdies-300">1st</span>
                 <Button
                   color={"#F6EAC2"}
                   players={players}
@@ -151,37 +163,38 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </div>
             </div>
           </div>
-          <div className="container min-h-[400px]">
-            <div className="relative  w-full">
+          <div className="container w-full flex justify-center items-center flex-col min-h-[300px]">
+            {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
+            <div className="relative flex justify-center items-center w-full">
               <Image
                 src={podium}
-                className="container h-[400px] rounded-xl border-2 border-green-400 bg-green-100"
+                className="container h-[300px] rounded-xl border-2 border-green-400 bg-green-100"
                 alt=""
-                width={800}
-                height={400}
+                width={600}
+                height={300}
               />
-              <div className="absolute left-[100px] top-[280px] p-4 ">
+              <div className="absolute left-[350px] top-[200px] p-4 ">
                 {players[currentIndex2].split("(")[0]}
               </div>
-              <div className="absolute left-[310px] top-[270px] p-4 ">
+              <div className="absolute left-[530px] top-[200px] p-4 ">
                 {players[currentIndex1].split("(")[0]}
               </div>
-              <div className="absolute right-[70px] top-[290px] p-4 ">
+              <div className="absolute right-[330px] top-[210px] p-4 ">
                 {players[currentIndex3].split("(")[0]}
               </div>
             </div>
             <button
-              onClick={toggleMint}
-              className="mt-[30px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg"
+              onClick={handleMintNft}
+              className="mt-[30px] h-[90px] w-[600px] rounded-[16px] border-[0.5px] border-black bg-white font-black drop-shadow-lg"
             >
-              Mint!
+              {loading && <Spin />} Mint!
             </button>
             <p className="mt-[10px] text-center text-[16px] font-[400] text-[#282828]">
               Dont keep the Podium fun to yourself - mint and share away!
             </p>
           </div>
 
-          <div className="container flex w-[800px] flex-col items-center justify-center p-5">
+          <div className="container flex flex-col items-center justify-center p-5">
             <p className="align-center mt-[40px] text-center text-[20px] font-[400]">
               Share your strategy!
             </p>
@@ -211,7 +224,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         toggleLeaderboard={toggleLeaderboard}
       />
       <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
-      <Mint isMintOpen={isMintOpen} toggleMint={toggleMint} />
+      <Mint isMintOpen={isMintOpen} toggleMint={toggleMint} currentIndex1={currentIndex1} currentIndex2={currentIndex2} currentIndex3={currentIndex3} />
       <Disclaimer
         isDisclaimerOpen={isDisclaimerOpen}
         toggleDisclaimer={toggleDisclaimer}
