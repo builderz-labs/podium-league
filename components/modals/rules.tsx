@@ -32,24 +32,24 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
               </div>
               {/*body*/}
               <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
-                <p>
+                <p className=" pb-5">
                   Welcome to Podium: The on-chain mini league by Sporting labs
                 </p>
-                <p>
+                <p className=" pb-5">
                   Before every race weekend you can mint a prediction for who 
                   you think is going to come on the podium. 1st place gets 25
                   points,  2nd gets 18, and 3rd place gets 15 points. Watch
                   Formula 1 all season,  make your predictions, share with
                   friends, & climb the leaderboard!
                 </p>
-                <p>Steps:</p>
-                <ol>
+                <p className=" pb-5 font-bold">Steps:</p>
+                <ul className=" pb-8">
                   <li>Pick your racers</li>
                   <li>Mint your predictions for free</li>
                   <li>Share with friends!</li>
                   <li>Check your point/leaderboard after every race</li>
                   <li>Have fun!</li>
-                </ol>
+                </ul>
               </div>
               {/*footer*/}
             </div>

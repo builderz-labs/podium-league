@@ -18,7 +18,7 @@ const Disclaimer = ({
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none  ">
           <div className="relative mx-auto my-6 w-auto max-w-3xl">
             {/*content*/}
-            <div className="relative flex w-[500px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
+            <div className="relative flex w-[778px]  flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
               {/*header*/}
               <div className="relative flex items-center justify-center">
                 <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
@@ -35,8 +35,8 @@ const Disclaimer = ({
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
-                <div>
+              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10 h-[616px]">
+                <div className=" text-[23px]">
                   Sporting Labs is not affiliated or associated with Formula 1
                   or any of its related companies. The terms F1, FORMULA ONE,
                   FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX, and

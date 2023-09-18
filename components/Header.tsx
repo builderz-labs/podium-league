@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
                   <li className="">
                     <a
                       className=" whitespace-no-wrap block bg-[#FFF] px-4 py-2"
-                      href="#"
+                      href="/profile"
                     >
                       Profile
                     </a>

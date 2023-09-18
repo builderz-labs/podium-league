@@ -1,4 +1,3 @@
-import Image from "next/image";
 import * as React from "react";
 import { BsArrowRightCircle, BsArrowLeftCircle } from "react-icons/bs";
 

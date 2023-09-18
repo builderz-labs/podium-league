@@ -18,7 +18,7 @@ const Unofficial = ({
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none  ">
           <div className="relative mx-auto my-6 w-auto max-w-3xl">
             {/*content*/}
-            <div className="relative flex w-[700px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
+            <div className="relative flex w-[778px]  flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
               {/*header*/}
               <div className="relative flex items-center justify-center">
                 <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
@@ -35,19 +35,12 @@ const Unofficial = ({
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
-                <div>
-                  Sporting Labs is not affiliated or associated with Formula 1
-                  or any of its related companies. The terms F1, FORMULA ONE,
-                  FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX, and
-                  related marks are trademarks owned by Formula One Licensing
-                  B.V. While Sporting Labs may provide information, services, or
-                  products related to sports or motorsports, it is important to
-                  note that any references made to Formula 1 are purely for
-                  informational purposes. Sporting Labs operates independently
-                  and does not have any official endorsement or sponsorship from
-                  Formula 1 or association with the athletes or brands featured
-                  in our applications.
+              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10 h-[616px]">
+                <div className="text-[19px] ">
+                 <p className=" pb-2">Sporting Labs is an unofficial application and has no official affiliation or connection with any of the racing leagues, teams, drivers, athletes, franchises, or sanctioning bodies related to the games we provide coverage for.</p>
+                 <p className=" pb-2">Sporting Labs adheres to the same standards as media publishers when it comes to legally displaying publicly available sports statistics and data on various consumer platforms such as websites, television, or social profiles. While Sporting Labs relies on publicly accessible sports data, it is essential to clarify that this does not imply any form of association between Sporting Labs and the athletes or sports franchises for which we present data.</p>
+                 <p className=" pb-2">We consider publicity rights with great seriousness and place significant importance on showing respect and appreciation for any athlete, league, team, or sanctioning body whose real-life performance data and profiles are featured within our product.</p>
+                 <p className=" pb-5">Throughout our applications, you will find additional disclaimers designed to prevent any confusion regarding the affiliation between Sporting Labs and specific leagues, teams, drivers, athletes, franchises, or sanctioning bodies.</p>
                 </div>
               </div>
               {/*footer*/}
