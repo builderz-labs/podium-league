@@ -13,7 +13,6 @@ const queryClient = new QueryClient();
 const App = ({ Component, pageProps, session }: any) => {
   const [isLeaderboardOpen, setIsLeaderboardOpen] = React.useState(false);
   const [isRulesOpen, setIsRulesOpen] = React.useState(false);
-  const [isMintOpen, setIsMintOpen] = React.useState(false);
   const [isDisclaimerOpen, setIsDisclaimerOpen] = React.useState(false);
   const [isUnofficialOpen, setIsUnofficialOpen] = React.useState(false);
 
@@ -23,10 +22,6 @@ const App = ({ Component, pageProps, session }: any) => {
 
   const toggleRules = () => {
     setIsRulesOpen(!isRulesOpen);
-  };
-
-  const toggleMint = () => {
-    setIsMintOpen(!isRulesOpen);
   };
 
   const toggleDisclaimer = () => {
@@ -47,17 +42,8 @@ const App = ({ Component, pageProps, session }: any) => {
               toggleRules={toggleRules}
             />
             <main className="mt-20 w-full p-8">
-              <Index
-                isLeaderboardOpen={isLeaderboardOpen}
-                toggleLeaderboard={toggleLeaderboard}
-                isRulesOpen={isRulesOpen}
-                toggleRules={toggleRules}
-                isMintOpen={isMintOpen}
-                toggleMint={toggleMint}
-                isDisclaimerOpen={isDisclaimerOpen}
-                toggleDisclaimer={toggleDisclaimer}
-                isUnofficialOpen={isUnofficialOpen}
-                toggleUnofficial={toggleUnofficial}
+              <Component
+                {...pageProps} // don't forget to pass the pageProps
               />
             </main>
             <Footer
