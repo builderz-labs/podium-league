@@ -1,67 +1,163 @@
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import useUser from '../hooks/useUser'
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import useUser from "../hooks/useUser";
+import { players } from "../constants";
+import Image from "next/image";
+import arrowLeft from "../public/images/arrow-left.svg";
+import arrowRight from "../public/images/arrow-right.svg";
+import Leaderboard from "../components/modals/leaderboard";
+import Rules from "../components/modals/rules";
+import Disclaimer from "../components/modals/disclaimer";
+import Unofficial from "../components/modals/unofficial";
 
-const Profile = () => {
-  const router = useRouter()
+type ProfileProps = {
+  isLeaderboardOpen: boolean;
+  toggleLeaderboard: () => void;
+  isRulesOpen: boolean;
+  toggleRules: () => void;
+
+  isDisclaimerOpen: boolean;
+  toggleDisclaimer: () => void;
+  isUnofficialOpen: boolean;
+  toggleUnofficial: () => void;
+};
+
+const Profile: React.FC<ProfileProps> = ({
+  isLeaderboardOpen,
+  toggleLeaderboard,
+  isRulesOpen,
+  toggleRules,
+  isDisclaimerOpen,
+  toggleDisclaimer,
+  isUnofficialOpen,
+  toggleUnofficial,
+}) => {
+  const router = useRouter();
   const user = useUser();
 
   console.log(user.user);
 
   useEffect(() => {
     // Fetch user data here and set it to user state
-  }, [])
+  }, []);
 
   if (!user) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <div className="mt-0 flex h-auto w-full flex-col items-center justify-start md:-mt-10">
-      <section className="container  relative flex h-auto flex-col items-center justify-start rounded-md bg-bg-light">
-        <div className="-mt-12">
-          <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
-            PROFILE
-          </p>
-        </div>
-
-        <div className='w-[60%] flex my-[30px]'>
-          <div className='flex items-center justify-center w-[120px] rounded-[16px] bg-[#f6eac2] border border-black h-[64px]'>
-            245
+        <section className="container  relative flex h-auto flex-col items-center justify-start rounded-md bg-bg-light">
+          <div className="-mt-12">
+            <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
+              PROFILE
+            </p>
           </div>
-          <div className='flex flex-col h-[60px] justify-between ml-[17px]'>
-            <p className='font-[700] text-[20px]'>Brandon</p>
-            <p className='text-[20px] font-[400]'>12 Points</p>
+
+          <div className="my-[30px] flex w-[60%]">
+            <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
+              245
+            </div>
+            <div className="ml-[17px] flex h-[60px] flex-col justify-between">
+              <p className="text-[20px] font-[700]">Brandon</p>
+              <p className="text-[20px] font-[400]">12 Points</p>
+            </div>
           </div>
-        </div>
 
-      <div className='flex justify-between items-center w-[60%]'>
-      <p className='font-[400] text-[20px]'>Minted Podiums</p>
-      <button className='w-[115px] h-[40px] border border-black bg-white rounded-[8px] color-[#282828]'>View All</button>
-      </div>
-      <div className="grid grid-cols-2 gap-4 w-[60%] mt-[20px] mb-[50px]">
-      <div className='px-[20px] w-[100%] h-[60px] rounded-[16px] border border-black flex justify-between items-center'>
-        <p>Qatar Airways Emilia Romagna GP</p>
-        <p>View NFT</p>
-      </div>
-      <div className='px-[20px] w-[100%] h-[60px] rounded-[16px] border border-black flex justify-between items-center'>
-        <p>Qatar Airways Emilia Romagna GP</p>
-        <p>View NFT</p>
-      </div>
-      <div className='px-[20px] w-[100%] h-[60px] rounded-[16px] border border-black flex justify-between items-center'>
-        <p>Gulf Air Bahrain GP</p>
-        <p>View NFT</p>
-      </div>
-      <div className='px-[20px] w-[100%] h-[60px] rounded-[16px] border border-black flex justify-between items-center'>
-        <p>Gulf Air Bahrain GP</p>
-        <p>View NFT</p>
-      </div>
-</div>
-      </section>
-    </div>
-    </div>
-  )
-}
+          <div className="my-[30px] flex w-[60%] border-black ">
+            <div className="box-border flex h-[300px]  w-[300px] flex-col items-center justify-center gap-[20px] rounded-[16px] border border-black bg-[#B5EAD6]">
+              <div className="pb-[50px] pt-[80px] text-[20px]">
+                Preview Here
+              </div>
+              <button className="h-[67px]  w-[266px] items-center rounded-[16px] border border-black bg-[#FFFFFF80] text-[23px]">
+                Mint!
+              </button>
+            </div>
 
-export default Profile
+            <div className="mb-[5px] mt-[5px] grid w-[70%] grid-cols-2 gap-[35px] pl-10  ">
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] pb-5 text-center text-[30px]">
+                  Backgroud
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#DFCCF1] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Sunrise{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  Helmet
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#F6EAC2] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Alonso{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  Skin{" "}
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#D3F6C2] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Dark{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  Suit
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#FFB8B1] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Ferrari{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex w-[60%] items-center justify-between">
+            <p className="text-[20px] font-[400]">Minted Podiums</p>
+            <button className="color-[#282828] h-[40px] w-[115px] rounded-[8px] border border-black bg-white">
+              View All
+            </button>
+          </div>
+          <div className="mb-[50px] mt-[20px] grid w-[60%] grid-cols-2 gap-4">
+            <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+              <p>Qatar Airways Emilia Romagna GP</p>
+              <p>View NFT</p>
+            </div>
+            <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+              <p>Qatar Airways Emilia Romagna GP</p>
+              <p>View NFT</p>
+            </div>
+            <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+              <p>Gulf Air Bahrain GP</p>
+              <p>View NFT</p>
+            </div>
+            <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+              <p>Gulf Air Bahrain GP</p>
+              <p>View NFT</p>
+            </div>
+          </div>
+        </section>
+        <Leaderboard
+          isLeaderboardOpen={isLeaderboardOpen}
+          players={players}
+          toggleLeaderboard={toggleLeaderboard}
+        />
+        <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
+
+        <Disclaimer
+          isDisclaimerOpen={isDisclaimerOpen}
+          toggleDisclaimer={toggleDisclaimer}
+        />
+        <Unofficial
+          isUnofficialOpen={isUnofficialOpen}
+          toggleUnofficial={toggleUnofficial}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Profile;

@@ -24,14 +24,13 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
     <header className="fixed z-50 w-screen  bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16">
       {/* desktop and tablet */}
       <div className="flex h-full w-full items-center justify-between">
-        <a
-          href="/"
-         
-        >
+        
           <div className="flex h-[45px] w-[270px] items-center justify-center border border-[#B5EAD6] bg-[#E2FFF4]">
+          <Link href="/">
             <Image alt="Sporting Lab Logo" src={Logo} width={240} height={35} />
+            </Link>
           </div>
-        </a>
+        
 
         <div className="hidden items-center gap-8 md:flex">
           <motion.ul
@@ -58,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
                   <div
                     onClick={() => signIn("google")}
                     className="z-10 flex cursor-pointer items-center justify-center rounded-2xl border border-gray-300 
-                    bg-white bg-opacity-60 p-2  transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[4px_4px_0px_orange] active:translate-x-[0px]
+                    bg-white bg-opacity-60 p-2  transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[#FFF6EA] active:translate-x-[0px]
                      active:translate-y-[0px] active:rounded-2xl active:shadow-none"
                   >
                     <FcGoogle fontSize={30} />
@@ -89,22 +88,25 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
                   </svg>
                 </button>
-                <ul className="dropdown-menu absolute hidden w-full rounded-[16px] pt-1 text-[#282828] ">
-                  <li className="">
-                    <a
-                      className=" whitespace-no-wrap block bg-[#FFF] px-4 py-2"
+                
+                <ul className="dropdown-menu absolute hidden w-full  pt-1 text-[#282828] ">
+                  <li className="whitespace-no-wrap block bg-[#FFF] px-4 py-2">
+                    <Link
+                      className=" "
                       href="/profile"
                     >
                       Profile
-                    </a>
+                    </Link>
                   </li>
-                  <li className="">
-                    <a
-                      className="whitespace-no-wrap block bg-[#FFF] px-4 py-2"
+                  <li className=" whitespace-no-wrap block bg-[#FFF] px-4 py-2">
+                    <div
+                    
+                      className=""
                       onClick={() => signOut()}
+                      
                     >
                       Logout
-                    </a>
+                    </div>
                   </li>
                 </ul>
               </div>

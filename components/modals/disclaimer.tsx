@@ -35,7 +35,7 @@ const Disclaimer = ({
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10 h-[616px]">
+              <div className="m-[35px] flex h-[616px] flex-col rounded-[20px] border border-black bg-green-100 p-10">
                 <div className=" text-[23px]">
                   Sporting Labs is not affiliated or associated with Formula 1
                   or any of its related companies. The terms F1, FORMULA ONE,

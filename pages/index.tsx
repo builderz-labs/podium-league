@@ -204,7 +204,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                     src="/images/racer.png"
                     alt=""
                     className="relative z-10 h-full w-[80%]"
-                    
                   />
                   <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
                     {players[currentIndex3].split("(")[0]}
