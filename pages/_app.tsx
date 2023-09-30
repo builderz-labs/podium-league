@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Index from "./index";
 import Profile from "./index";
 import Footer from "../components/Footer";
+import { players } from "../constants";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
@@ -15,7 +16,12 @@ const App = ({ Component, pageProps, session }: any) => {
   const [isRulesOpen, setIsRulesOpen] = React.useState(false);
   const [isDisclaimerOpen, setIsDisclaimerOpen] = React.useState(false);
   const [isUnofficialOpen, setIsUnofficialOpen] = React.useState(false);
+  const [isMintOpen, setIsMintOpen] = React.useState(false);
+  const [isMintedPodiumsOpen, setIsMintedPodiumsOpen] = React.useState(false);
 
+  const toggleMint = () => {
+    setIsMintOpen(!isMintOpen);
+  };
   const toggleLeaderboard = () => {
     setIsLeaderboardOpen(!isLeaderboardOpen);
   };
@@ -32,6 +38,10 @@ const App = ({ Component, pageProps, session }: any) => {
     setIsUnofficialOpen(!isUnofficialOpen);
   };
 
+  const toggleMintedPodiums = () => {
+    setIsMintedPodiumsOpen(!isMintedPodiumsOpen);
+  };
+
   return (
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
@@ -43,9 +53,24 @@ const App = ({ Component, pageProps, session }: any) => {
             />
             <main className="mt-20 w-full p-8">
               <Component
-                {...pageProps} // don't forget to pass the pageProps
+                {...pageProps }
+                isLeaderboardOpen={isLeaderboardOpen}
+                players={players}
+                toggleLeaderboard={toggleLeaderboard}
+                isRulesOpen={isRulesOpen} toggleRules={toggleRules}
+                isDisclaimerOpen={isDisclaimerOpen}
+        toggleDisclaimer={toggleDisclaimer}
+        isUnofficialOpen={isUnofficialOpen}
+        toggleUnofficial={toggleUnofficial}
+        isMintOpen={isMintOpen}
+        toggleMint={toggleMint}
+        isMintedPodiumsOpen={isMintedPodiumsOpen}
+        toggleMintedPodiums={toggleMintedPodiums}
+                 // don't forget to pass the pageProps
               />
+
             </main>
+           
             <Footer
               toggleDisclaimer={toggleDisclaimer}
               toggleUnofficial={toggleUnofficial}

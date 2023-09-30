@@ -1,9 +1,19 @@
+import { rule } from "postcss";
 import { AiOutlineClose } from "react-icons/ai";
 
 interface RulesProps {
   isRulesOpen: boolean;
   toggleRules: () => void;
 }
+
+const rules = [
+  {description: 'Pick your racers', key: 0},
+  {description: 'Mint your predictions for free', key: 1},
+  {description: 'Share with friends!', key: 2},
+  {description: 'Check your point/leaderboard after every race', key: 3},
+  {description: 'Have fun!', key: 4}
+];
+
 
 const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
   if (!isRulesOpen) return null;
@@ -31,7 +41,7 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
+              <div className="m-[35px] text-[22px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
                 <p className=" pb-5">
                   Welcome to Podium: The on-chain mini league by Sporting labs
                 </p>
@@ -43,13 +53,12 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
                   friends, & climb the leaderboard!
                 </p>
                 <p className=" pb-5 font-bold">Steps:</p>
-                <ul className=" pb-8">
-                  <li>Pick your racers</li>
-                  <li>Mint your predictions for free</li>
-                  <li>Share with friends!</li>
-                  <li>Check your point/leaderboard after every race</li>
-                  <li>Have fun!</li>
-                </ul>
+                
+                <ol className=" pb-8">
+                {rules.map(rule =>
+       <li key={rule.key}>{rule.description}</li>
+     )}
+                </ol>
               </div>
               {/*footer*/}
             </div>

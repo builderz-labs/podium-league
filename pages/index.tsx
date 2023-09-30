@@ -40,6 +40,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   const [isMintOpen, setIsMintOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
+
   const toggleMint = () => {
     setIsMintOpen(!isMintOpen);
   };

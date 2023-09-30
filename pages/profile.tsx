@@ -9,17 +9,19 @@ import Leaderboard from "../components/modals/leaderboard";
 import Rules from "../components/modals/rules";
 import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
+import MintedPodiums from "../components/modals/mintedPodiums";
 
 type ProfileProps = {
   isLeaderboardOpen: boolean;
   toggleLeaderboard: () => void;
   isRulesOpen: boolean;
   toggleRules: () => void;
-
   isDisclaimerOpen: boolean;
   toggleDisclaimer: () => void;
   isUnofficialOpen: boolean;
   toggleUnofficial: () => void;
+  isMintedPodiumsOpen: boolean;
+  toggleMintedPodiums: () => void;
 };
 
 const Profile: React.FC<ProfileProps> = ({
@@ -31,6 +33,8 @@ const Profile: React.FC<ProfileProps> = ({
   toggleDisclaimer,
   isUnofficialOpen,
   toggleUnofficial,
+  isMintedPodiumsOpen,
+  toggleMintedPodiums,
 }) => {
   const router = useRouter();
   const user = useUser();
@@ -117,7 +121,7 @@ const Profile: React.FC<ProfileProps> = ({
 
           <div className="flex w-[60%] items-center justify-between">
             <p className="text-[20px] font-[400]">Minted Podiums</p>
-            <button className="color-[#282828] h-[40px] w-[115px] rounded-[8px] border border-black bg-white">
+            <button onClick={toggleMintedPodiums} className="color-[#282828] h-[40px] w-[115px] rounded-[8px] border border-black bg-white">
               View All
             </button>
           </div>
@@ -132,7 +136,7 @@ const Profile: React.FC<ProfileProps> = ({
             </div>
             <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
               <p>Gulf Air Bahrain GP</p>
-              <p>View NFT</p>
+              <p >View NFT</p>
             </div>
             <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
               <p>Gulf Air Bahrain GP</p>
@@ -154,6 +158,10 @@ const Profile: React.FC<ProfileProps> = ({
         <Unofficial
           isUnofficialOpen={isUnofficialOpen}
           toggleUnofficial={toggleUnofficial}
+        />
+        <MintedPodiums 
+        isMintedPodiumsOpen={isMintedPodiumsOpen}
+        toggleMintedPodiums={toggleMintedPodiums}
         />
       </div>
     </div>
