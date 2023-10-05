@@ -46,12 +46,12 @@ const App = ({ Component, pageProps, session }: any) => {
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <AnimatePresence>
-          <div className="flex h-auto w-full flex-col items-center justify-between">
+          <div className="flex h-[100%] w-full flex-col items-center justify-between">
             <Header
               toggleLeaderboard={toggleLeaderboard}
               toggleRules={toggleRules}
             />
-            <main className="mt-20 w-full p-8">
+            <main className="mt-[80px] w-full p-4 px-8">
               <Component
                 {...pageProps }
                 isLeaderboardOpen={isLeaderboardOpen}

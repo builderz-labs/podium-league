@@ -98,11 +98,11 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
             PODIUM
           </p>
         </div>
-        <div className="rounded-2xl bg-bg-mid p-2 px-4">
+        <div className="rounded-2xl bg-bg-mid px-4">
           <p>The on-chain mini league</p>
         </div>
 
-        <div className=" flex w-full flex-col items-center justify-center gap-8 p-8 md:flex-row md:items-start md:gap-16">
+        <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:items-start md:gap-16">
           <div className=" container h-full w-full md:w-1/3">
             <p className="flex w-full flex-row items-center text-[20px] font-[400]">
               Pick your racer{" "}
@@ -223,7 +223,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </button>
               <div className="absolute -bottom-1 z-10 h-full w-full rounded-2xl bg-[#B5EAD6]"></div>
             </div>
-            <p className="mt-[10px] text-center text-[16px] font-[400] text-[#282828]">
+            <p className=" text-center text-[16px] font-[400] text-[#282828]">
               Dont keep the Podium fun to yourself - mint and share away!
             </p>
           </div>
@@ -248,7 +248,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
           </div>
         </div>
 
-        <div className="bg-red absolute bottom-8 right-8">
+        <div className="bg-red absolute bottom-20 right-1 md:bottom-8 md:right-8">
           <Image src={racer} alt="" width={198} height={112} />
         </div>
       </section>

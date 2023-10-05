@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
       {/* desktop and tablet */}
       <div className="flex h-full w-full items-center justify-between">
         
-          <div className="flex h-[45px] w-[270px] items-center justify-center border border-[#B5EAD6] bg-[#E2FFF4]">
+          <div className="cursor-pointer flex h-[45px] w-[270px] items-center justify-center border border-[#B5EAD6] bg-[#E2FFF4]">
           <Link href="/">
             <Image alt="Sporting Lab Logo" src={Logo} width={240} height={35} />
             </Link>
@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
                   <li className=" whitespace-no-wrap block bg-[#FFF] px-4 py-2">
                     <div
                     
-                      className=""
+                      className="cursor-pointer"
                       onClick={() => signOut()}
                       
                     >
