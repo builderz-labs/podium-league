@@ -1,8 +1,0 @@
-{
-  "functions": {
-    "pages/api/**/*.ts": {
-      "runtime": "@vercel/node@1.8.1",
-      "includeFiles": "build/**"
-    }
-  }
-}
