@@ -2,15 +2,7 @@
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node@1.8.1",
-      "builds": [
-        {
-          "src": "api/**/*.ts",
-          "use": "@vercel/node",
-          "config": {
-            "includeFiles": "build/**"
-          }
-        }
-      ]
+      "includeFiles": "build/**"
     }
   }
 }
