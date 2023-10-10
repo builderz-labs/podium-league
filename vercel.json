@@ -1,5 +1,9 @@
 {
-  "static": {
-    "include": ["files/**"]
-  }
+  "rewrites": [],
+  "redirects": [],
+  "routes": [],
+  "headers": [],
+  "trailingSlash": false,
+  "functions": "api/",
+  "include": ["files/**"]
 }
