@@ -5,5 +5,7 @@
   "headers": [],
   "trailingSlash": false,
   "functions": "api/",
-  "include": ["files/**"]
+  "public": {
+    "include": ["files/**"]
+  }
 }
