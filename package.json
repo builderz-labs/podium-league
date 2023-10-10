@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "vercel-build": "npm install canvas && tsc"
   },
   "dependencies": {
     "@tiplink/api": "^0.1.3",
