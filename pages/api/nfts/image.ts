@@ -51,11 +51,13 @@ export default async function handler(
       `${process.env.NEXT_PUBLIC_DOMAIN}/images/nft-base.png`,
     );
     const fontPath = path.join(
-      "assets",
-      "fonts",
+      process.cwd(),
+      "files",
       "BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt",
     );
-    const font = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
+    console.log(fontPath);
+
+    const font = await Jimp.loadFont(fontPath);
 
     // Calculate the horizontal position
     const horizontalPositionFirst = width * 0.5;
