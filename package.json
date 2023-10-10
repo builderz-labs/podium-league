@@ -18,7 +18,7 @@
     "@underdog-protocol/underdog-identity-sdk": "^0.3.0",
     "@vercel/nft": "^0.24.2",
     "antd": "^5.9.0",
-    "canvas": "^2.11.2",
+    "canvas-prebuilt": "^2.11.2",
     "framer-motion": "^10.16.4",
     "fs": "^0.0.1-security",
     "helius-sdk": "^1.0.13",

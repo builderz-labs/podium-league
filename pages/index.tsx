@@ -123,7 +123,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         </div>
 
         {/* Canva */}
-        <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:gap-16">
+        <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:gap-12">
           <div className="container h-full w-full md:w-1/3">
             <div className='flex w-full flex-row'>
               <p className="flex w-full flex-row items-center text-[20px] font-[400]">
@@ -193,7 +193,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
           <div className="container mx-auto flex h-full flex-col w-full gap-4">
             {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
 
-            <div className="relative  w-full">
+            <div className="relative w-full">
               <div className="flex w-full items-center justify-center">
                 <div className="mx-auto h-full min-h-[350px] w-full rounded-lg border border-black  bg-background-illustration bg-cover bg-center bg-no-repeat md:h-1/3 md:min-h-[420px]"></div>
               </div>
