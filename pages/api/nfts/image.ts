@@ -51,7 +51,6 @@ export default async function handler(
       `${process.env.NEXT_PUBLIC_DOMAIN}/images/nft-base.png`,
     );
     const fontPath = path.join(
-      process.cwd(),
       "assets",
       "fonts",
       "BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt",
