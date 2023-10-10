@@ -1,0 +1,8 @@
+{
+  "builds": [
+    {
+      "src": "pages/api/nfts/image.ts",
+      "use": "@vercel/nft"
+    }
+  ]
+}
