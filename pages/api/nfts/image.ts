@@ -52,7 +52,7 @@ export default async function handler(
     );
     const fontPath = path.join(
       process.cwd(),
-      "public",
+      "assets",
       "fonts",
       "BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt",
     );
