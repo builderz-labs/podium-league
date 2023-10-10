@@ -1,8 +1,8 @@
 // pages/api/dynamicImage.ts
 import { NextApiRequest, NextApiResponse } from "next";
-import { createCanvas, Image } from "canvas";
-import fetch from "node-fetch";
+import Jimp from "jimp";
 import { drivers } from "../../../constants/drivers";
+import path from "path";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,9 +16,15 @@ export default async function handler(
     const secondDriver = (second as string).replace(/-/g, " ");
     const thirdDriver = (third as string).replace(/-/g, " ");
 
-    const racerFirst = drivers.find((p) => p.driver === firstDriver);
-    const racerSecond = drivers.find((p) => p.driver === secondDriver);
-    const racerThird = drivers.find((p) => p.driver === thirdDriver);
+    const racerFirst = drivers
+      .find((p) => p.driver === firstDriver)
+      ?.driver.split(" ");
+    const racerSecond = drivers
+      .find((p) => p.driver === secondDriver)
+      ?.driver.split(" ");
+    const racerThird = drivers
+      .find((p) => p.driver === thirdDriver)
+      ?.driver.split(" ");
 
     const racerNames = [firstDriver, secondDriver, thirdDriver];
     const uniqueRacerNames = new Set(racerNames);
@@ -37,55 +43,80 @@ export default async function handler(
       return;
     }
 
-    const width = 1500;
-    const height = 1500;
+    const width = 2048 / 2;
+    const height = 2048 / 2;
 
-    const canvas = createCanvas(width, height);
-    const context = canvas.getContext("2d");
-
-    const backgroundImage = new Image();
-    backgroundImage.onload = () => {
-      context.drawImage(backgroundImage, 0, 0, width, height);
-    };
-    // Fetch the image
-    const response = await fetch(
+    // Load the image and the font
+    let image = await Jimp.read(
       `${process.env.NEXT_PUBLIC_DOMAIN}/images/nft-base.png`,
     );
-    const image = await response.buffer();
-    backgroundImage.src = image;
-
-    context.font = "400 50px Roboto Slab";
-    context.textAlign = "center";
-    context.textBaseline = "middle";
+    const fontPath = path.join(
+      process.cwd(),
+      "public",
+      "fonts",
+      "BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt",
+    );
+    const font = await Jimp.loadFont(fontPath);
 
     // Calculate the horizontal position
     const horizontalPositionFirst = width * 0.5;
-    const horizontalPositionSecond = width * 0.805;
-    const horizontalPositionThird = width * 0.195;
+    const horizontalPositionSecond = width * 1.125;
+    const horizontalPositionThird = -128;
 
     // Calculate the vertical positions
-    const firstPosition = height * 0.73; // 30% down the canvas
-    const secondPosition = height * 0.82; // 50% down the canvas
-    const thirdPosition = height * 0.82; // 70% down the canvas
+    const firstPosition = height * 0.92;
+    const secondPosition = height * 1.1;
+    const thirdPosition = height * 1.1;
 
-    context.fillText(
-      racerFirst!.driver,
-      horizontalPositionFirst,
-      firstPosition,
-    );
-    context.fillText(
-      racerSecond!.driver,
-      horizontalPositionSecond,
-      secondPosition,
-    );
-    context.fillText(
-      racerThird!.driver,
-      horizontalPositionThird,
-      thirdPosition,
-    );
+    const lineHeight = Jimp.measureTextHeight(font, " ", width);
 
-    // Convert the canvas to an image buffer
-    const imageBuffer = canvas.toBuffer("image/png");
+    // Print the text on the image
+    // Print each word on a new line
+    for (let i = 0; i < racerFirst!.length; i++) {
+      image.print(
+        font,
+        horizontalPositionFirst,
+        firstPosition + i * lineHeight,
+        {
+          text: racerFirst![i],
+          alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+          alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+        },
+        width,
+        height,
+      );
+    }
+    for (let i = 0; i < racerSecond!.length; i++) {
+      image.print(
+        font,
+        horizontalPositionSecond,
+        secondPosition + i * lineHeight,
+        {
+          text: racerSecond![i],
+          alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+          alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+        },
+        width,
+        height,
+      );
+    }
+    for (let i = 0; i < racerThird!.length; i++) {
+      image.print(
+        font,
+        horizontalPositionThird,
+        thirdPosition + i * lineHeight,
+        {
+          text: racerThird![i],
+          alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+          alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
+        },
+        width,
+        height,
+      );
+    }
+
+    // Convert the image to a buffer
+    const imageBuffer = await image.getBufferAsync(Jimp.MIME_PNG);
 
     // Set the correct header for the image
     res.setHeader("Content-Type", "image/png");
