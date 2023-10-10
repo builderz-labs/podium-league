@@ -4,7 +4,7 @@
   "routes": [],
   "headers": [],
   "trailingSlash": false,
-  "functions": "api/",
+  "functions": { "api/**/*.ts": { "memory": 512 } },
   "public": {
     "include": ["files/**"]
   }
