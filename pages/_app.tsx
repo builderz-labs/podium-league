@@ -46,31 +46,31 @@ const App = ({ Component, pageProps, session }: any) => {
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <AnimatePresence>
-          <div className="flex h-[100%] w-full flex-col items-center justify-between">
+          <div className="flex h-screen w-full flex-col items-center justify-between">
             <Header
               toggleLeaderboard={toggleLeaderboard}
               toggleRules={toggleRules}
             />
-            <main className="mt-[80px] w-full p-4 px-8">
+            <main className="w-full h-full">
               <Component
-                {...pageProps }
+                {...pageProps}
                 isLeaderboardOpen={isLeaderboardOpen}
                 players={players}
                 toggleLeaderboard={toggleLeaderboard}
                 isRulesOpen={isRulesOpen} toggleRules={toggleRules}
                 isDisclaimerOpen={isDisclaimerOpen}
-        toggleDisclaimer={toggleDisclaimer}
-        isUnofficialOpen={isUnofficialOpen}
-        toggleUnofficial={toggleUnofficial}
-        isMintOpen={isMintOpen}
-        toggleMint={toggleMint}
-        isMintedPodiumsOpen={isMintedPodiumsOpen}
-        toggleMintedPodiums={toggleMintedPodiums}
-                 // don't forget to pass the pageProps
+                toggleDisclaimer={toggleDisclaimer}
+                isUnofficialOpen={isUnofficialOpen}
+                toggleUnofficial={toggleUnofficial}
+                isMintOpen={isMintOpen}
+                toggleMint={toggleMint}
+                isMintedPodiumsOpen={isMintedPodiumsOpen}
+                toggleMintedPodiums={toggleMintedPodiums}
+              // don't forget to pass the pageProps
               />
 
             </main>
-           
+
             <Footer
               toggleDisclaimer={toggleDisclaimer}
               toggleUnofficial={toggleUnofficial}

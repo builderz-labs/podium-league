@@ -15,6 +15,7 @@ interface MintProps {
   currentIndex1: number;
   currentIndex2: number;
   currentIndex3: number;
+  saveAsPng: () => void;
 }
 
 const Mint = ({
@@ -23,6 +24,7 @@ const Mint = ({
   currentIndex1,
   currentIndex2,
   currentIndex3,
+  saveAsPng,
 }: MintProps) => {
   const session = useSession();
 
@@ -167,7 +169,8 @@ const Mint = ({
                     </p>
                   </button>
                   <button
-                    onClick={handleDownload}
+                    onClick={// Call the function when you want to save the part as PNG
+                      saveAsPng}
                     className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px]  bg-white p-2 outline outline-1 outline-offset-2"
                   >
                     <BsDownload className=" h-[32px] w-[32px] justify-center" />
