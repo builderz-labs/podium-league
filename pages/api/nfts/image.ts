@@ -58,7 +58,11 @@ export default async function handler(
     // );
     // console.log(fontPath);
 
-    const jimpFont = path.resolve("files/BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt");
+    const jimpFont = path.resolve(
+      process.cwd(),
+      "files/BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt",
+    );
+    console.log(jimpFont);
 
     const font = await Jimp.loadFont(jimpFont);
 
