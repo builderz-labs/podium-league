@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import Jimp from "jimp";
 import { drivers } from "../../../constants/drivers";
 import path from "path";
+const plugin = require.resolve("@jimp/plugin-print");
 
 export default async function handler(
   req: NextApiRequest,
@@ -50,14 +51,16 @@ export default async function handler(
     let image = await Jimp.read(
       `${process.env.NEXT_PUBLIC_DOMAIN}/images/nft-base.png`,
     );
-    const fontPath = path.join(
-      process.cwd(),
-      "files",
-      "BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt",
-    );
-    console.log(fontPath);
+    // const fontPath = path.join(
+    //   process.cwd(),
+    //   "files",
+    //   "BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt",
+    // );
+    // console.log(fontPath);
 
-    const font = await Jimp.loadFont(fontPath);
+    const jimpFont = path.resolve("files/BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt");
+
+    const font = await Jimp.loadFont(jimpFont);
 
     // Calculate the horizontal position
     const horizontalPositionFirst = width * 0.5;
