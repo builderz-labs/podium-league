@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import Index from "./index";
 import Profile from "./index";
 import Footer from "../components/Footer";
-import { players } from "../constants";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
@@ -55,7 +54,6 @@ const App = ({ Component, pageProps, session }: any) => {
               <Component
                 {...pageProps}
                 isLeaderboardOpen={isLeaderboardOpen}
-                players={players}
                 toggleLeaderboard={toggleLeaderboard}
                 isRulesOpen={isRulesOpen} toggleRules={toggleRules}
                 isDisclaimerOpen={isDisclaimerOpen}

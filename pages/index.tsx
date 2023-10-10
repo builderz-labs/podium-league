@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { players } from "../constants";
 import Button from "../components/Button";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
-import podium from "../public/images/podium.png";
 import racer from "../public/images/racercar.png";
 import helmet from "../public/images/helmet.png";
 import Leaderboard from "../components/modals/leaderboard";
@@ -14,6 +12,7 @@ import Unofficial from "../components/modals/unofficial";
 import axios from "axios";
 import { Spin } from "antd";
 import html2canvas from 'html2canvas';
+import { drivers } from "../constants/drivers";
 
 const saveAsPng = async () => {
   const element = document.getElementById('element-to-capture');
@@ -74,7 +73,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     setCurrentIndex: (index: number) => void,
     currentIndex: number,
   ) => {
-    if (currentIndex < players.length - 1) {
+    if (currentIndex < drivers.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -95,9 +94,10 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
 
     try {
       const res = await axios.post("/api/create-nft", {
-        first: players[currentIndex1],
-        second: players[currentIndex2],
-        third: players[currentIndex3],
+        first: drivers[currentIndex1].driver.replace(/\s/g, "-"),
+        second: drivers[currentIndex2].driver.replace(/\s/g, "-"),
+        third: drivers[currentIndex3].driver.replace(/\s/g, "-"),
+        race: "Monaco Grand Prix",
       });
       console.log(res.data);
 
@@ -143,7 +143,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 </span>
                 <Button
                   color={"#F6EAC2"}
-                  players={players}
                   currentIndex={currentIndex2}
                   onSelectName={() => { }}
                   onForwardClick={() =>
@@ -160,7 +159,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                   2nd
                 </span>
                 <Button
-                  players={players}
                   currentIndex={currentIndex1}
                   onSelectName={() => { }}
                   onForwardClick={() =>
@@ -178,7 +176,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                   3rd
                 </span>
                 <Button
-                  players={players}
                   currentIndex={currentIndex3}
                   onSelectName={() => { }}
                   onForwardClick={() =>
@@ -210,7 +207,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                     className="relative z-10 h-full w-[95%]"
                   />
                   <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-6 text-center">
-                    {players[currentIndex1].split("(")[0]}
+                    {drivers[currentIndex1].driver}
                   </div>
                 </div>
 
@@ -221,7 +218,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                     className="relative z-10 h-full w-[100%]"
                   />
                   <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-8 text-center">
-                    {players[currentIndex2].split("(")[0]}
+                    {drivers[currentIndex2].driver}
                   </div>
                 </div>
 
@@ -232,7 +229,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                     className="relative z-10 h-full w-[95%]"
                   />
                   <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
-                    {players[currentIndex3].split("(")[0]}
+                    {drivers[currentIndex3].driver}
                   </div>
                 </div>
               </div>
@@ -283,7 +280,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
 
       <Leaderboard
         isLeaderboardOpen={isLeaderboardOpen}
-        players={players}
         toggleLeaderboard={toggleLeaderboard}
       />
       <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />

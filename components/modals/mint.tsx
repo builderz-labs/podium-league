@@ -3,11 +3,11 @@ import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import podium from "../../public/images/podium.png";
-import { players } from "../../constants";
 import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
 import UnderdogLogo from "../../public/images/underdog.png";
 import KrakenLogo from "../../public/images/kraken.png";
+import { drivers } from "../../constants/drivers";
 
 interface MintProps {
   isMintOpen: boolean;
@@ -83,7 +83,7 @@ const Mint = ({
                         className="relative z-10 h-full w-[80%]"
                       />
                       <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-6 text-center">
-                        {players[currentIndex2].split("(")[0]}
+                        {drivers[currentIndex2].driver}
                       </div>
                     </div>
                     <div className="-mt-12 flex w-1/3 flex-col items-center justify-center">
@@ -93,7 +93,7 @@ const Mint = ({
                         className="relative z-10 h-full w-[90%]"
                       />
                       <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-8 text-center">
-                        {players[currentIndex1].split("(")[0]}
+                        {drivers[currentIndex1].driver}
                       </div>
                     </div>
                     <div className="flex w-1/3 flex-col items-center justify-center">
@@ -103,7 +103,7 @@ const Mint = ({
                         className="relative z-10 h-full w-[80%]"
                       />
                       <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
-                        {players[currentIndex3].split("(")[0]}
+                        {drivers[currentIndex3].driver}
                       </div>
                     </div>
                   </div>

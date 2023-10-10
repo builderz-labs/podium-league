@@ -1,7 +1,6 @@
 // pages/api/dynamicImage.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import { createCanvas, Image } from "canvas";
-import { players } from "../../../constants";
 import fetch from "node-fetch";
 import { drivers } from "../../../constants/drivers";
 
