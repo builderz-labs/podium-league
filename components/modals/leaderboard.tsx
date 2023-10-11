@@ -53,7 +53,7 @@ const Leaderboard = ({
                       <div className=" num rowdies-300 flex h-[60px] w-[110px] items-center justify-center rounded-[16px] border border-black text-center text-[30px]">
                         {i + 1}
                       </div>
-                      <div className="flex h-[60px] w-[550px] items-center justify-between rounded-[10px] border border-black bg-orange-200 px-4 text-center text-[20px]">
+                      <div className={`flex ${i === 0 ? 'bg-[#F6EAC2]' : i===1? 'bg-[#DFCCF1]' : i===2? "bg-[#FFB8B1]" : "bg-[#FFFFFF]"} roboto-400 h-[60px] w-[550px] items-center justify-between rounded-[10px] border border-black  px-4 text-center text-[20px]`}>
                         <p>{player.driver}</p>
                         <p>245 Points</p>
                       </div>
