@@ -17,7 +17,6 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
   const session = useSession();
 
   const user = useUser();
-
   console.log(user);
 
   return (

@@ -17,6 +17,7 @@ interface MintProps {
   currentIndex2: number;
   currentIndex3: number;
   saveAsPng: () => void;
+  image: string;
 }
 
 const Mint = ({
@@ -26,18 +27,29 @@ const Mint = ({
   currentIndex2,
   currentIndex3,
   saveAsPng,
+  image
 }: MintProps) => {
   const session = useSession();
 
   const handleDownload = () => {
-    // TODO:
+    const link = document.createElement('a');
+    link.href = `${image}&download=true`;
+    link.download = 'podium-leage.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleShare = () => {
-    // TODO:
+    const tweetText = "Check out my new NFT!";
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(image)}`;
+    window.open(url, "_blank");
   };
 
-  const handleLoginAndTransfer = () => {
+  const handleLoginAndTransfer = async() => {
+    const res = await signIn("google");
+    console.log(res);
+    
     // TODO
   };
 
@@ -66,7 +78,12 @@ const Mint = ({
               {/*body*/}
               <div className="m-[35px] flex flex-col rounded-[20px]  bg-green-100 p-10">
                 <div className="-mt-7 ml-20 ">
-                <Image alt="Sporting Lab Logo" src={Logo}  width={150} height={25}  />
+                  <Image
+                    alt="Sporting Lab Logo"
+                    src={Logo}
+                    width={150}
+                    height={25}
+                  />
                   <p className=" rowdies-400 font-outline-2   text-[45px] font-black text-[#55CBCD]">
                     PODIUM
                   </p>
@@ -110,7 +127,7 @@ const Mint = ({
                     </div>
                   </div>
                   <div className="flex flex-row items-center justify-between gap-3 ">
-                    <div className="mb-2 mt-3 roboto-400 ">Supported by</div>
+                    <div className="roboto-400 mb-2 mt-3 ">Supported by</div>
                     <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center">
                       <Image
                         src={UnderdogLogo}
@@ -154,7 +171,7 @@ const Mint = ({
                   <div className="">
                     <button
                       onClick={handleLoginAndTransfer}
-                      className="outline-black-100 roboto-400 text-[16px] flex h-[63px] w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 outline outline-1 outline-offset-2"
+                      className="outline-black-100 roboto-400 flex h-[63px] w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 text-[16px] outline outline-1 outline-offset-2"
                     >
                       <FcGoogle className="h-[26px] w-[26px]" /> Login to claim
                     </button>
@@ -163,15 +180,16 @@ const Mint = ({
                 <div className="mb-4 flex space-x-6">
                   <button
                     onClick={handleShare}
-                    className="outline-black-100 roboto-400 text-[16px] flex h-[63px] w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 outline outline-1 outline-offset-2"
+                    className="outline-black-100 roboto-400 flex h-[63px] w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 outline-offset-2"
                   >
-                      <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" /> Share on Twitter 
-                      
-                    
+                    <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" />{" "}
+                    Share on Twitter
                   </button>
                   <button
-                    onClick={// Call the function when you want to save the part as PNG
-                      saveAsPng}
+                    onClick={
+                      // Call the function when you want to save the part as PNG
+                      handleDownload
+                    }
                     className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px]  bg-white p-2 outline outline-1 outline-offset-2"
                   >
                     <BsDownload className=" h-[32px] w-[32px] justify-center" />

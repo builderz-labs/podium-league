@@ -11,26 +11,26 @@ import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
 import axios from "axios";
 import { Spin } from "antd";
-import html2canvas from 'html2canvas';
+import html2canvas from "html2canvas";
 import { drivers } from "../constants/drivers";
+import useUser from "../hooks/useUser";
+import { toast } from "sonner";
 
 const saveAsPng = async () => {
-  const element = document.getElementById('element-to-capture');
+  const element = document.getElementById("element-to-capture");
   if (!element) {
-    console.error('Element not found');
+    console.error("Element not found");
     return;
   }
   const canvas = await html2canvas(element);
-  const imgData = canvas.toDataURL('image/png');
+  const imgData = canvas.toDataURL("image/png");
 
   // Create a link to download the image
-  let link = document.createElement('a');
-  link.download = 'screenshot.png';
+  let link = document.createElement("a");
+  link.download = "screenshot.png";
   link.href = imgData;
   link.click();
 };
-
-
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
@@ -58,6 +58,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   const [isMintOpen, setIsMintOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const { user } = useUser();
 
   const toggleMint = () => {
     setIsMintOpen(!isMintOpen);
@@ -65,8 +66,9 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
 
   // State for each button's currentIndex
   const [currentIndex1, setCurrentIndex1] = useState(0);
-  const [currentIndex2, setCurrentIndex2] = useState(0);
-  const [currentIndex3, setCurrentIndex3] = useState(0);
+  const [currentIndex2, setCurrentIndex2] = useState(1);
+  const [currentIndex3, setCurrentIndex3] = useState(2);
+  const [imageUrl, setImageUrl] = useState("");
 
   // Function to handle forward click
   const handleForwardClick = (
@@ -88,30 +90,49 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     }
   };
 
-  // const { data, isLoading, refetch } = useNftsByOwnerAddress();
   const handleMintNft = async () => {
-    setLoading(true);
+    const racerNames = [
+      drivers[currentIndex1].driver,
+      drivers[currentIndex2].driver,
+      drivers[currentIndex3].driver,
+    ];
+    const uniqueRacerNames = new Set(racerNames);
 
-    try {
-      const res = await axios.post("/api/create-nft", {
-        first: drivers[currentIndex1].driver.replace(/\s/g, "-"),
-        second: drivers[currentIndex2].driver.replace(/\s/g, "-"),
-        third: drivers[currentIndex3].driver.replace(/\s/g, "-"),
-        race: "Monaco Grand Prix",
-      });
-      console.log(res.data);
-
-      setIsMintOpen(true);
-    } catch (error) {
-      console.log(error);
+    if (racerNames.length !== uniqueRacerNames.size) {
+      toast("Duplicate drivers are not allowed");
+      return;
     }
 
-    setLoading(false);
+    if (user) {
+      try {
+        setLoading(true);
+        const res = await axios.post("/api/create-nft", {
+          first: drivers[currentIndex1].driver.replace(/\s/g, "-"),
+          second: drivers[currentIndex2].driver.replace(/\s/g, "-"),
+          third: drivers[currentIndex3].driver.replace(/\s/g, "-"),
+          race: "Monaco Grand Prix",
+        });
+        console.log(res.data);
+
+        setImageUrl(res.data.url);
+        setIsMintOpen(true);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    } else {
+      setLoading(true);
+      setTimeout(() => {
+        setIsMintOpen(true);
+        setLoading(false);
+      }, 1000);
+    }
+
   };
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
-
       <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
         <div className="-mt-14">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
@@ -125,7 +146,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         {/* Canva */}
         <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:gap-12">
           <div className="container h-full w-full md:w-1/3">
-            <div className='flex w-full flex-row'>
+            <div className="flex w-full flex-row">
               <p className="flex w-full flex-row items-center text-[20px] font-[400]">
                 Pick your racer
               </p>
@@ -135,7 +156,8 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 alt=""
                 width={53}
                 height={59}
-              /></div>
+              />
+            </div>
             <div className="mt-3 grid w-full grid-cols-1 justify-start gap-2">
               <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
                 <span className=" num rowdies-300 w-[15%] text-center text-[30px]">
@@ -144,7 +166,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 <Button
                   color={"#F6EAC2"}
                   currentIndex={currentIndex2}
-                  onSelectName={() => { }}
+                  onSelectName={() => {}}
                   onForwardClick={() =>
                     handleForwardClick(setCurrentIndex2, currentIndex2)
                   }
@@ -160,7 +182,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 </span>
                 <Button
                   currentIndex={currentIndex1}
-                  onSelectName={() => { }}
+                  onSelectName={() => {}}
                   onForwardClick={() =>
                     handleForwardClick(setCurrentIndex1, currentIndex1)
                   }
@@ -177,7 +199,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 </span>
                 <Button
                   currentIndex={currentIndex3}
-                  onSelectName={() => { }}
+                  onSelectName={() => {}}
                   onForwardClick={() =>
                     handleForwardClick(setCurrentIndex3, currentIndex3)
                   }
@@ -190,7 +212,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
             </div>
           </div>
 
-          <div className="container mx-auto flex h-full flex-col w-full gap-4">
+          <div className="container mx-auto flex h-full w-full flex-col gap-4">
             {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
 
             <div className="relative w-full">
@@ -199,7 +221,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </div>
 
               <div className="absolute inset-0 flex h-full w-full flex-row items-end justify-center gap-4 p-4">
-
                 <div className=" flex w-1/3 flex-col items-center justify-center">
                   <img
                     src="/images/podium_silver.webp"
@@ -233,7 +254,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                   </div>
                 </div>
               </div>
-
             </div>
 
             <div className="relative">
@@ -251,12 +271,12 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
             </p>
           </div>
 
-          <div className="container h-full w-full md:w-1/3 flex flex-col items-center justify-start gap-0 ">
-            <div className='w-full flex flex-col items-center justify-between'>
+          <div className="container flex h-full w-full flex-col items-center justify-start gap-0 md:w-1/3 ">
+            <div className="flex w-full flex-col items-center justify-between">
               <p className="align-center text-center text-[20px] font-[400]">
                 Share your strategy!
               </p>
-              <button className="border-1 flex hover:scale-110 duration-300 mx-auto mt-4 transition-all ease-in-out items-center justify-center rounded-2xl border border-black bg-[#C7E8FF] p-3">
+              <button className="border-1 mx-auto mt-4 flex items-center justify-center rounded-2xl border border-black bg-[#C7E8FF] p-3 transition-all duration-300 ease-in-out hover:scale-110">
                 <BsTwitter className="h-[48px] w-[48px] text-[#1D9BF0]" />
               </button>
             </div>
@@ -267,7 +287,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
               }
             </p>
-            <button className="outline-black-100 mx-auto hover:scale-110 duration-300 transition-all ease-in-out mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2">
+            <button className="outline-black-100 mx-auto mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110">
               View league
             </button>
           </div>
@@ -284,6 +304,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
       />
       <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
       <Mint
+        image={imageUrl}
         saveAsPng={saveAsPng}
         isMintOpen={isMintOpen}
         toggleMint={toggleMint}

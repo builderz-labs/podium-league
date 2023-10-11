@@ -52,25 +52,6 @@ router.post(async (req, res) => {
 
   const name = "Podium Prediction";
   const description = "Podium: The on-chain Mini League";
-  // const attributes = [
-  //   {
-  //     trait_type: "Pos 1.",
-  //     value: racerFirst,
-  //   },
-  //   {
-  //     trait_type: "Pos 2.",
-  //     value: racerSecond,
-  //   },
-  //   {
-  //     trait_type: "Pos 3.",
-  //     value: racerThird,
-  //   },
-  //   {
-  //     trait_type: "Race",
-  //     value: raceName,
-  //   },
-  //   { trait_type: "Points", value: "To be evaluated" }, // TODO: If race results exist, points can be evaluated and rendered here
-  // ];
 
   const attributes = {
     "Pos 1.": racerFirst?.driver,
@@ -80,7 +61,8 @@ router.post(async (req, res) => {
     Points: "To be evaluated", // TODO: If race results exist, points can be evaluated and rendered here
   };
 
-  const image = `${process.env.NEXT_PUBLIC_DOMAIN}/api/nfts/image?first=${first}&second=${second}&third=${third}`;
+  // E.g. https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=Sergio-Perez&second=Max-Verstappen&third=Lewis-Hamilton
+  const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${first}&second=${second}&third=${third}`;
   console.log(image);
 
   try {
@@ -134,7 +116,7 @@ router.post(async (req, res) => {
 
       console.log(createRes.data);
 
-      res.status(202).send(createRes.data);
+      res.status(202).send({ ...createRes.data, url: image });
     } else {
       res.status(500).send("Something went wrong");
     }

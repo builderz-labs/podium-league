@@ -3,10 +3,10 @@ import React from "react";
 import { SessionProvider } from "next-auth/react";
 import { AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
-import Index from "./index";
-import Profile from "./index";
+import { Toaster } from "sonner";
 import Footer from "../components/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Head from "next/head";
 
 const queryClient = new QueryClient();
 
@@ -44,18 +44,24 @@ const App = ({ Component, pageProps, session }: any) => {
   return (
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
+        <Head>
+          <title>Podium League</title>
+          <link rel="icon" href="/images/helmet.png" />
+        </Head>
+        <Toaster />
         <AnimatePresence>
           <div className="flex h-screen w-full flex-col items-center justify-between">
             <Header
               toggleLeaderboard={toggleLeaderboard}
               toggleRules={toggleRules}
             />
-            <main className="w-full h-full">
+            <main className="h-full w-full">
               <Component
                 {...pageProps}
                 isLeaderboardOpen={isLeaderboardOpen}
                 toggleLeaderboard={toggleLeaderboard}
-                isRulesOpen={isRulesOpen} toggleRules={toggleRules}
+                isRulesOpen={isRulesOpen}
+                toggleRules={toggleRules}
                 isDisclaimerOpen={isDisclaimerOpen}
                 toggleDisclaimer={toggleDisclaimer}
                 isUnofficialOpen={isUnofficialOpen}
@@ -64,9 +70,8 @@ const App = ({ Component, pageProps, session }: any) => {
                 toggleMint={toggleMint}
                 isMintedPodiumsOpen={isMintedPodiumsOpen}
                 toggleMintedPodiums={toggleMintedPodiums}
-              // don't forget to pass the pageProps
+                // don't forget to pass the pageProps
               />
-
             </main>
 
             <Footer
