@@ -12,7 +12,7 @@ const Leaderboard = ({
 }: LeaderboardProps) => {
   if (!isLeaderboardOpen) return null;
 
-  const newplayers = drivers.slice(0, 7);
+  const newplayers = drivers.slice(0, 10);
 
 
   return (

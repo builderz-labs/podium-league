@@ -50,10 +50,11 @@ const Profile: React.FC<ProfileProps> = ({
   }
 
   return (
-    <div>
-      <div className="mt-0 flex h-auto w-full flex-col items-center justify-start md:-mt-10">
-        <section className="container  relative flex h-auto flex-col items-center justify-start rounded-md bg-bg-light">
-          <div className="-mt-12">
+   
+    <div className="flex h-full w-full flex-col items-center justify-center">
+
+    <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
+      <div className="-mt-14">
             <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
               PROFILE
             </p>
@@ -163,7 +164,7 @@ const Profile: React.FC<ProfileProps> = ({
         toggleMintedPodiums={toggleMintedPodiums}
         />
       </div>
-    </div>
+  
   );
 };
 

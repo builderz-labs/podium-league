@@ -56,7 +56,7 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
                 
                 <ol className=" pb-8">
                 {rules.map(rule =>
-       <li key={rule.key}>{rule.description}</li>
+       <li key={rule.key}>{rule.key + 1}. {rule.description}</li>
      )}
                 </ol>
               </div>
