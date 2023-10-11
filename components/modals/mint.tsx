@@ -3,12 +3,12 @@ import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import podium from "../../public/images/podium.png";
-import { players } from "../../constants";
 import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
 import Logo from "../../public/images/logo.png";
 import UnderdogLogo from "../../public/images/underdog.png";
 import KrakenLogo from "../../public/images/kraken.png";
+import { drivers } from "../../constants/drivers";
 
 interface MintProps {
   isMintOpen: boolean;
@@ -16,6 +16,7 @@ interface MintProps {
   currentIndex1: number;
   currentIndex2: number;
   currentIndex3: number;
+  saveAsPng: () => void;
 }
 
 const Mint = ({
@@ -24,6 +25,7 @@ const Mint = ({
   currentIndex1,
   currentIndex2,
   currentIndex3,
+  saveAsPng,
 }: MintProps) => {
   const session = useSession();
 
@@ -83,7 +85,7 @@ const Mint = ({
                         className="relative z-10 h-full w-[80%]"
                       />
                       <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-6 text-center">
-                        {players[currentIndex2].split("(")[0]}
+                        {drivers[currentIndex2].driver}
                       </div>
                     </div>
                     <div className="-mt-12 flex w-1/3 flex-col items-center justify-center">
@@ -93,7 +95,7 @@ const Mint = ({
                         className="relative z-10 h-full w-[90%]"
                       />
                       <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-8 text-center">
-                        {players[currentIndex1].split("(")[0]}
+                        {drivers[currentIndex1].driver}
                       </div>
                     </div>
                     <div className="flex w-1/3 flex-col items-center justify-center">
@@ -103,7 +105,7 @@ const Mint = ({
                         className="relative z-10 h-full w-[80%]"
                       />
                       <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
-                        {players[currentIndex3].split("(")[0]}
+                        {drivers[currentIndex3].driver}
                       </div>
                     </div>
                   </div>
@@ -168,7 +170,8 @@ const Mint = ({
                     
                   </button>
                   <button
-                    onClick={handleDownload}
+                    onClick={// Call the function when you want to save the part as PNG
+                      saveAsPng}
                     className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px]  bg-white p-2 outline outline-1 outline-offset-2"
                   >
                     <BsDownload className=" h-[32px] w-[32px] justify-center" />

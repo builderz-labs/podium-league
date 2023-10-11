@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useUser from "../hooks/useUser";
-import { players } from "../constants";
+import { drivers } from "../constants/drivers";
 import Image from "next/image";
 import arrowLeft from "../public/images/arrow-left.svg";
 import arrowRight from "../public/images/arrow-right.svg";
@@ -146,7 +146,6 @@ const Profile: React.FC<ProfileProps> = ({
         </section>
         <Leaderboard
           isLeaderboardOpen={isLeaderboardOpen}
-          players={players}
           toggleLeaderboard={toggleLeaderboard}
         />
         <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />

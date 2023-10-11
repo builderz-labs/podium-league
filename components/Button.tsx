@@ -3,9 +3,9 @@ import { BsArrowRightCircle, BsArrowLeftCircle } from "react-icons/bs";
 import Image from "next/image";
 import arrowLeft from "../public/images/arrow-left.svg";
 import arrowRight from "../public/images/arrow-right.svg";
+import { drivers } from "../constants/drivers";
 
 interface ButtonProps {
-  players: string[];
   currentIndex: number;
   onForwardClick: () => void;
   onBackwardClick: () => void;
@@ -14,14 +14,13 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({
-  players,
   currentIndex,
   onForwardClick,
   onBackwardClick,
   color,
   onSelectName,
 }) => {
-  const currentName = players[currentIndex].split("(")[0];
+  const currentName = drivers[currentIndex].driver;
   return (
     <button
       onClick={() => onSelectName(currentName)}
@@ -40,7 +39,7 @@ const Button: React.FC<ButtonProps> = ({
         src={arrowRight}
         alt=""
         className="h-13 w-16"
-        onClick={() => currentIndex !== players.length - 1 && onForwardClick()}
+        onClick={() => currentIndex !== drivers.length - 1 && onForwardClick()}
       />
     </button>
   );

@@ -1,0 +1,9 @@
+{
+  "rewrites": [],
+  "redirects": [],
+  "routes": [],
+  "headers": [],
+  "trailingSlash": false,
+  "functions": { "api/**/*.ts": { "memory": 512 } },
+  "public": true
+}

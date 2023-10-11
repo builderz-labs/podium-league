@@ -1,19 +1,18 @@
 
 import { AiOutlineClose } from "react-icons/ai";
+import { drivers } from "../../constants/drivers";
 type LeaderboardProps = {
   isLeaderboardOpen: boolean;
   toggleLeaderboard: () => void;
-  players: string[];
 };
 
 const Leaderboard = ({
   isLeaderboardOpen,
   toggleLeaderboard,
-  players,
 }: LeaderboardProps) => {
   if (!isLeaderboardOpen) return null;
 
-  const newplayers = players.slice(0, 7);
+  const newplayers = drivers.slice(0, 7);
 
 
   return (
@@ -55,7 +54,7 @@ const Leaderboard = ({
                         {i + 1}
                       </div>
                       <div className="flex h-[60px] w-[550px] items-center justify-between rounded-[10px] border border-black bg-orange-200 px-4 text-center text-[20px]">
-                        <p>{player}</p>
+                        <p>{player.driver}</p>
                         <p>245 Points</p>
                       </div>
                     </div>
