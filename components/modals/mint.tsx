@@ -27,14 +27,14 @@ const Mint = ({
   currentIndex2,
   currentIndex3,
   saveAsPng,
-  image
+  image,
 }: MintProps) => {
   const session = useSession();
 
   const handleDownload = () => {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = `${image}&download=true`;
-    link.download = 'podium-leage.jpg';
+    link.download = "podium-leage.jpg";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -42,14 +42,16 @@ const Mint = ({
 
   const handleShare = () => {
     const tweetText = "Check out my new NFT!";
-    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(image)}`;
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      tweetText,
+    )}&url=${encodeURIComponent(image)}`;
     window.open(url, "_blank");
   };
 
-  const handleLoginAndTransfer = async() => {
+  const handleLoginAndTransfer = async () => {
     const res = await signIn("google");
     console.log(res);
-    
+
     // TODO
   };
 

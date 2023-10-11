@@ -23,13 +23,11 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
     <header className="fixed z-50 w-screen  bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16">
       {/* desktop and tablet */}
       <div className="flex h-full w-full items-center justify-between">
-        
-          <div className="cursor-pointer flex h-[45px] w-[270px] items-center justify-center border border-[#B5EAD6] bg-[#E2FFF4]">
+        <div className="flex h-[45px] w-[270px] cursor-pointer items-center justify-center border border-[#B5EAD6] bg-[#E2FFF4]">
           <Link href="/">
             <Image alt="Sporting Lab Logo" src={Logo} width={240} height={35} />
-            </Link>
-          </div>
-        
+          </Link>
+        </div>
 
         <div className="hidden items-center gap-8 md:flex">
           <motion.ul
@@ -87,23 +85,15 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
                   </svg>
                 </button>
-                
+
                 <ul className="dropdown-menu absolute hidden w-full  pt-1 text-[#282828] ">
                   <li className="whitespace-no-wrap block bg-[#FFF] px-4 py-2">
-                    <Link
-                      className=" "
-                      href="/profile"
-                    >
+                    <Link className=" " href="/profile">
                       Profile
                     </Link>
                   </li>
                   <li className=" whitespace-no-wrap block bg-[#FFF] px-4 py-2">
-                    <div
-                    
-                      className="cursor-pointer"
-                      onClick={() => signOut()}
-                      
-                    >
+                    <div className="cursor-pointer" onClick={() => signOut()}>
                       Logout
                     </div>
                   </li>

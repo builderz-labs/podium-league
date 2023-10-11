@@ -9,8 +9,8 @@ interface FooterProps {
 
 const Footer = ({ toggleDisclaimer, toggleUnofficial }: FooterProps) => {
   return (
-    <footer className="footer relative z-10 w-[100%] flex flex-col items-center justify-between bg-white p-4 text-center text-[20px]  text-black">
-      <div className="flex flex-row items-center justify-between w-[75%]  ">
+    <footer className="footer relative z-10 flex w-[100%] flex-col items-center justify-between bg-white p-4 text-center text-[20px]  text-black">
+      <div className="flex w-[75%] flex-row items-center justify-between  ">
         <p className="text-[15px] font-[400] text-[#969696]">
           All rights reserved
         </p>
@@ -29,7 +29,7 @@ const Footer = ({ toggleDisclaimer, toggleUnofficial }: FooterProps) => {
           </p>
         </div>
       </div>
-      <div className="flex items-center justify-between gap-[15px] flex-col md:flex-row">
+      <div className="flex flex-col items-center justify-between gap-[15px] md:flex-row">
         <p className="text-[20px] font-[400] text-[#282828]"> Supported by</p>
         <div className="flex h-[50px] w-[200px] items-center justify-center rounded-[8px] border border-[#000000] object-cover">
           <Image

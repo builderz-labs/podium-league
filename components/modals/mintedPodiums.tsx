@@ -1,28 +1,18 @@
-
 import { AiOutlineClose } from "react-icons/ai";
 type MintedPodiumsProps = {
   isMintedPodiumsOpen: boolean;
   toggleMintedPodiums: () => void;
-  
 };
 
 const MintedPodiums = ({
   isMintedPodiumsOpen,
   toggleMintedPodiums,
-  
 }: MintedPodiumsProps) => {
   if (!isMintedPodiumsOpen) return null;
 
-
-
   return (
-    
     <div>
-      
-      
       <>
-      
-      
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
           <div className="relative mx-auto my-6 w-auto max-w-3xl">
             {/*content*/}
@@ -44,11 +34,10 @@ const MintedPodiums = ({
               </div>
               {/*body*/}
               <div className="m-[35px] flex flex-col">
-              <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-              <p>Qatar Airways Emilia Romagna GP</p>
-              <p>View NFT</p>
-            </div>
-            
+                <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+                  <p>Qatar Airways Emilia Romagna GP</p>
+                  <p>View NFT</p>
+                </div>
               </div>
               {/*footer*/}
             </div>

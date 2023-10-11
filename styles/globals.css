@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic");
 @import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&family=Rowdies:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&family=Rowdies:wght@300;400&display=swap");
 
 * {
   margin: 0;
@@ -57,15 +57,14 @@ body {
   font-weight: 300;
 }
 
-.roboto-300{
-  font-family: 'Roboto Slab', serif;
+.roboto-300 {
+  font-family: "Roboto Slab", serif;
   font-weight: 300;
 }
-.roboto-400{
-  font-family: 'Roboto Slab', serif;
+.roboto-400 {
+  font-family: "Roboto Slab", serif;
   font-weight: 400;
 }
-
 
 .num {
   color: black;

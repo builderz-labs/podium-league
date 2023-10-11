@@ -128,7 +128,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         setLoading(false);
       }, 1000);
     }
-
   };
 
   return (

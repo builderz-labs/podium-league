@@ -7,13 +7,12 @@ interface RulesProps {
 }
 
 const rules = [
-  {description: 'Pick your racers', key: 0},
-  {description: 'Mint your predictions for free', key: 1},
-  {description: 'Share with friends!', key: 2},
-  {description: 'Check your point/leaderboard after every race', key: 3},
-  {description: 'Have fun!', key: 4}
+  { description: "Pick your racers", key: 0 },
+  { description: "Mint your predictions for free", key: 1 },
+  { description: "Share with friends!", key: 2 },
+  { description: "Check your point/leaderboard after every race", key: 3 },
+  { description: "Have fun!", key: 4 },
 ];
-
 
 const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
   if (!isRulesOpen) return null;
@@ -41,7 +40,7 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] text-[22px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
+              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10 text-[22px]">
                 <p className=" pb-5">
                   Welcome to Podium: The on-chain mini league by Sporting labs
                 </p>
@@ -53,11 +52,13 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
                   friends, & climb the leaderboard!
                 </p>
                 <p className=" pb-5 font-bold">Steps:</p>
-                
+
                 <ol className=" pb-8">
-                {rules.map(rule =>
-       <li key={rule.key}>{rule.key + 1}. {rule.description}</li>
-     )}
+                  {rules.map((rule) => (
+                    <li key={rule.key}>
+                      {rule.key + 1}. {rule.description}
+                    </li>
+                  ))}
                 </ol>
               </div>
               {/*footer*/}
