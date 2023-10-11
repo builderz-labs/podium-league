@@ -64,7 +64,9 @@ export default async function handler(
     );
     console.log(jimpFont);
 
-    const font = await Jimp.loadFont(jimpFont);
+    const font = await Jimp.loadFont(
+      `${process.env.NEXT_PUBLIC_DOMAIN}/fonts/BNSZOIHwmim0lgTeD0YfrIdt.ttf.fnt`,
+    );
 
     // Calculate the horizontal position
     const horizontalPositionFirst = width * 0.5;
