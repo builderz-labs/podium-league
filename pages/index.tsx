@@ -135,15 +135,21 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     if (user) {
       try {
         setLoading(true);
+        const first = drivers[currentIndex1].driver.replace(/\s/g, "-");
+        const second = drivers[currentIndex2].driver.replace(/\s/g, "-");
+        const third = drivers[currentIndex3].driver.replace(/\s/g, "-");
         const res = await axios.post("/api/create-nft", {
-          first: drivers[currentIndex1].driver.replace(/\s/g, "-"),
-          second: drivers[currentIndex2].driver.replace(/\s/g, "-"),
-          third: drivers[currentIndex3].driver.replace(/\s/g, "-"),
+          first,
+          second,
+          third,
           race: "Monaco Grand Prix",
         });
         console.log(res.data);
 
-        setImageUrl(res.data.url);
+        const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${first}&second=${second}&third=${third}`;
+
+
+        setImageUrl(image);
         setIsMintOpen(true);
         setLoading(false);
       } catch (error) {
