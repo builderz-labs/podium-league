@@ -31,7 +31,7 @@ router.post(async (req, res) => {
       })[0];
 
       const createRes = await axios.post(
-        "https://api.underdogprotocol.com/v2/projects/1/nfts",
+        "https://mainnet.underdogprotocol.com/v2/projects/1/nfts",
         {
           name,
           symbol,
@@ -59,7 +59,7 @@ router.post(async (req, res) => {
       })[0];
 
       const createRes = await axios.post(
-        "https://api.underdogprotocol.com/v2/projects/1/nfts",
+        "https://mainnet.underdogprotocol.com/v2/projects/1/nfts",
         {
           name,
           symbol,

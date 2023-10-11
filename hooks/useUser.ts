@@ -23,7 +23,7 @@ const useUser = () => {
         })[0];
         try {
           const response = await axios.get(
-            `https://api.underdogprotocol.com/v2/projects/4/nfts?ownerAddress=${linkPda}&limit=1`,
+            `https://mainnet.underdogprotocol.com/v2/projects/4/nfts?ownerAddress=${linkPda}&limit=1`,
             {
               headers: {
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,

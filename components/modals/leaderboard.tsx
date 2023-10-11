@@ -35,7 +35,7 @@ const Leaderboard = ({
                 </p>
                 <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
                   <button
-                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-sm border border-black transition-all duration-150 ease-linear"
+                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-lg border bg-white transition-all duration-150 ease-linear"
                     type="button"
                     onClick={toggleLeaderboard}
                   >

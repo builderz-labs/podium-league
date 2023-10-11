@@ -6,6 +6,7 @@ import podium from "../../public/images/podium.png";
 import { players } from "../../constants";
 import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
+import Logo from "../../public/images/logo.png";
 import UnderdogLogo from "../../public/images/underdog.png";
 import KrakenLogo from "../../public/images/kraken.png";
 
@@ -52,7 +53,7 @@ const Mint = ({
                 <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]"></p>
                 <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
                   <button
-                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-sm border border-black transition-all duration-150 ease-linear"
+                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-lg border bg-white transition-all duration-150 ease-linear"
                     type="button"
                     onClick={toggleMint}
                   >
@@ -61,9 +62,10 @@ const Mint = ({
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10">
-                <div className="-mt-9">
-                  <p className=" rowdies-400 font-outline-2 ml-12 p-6 text-[45px] font-black text-[#55CBCD]">
+              <div className="m-[35px] flex flex-col rounded-[20px]  bg-green-100 p-10">
+                <div className="-mt-7 ml-20 ">
+                <Image alt="Sporting Lab Logo" src={Logo}  width={150} height={25}  />
+                  <p className=" rowdies-400 font-outline-2   text-[45px] font-black text-[#55CBCD]">
                     PODIUM
                   </p>
                 </div>
@@ -105,23 +107,23 @@ const Mint = ({
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-row gap-4">
-                    <div className="mb-2 mt-3 ">Supported by</div>
+                  <div className="flex flex-row items-center justify-between gap-3 ">
+                    <div className="mb-2 mt-3 roboto-400 ">Supported by</div>
                     <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center">
                       <Image
                         src={UnderdogLogo}
                         alt="'Underdog logo"
-                        width={136}
-                        height={17}
+                        width={200}
+                        height={60}
                       />
                     </div>
                     <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center ">
-                      <Image
+                      {/* <Image
                         src={KrakenLogo}
                         alt="'Underdog logo"
                         width={80}
                         height={17}
-                      />
+                      /> */}
                     </div>
                   </div>
 
@@ -150,7 +152,7 @@ const Mint = ({
                   <div className="">
                     <button
                       onClick={handleLoginAndTransfer}
-                      className="outline-black-100  flex h-[63px] w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 outline outline-1 outline-offset-2"
+                      className="outline-black-100 roboto-400 text-[16px] flex h-[63px] w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 outline outline-1 outline-offset-2"
                     >
                       <FcGoogle className="h-[26px] w-[26px]" /> Login to claim
                     </button>
@@ -159,12 +161,11 @@ const Mint = ({
                 <div className="mb-4 flex space-x-6">
                   <button
                     onClick={handleShare}
-                    className="outline-black-100 flex h-[63px] w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 outline outline-1 outline-offset-2"
+                    className="outline-black-100 roboto-400 text-[16px] flex h-[63px] w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 outline outline-1 outline-offset-2"
                   >
-                    <p className="flex items-center ">
-                      <BsTwitter className="h-[17px] w-[21px] text-[#1D9BF0]" />{" "}
-                      Share on Twitter
-                    </p>
+                      <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" /> Share on Twitter 
+                      
+                    
                   </button>
                   <button
                     onClick={handleDownload}

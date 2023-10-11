@@ -92,7 +92,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
 
   return (
     <div className="mt-0 flex h-auto w-full flex-col items-center justify-start md:-mt-10">
-      <section className="container  relative flex h-auto flex-col items-center justify-start rounded-md bg-bg-light">
+      <section className="container relative flex h-auto flex-col items-center justify-start rounded-md bg-bg-light">
         <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PODIUM
