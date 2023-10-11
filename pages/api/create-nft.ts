@@ -3,7 +3,7 @@ import { findLinkPda } from "@underdog-protocol/underdog-identity-sdk";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { createRouter } from "next-connect";
-import { authOptions } from "./auth/[...nextauth]";
+import { User, authOptions } from "./auth/[...nextauth]";
 import { drivers } from "../../constants/drivers";
 
 import axios from "axios";
@@ -14,6 +14,12 @@ const context = createUmi(process.env.NEXT_PUBLIC_HELIUS_PROXY!);
 
 router.post(async (req, res) => {
   const session = await getServerSession(req, res, authOptions);
+
+  const sessionData = session?.user as User;
+  if (!sessionData) {
+    res.status(401).send("Unauthorized");
+    return;
+  }
 
   const { first, second, third, race } = req.body;
 
@@ -66,36 +72,34 @@ router.post(async (req, res) => {
   console.log(image);
 
   try {
-    if (!session?.user?.email) {
-      // Mint to Authority wallet from where it can be transferred later
-      const linkPda = findLinkPda(context, {
-        identifier: "podium-authority",
-      })[0];
-
-      const createRes = await axios.post(
-        "https://mainnet.underdogprotocol.com/v2/projects/1/nfts",
-        {
-          name,
-          description,
-          attributes,
-          image,
-          receiverAddress: linkPda,
-          delegated: true,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
-          },
-        },
-      );
-
-      console.log(createRes.data);
-
-      res.status(202).send(createRes.data);
-    } else if (session.user.email) {
+    if (!sessionData.id) {
+      res.status(401).send("Unauthorized");
+      // // Mint to Authority wallet from where it can be transferred later
+      // const linkPda = findLinkPda(context, {
+      //   identifier: "podium-authority",
+      // })[0];
+      // const createRes = await axios.post(
+      //   "https://mainnet.underdogprotocol.com/v2/projects/1/nfts",
+      //   {
+      //     name,
+      //     description,
+      //     attributes,
+      //     image,
+      //     receiverAddress: linkPda,
+      //     delegated: true,
+      //   },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
+      //     },
+      //   },
+      // );
+      // console.log(createRes.data);
+      // res.status(202).send(createRes.data);
+    } else if (sessionData.id) {
       // Mint directly to user wallet
       const linkPda = findLinkPda(context, {
-        identifier: session.user.email,
+        identifier: sessionData.id,
       })[0];
 
       const createRes = await axios.post(
@@ -116,7 +120,9 @@ router.post(async (req, res) => {
 
       console.log(createRes.data);
 
-      res.status(202).send({ ...createRes.data, url: image });
+      res
+        .status(202)
+        .send({ ...createRes.data, url: image, ownerWallet: linkPda });
     } else {
       res.status(500).send("Something went wrong");
     }

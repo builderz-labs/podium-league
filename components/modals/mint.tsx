@@ -34,7 +34,7 @@ const Mint = ({
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = `${image}&download=true`;
-    link.download = "podium-leage.jpg";
+    // link.download = "podium-leage.jpg";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -49,10 +49,9 @@ const Mint = ({
   };
 
   const handleLoginAndTransfer = async () => {
-    const res = await signIn("google");
-    console.log(res);
-
-    // TODO
+    const propsAsString = JSON.stringify({ currentIndex1, currentIndex2, currentIndex3, mint: true });
+    const callbackUrl = `${window.location.origin}${window.location.pathname}?props=${encodeURIComponent(propsAsString)}`;
+    await signIn("google", { callbackUrl });
   };
 
   if (!isMintOpen) return null;

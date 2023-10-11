@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Button from "../components/Button";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
@@ -15,6 +15,7 @@ import html2canvas from "html2canvas";
 import { drivers } from "../constants/drivers";
 import useUser from "../hooks/useUser";
 import { toast } from "sonner";
+import { useRouter } from "next/router";
 
 const saveAsPng = async () => {
   const element = document.getElementById("element-to-capture");
@@ -55,6 +56,17 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   isUnofficialOpen,
   toggleUnofficial,
 }) => {
+  const router = useRouter();
+
+  const props = Array.isArray(router.query.props)
+    ? router.query.props[0]
+    : router.query.props;
+  const passedProps = useMemo(() => {
+    return router.query.props
+      ? JSON.parse(decodeURIComponent(props || ""))
+      : {};
+  }, [router.query.props, props]);
+
   const [isMintOpen, setIsMintOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -68,6 +80,23 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(1);
   const [currentIndex3, setCurrentIndex3] = useState(2);
+
+  useEffect(() => {
+    if (
+      passedProps.currentIndex1 !== undefined &&
+      passedProps.currentIndex2 !== undefined &&
+      passedProps.currentIndex3 !== undefined &&
+      passedProps.mint
+    ) {
+      setCurrentIndex1(passedProps.currentIndex1);
+      setCurrentIndex2(passedProps.currentIndex2);
+      setCurrentIndex3(passedProps.currentIndex3);
+      router.replace(router.pathname);
+
+      handleMintNft();
+    }
+  }, [passedProps]);
+
   const [imageUrl, setImageUrl] = useState("");
 
   // Function to handle forward click
