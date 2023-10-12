@@ -59,7 +59,7 @@ const App = ({ Component, pageProps, session }: any) => {
           ></meta>
           <meta
             name="twitter:image"
-            content="/images/podium-twitter-preview.png"
+            content="https://podium-league.vercel.app/images/podium-twitter-preview.png"
           ></meta>
         </Head>
         <Toaster />
