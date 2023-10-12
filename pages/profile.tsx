@@ -50,7 +50,7 @@ const Profile: React.FC<ProfileProps> = ({
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
+    <div className="flex h-[800px] pt-20 w-full flex-col items-center justify-center">
       <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
         <div className="-mt-14">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
@@ -67,8 +67,8 @@ const Profile: React.FC<ProfileProps> = ({
             <p className="text-[20px] font-[400]">12 Points</p>
           </div>
         </div>
-
-        <div className="my-[30px] flex w-[60%] border-black ">
+<div className="flex justify-center relative h-[300px] w-[100%] my-[30px]">
+        <div className=" top-0 h-[100%]  flex w-[60%] border-black absolute ">
           <div className="box-border flex h-[300px]  w-[300px] flex-col items-center justify-center gap-[20px] rounded-[16px] border border-black bg-[#B5EAD6]">
             <div className="pb-[50px] pt-[80px] text-[20px]">Preview Here</div>
             <button className="h-[67px]  w-[266px] items-center rounded-[16px] border border-black bg-[#FFFFFF80] text-[23px]">
@@ -115,6 +115,13 @@ const Profile: React.FC<ProfileProps> = ({
             </div>
           </div>
         </div>
+
+        <div className=" top-0 h-[100%] absolute z-10 w-[60%] bg-black bg-opacity-75 rounded-[23px]">
+          Coming Soon
+        </div>
+        </div>
+
+
 
         <div className="flex w-[60%] items-center justify-between">
           <p className="text-[20px] font-[400]">Minted Podiums</p>
