@@ -39,7 +39,7 @@ const Profile: React.FC<ProfileProps> = ({
   const router = useRouter();
   const user = useUser();
 
-  console.log(user.user);
+  console.log(user.user?.nfts);
 
   useEffect(() => {
     // Fetch user data here and set it to user state
@@ -126,22 +126,16 @@ const Profile: React.FC<ProfileProps> = ({
           </button>
         </div>
         <div className="mb-[50px] mt-[20px] grid w-[60%] grid-cols-2 gap-4">
-          <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-            <p>Qatar Airways Emilia Romagna GP</p>
+          {user.user?.nfts.map((nft, index)=> {
+            return(
+            <div key={index} className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+            <p>{nft.attributes.Race}</p>
             <p>View NFT</p>
           </div>
-          <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-            <p>Qatar Airways Emilia Romagna GP</p>
-            <p>View NFT</p>
-          </div>
-          <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-            <p>Gulf Air Bahrain GP</p>
-            <p>View NFT</p>
-          </div>
-          <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-            <p>Gulf Air Bahrain GP</p>
-            <p>View NFT</p>
-          </div>
+            )
+          })}
+          
+          
         </div>
       </section>
       <Leaderboard

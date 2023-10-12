@@ -1,20 +1,26 @@
 import { AiOutlineClose } from "react-icons/ai";
+import useUser from "../../hooks/useUser";
+
+
+
 type MintedPodiumsProps = {
   isMintedPodiumsOpen: boolean;
   toggleMintedPodiums: () => void;
 };
 
 const MintedPodiums = ({
+
   isMintedPodiumsOpen,
   toggleMintedPodiums,
 }: MintedPodiumsProps) => {
+  const user = useUser();
   if (!isMintedPodiumsOpen) return null;
-
+  
   return (
     <div>
       <>
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
-          <div className="relative mx-auto my-6 w-auto max-w-3xl">
+        <div className="fixed  inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+          <div className="relative mx-auto my-6 w-[700px] max-w-3xl">
             {/*content*/}
             <div className="relative flex w-full flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
               {/*header*/}
@@ -33,12 +39,18 @@ const MintedPodiums = ({
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] flex flex-col">
-                <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-                  <p>Qatar Airways Emilia Romagna GP</p>
-                  <p>View NFT</p>
-                </div>
-              </div>
+              <div className="mb-[50px] mt-[20px] px-10 grid w-[100%] grid-cols-1 gap-4">
+          {user.user?.nfts.map((nft, index)=> {
+            return(
+            <div key={index} className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+            <p>{nft.attributes.Race}</p>
+            <p>View NFT</p>
+          </div>
+            )
+          })}
+          
+          
+        </div>
               {/*footer*/}
             </div>
           </div>
