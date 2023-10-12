@@ -1,14 +1,10 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
-import Image from "next/image";
-import podium from "../../public/images/podium.png";
 import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
-import Logo from "../../public/images/logo.png";
-import UnderdogLogo from "../../public/images/underdog.png";
-import KrakenLogo from "../../public/images/kraken.png";
-import { drivers } from "../../constants/drivers";
+import { useState } from "react";
+import Image from "next/image";
 
 interface MintProps {
   isMintOpen: boolean;
@@ -16,7 +12,6 @@ interface MintProps {
   currentIndex1: number;
   currentIndex2: number;
   currentIndex3: number;
-  saveAsPng: () => void;
   image: string;
 }
 
@@ -26,10 +21,13 @@ const Mint = ({
   currentIndex1,
   currentIndex2,
   currentIndex3,
-  saveAsPng,
   image,
 }: MintProps) => {
+  console.log(image);
+  
   const session = useSession();
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleDownload = () => {
     const link = document.createElement("a");
@@ -41,16 +39,24 @@ const Mint = ({
   };
 
   const handleShare = () => {
-    const tweetText = "Check out my new NFT!";
+    const tweetText =
+      "Just locked in my prediction for Monaco GP! Make your prediction here:"; // Update per Grand Prix
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       tweetText,
-    )}&url=${encodeURIComponent(image)}`;
+    )}&url=${encodeURIComponent("https://podium-league.vercel.app/")}`;
     window.open(url, "_blank");
   };
 
   const handleLoginAndTransfer = async () => {
-    const propsAsString = JSON.stringify({ currentIndex1, currentIndex2, currentIndex3, mint: true });
-    const callbackUrl = `${window.location.origin}${window.location.pathname}?props=${encodeURIComponent(propsAsString)}`;
+    const propsAsString = JSON.stringify({
+      currentIndex1,
+      currentIndex2,
+      currentIndex3,
+      mint: true,
+    });
+    const callbackUrl = `${window.location.origin}${
+      window.location.pathname
+    }?props=${encodeURIComponent(propsAsString)}`;
     await signIn("google", { callbackUrl });
   };
 
@@ -76,9 +82,33 @@ const Mint = ({
                   </button>
                 </div>
               </div>
+              <div style={{ paddingTop: "100%", position: "relative", margin: "35px" }}>
+                <img
+                  src={image}
+                  style={{
+                    display: isLoading ? "none" : "block",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain" // or "cover", depending on your needs
+                  }}
+                  onLoad={() => setIsLoading(false)}
+                />
+              </div>
+              {/* {isLoading ? (
+                <div className="skeleton-loader"></div>
+              ) : (
+                <Image
+                  src={image}
+                  alt="Podium Prediction"
+                  className="m-[35px]"
+                />
+              )} */}
               {/*body*/}
-              <div className="m-[35px] flex flex-col rounded-[20px]  bg-green-100 p-10">
-                <div className="-mt-7 ml-20 ">
+              {/* <div className="m-[35px] flex flex-col rounded-[20px]  bg-green-100 p-10"> */}
+              {/* <div className="-mt-7 ml-20 ">
                   <Image
                     alt="Sporting Lab Logo"
                     src={Logo}
@@ -88,9 +118,9 @@ const Mint = ({
                   <p className=" rowdies-400 font-outline-2   text-[45px] font-black text-[#55CBCD]">
                     PODIUM
                   </p>
-                </div>
-                {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
-                <div className="relative h-[328px] w-[362px]">
+                </div> */}
+              {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
+              {/* <div className="relative h-[328px] w-[362px]">
                   <div className="flex w-full items-center justify-center">
                     <div className="mx-auto h-full min-h-[350px] w-full rounded-lg border border-black  bg-background-illustration bg-cover bg-center bg-no-repeat md:h-1/3 md:min-h-[320px]"></div>
                   </div>
@@ -137,17 +167,17 @@ const Mint = ({
                         height={60}
                       />
                     </div>
-                    <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center ">
-                      {/* <Image
+                    <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center "> */}
+              {/* <Image
                         src={KrakenLogo}
                         alt="'Underdog logo"
                         width={80}
                         height={17}
                       /> */}
-                    </div>
-                  </div>
+              {/* </div>
+                  </div> */}
 
-                  {/* <Image
+              {/* <Image
                     src={podium}
                     className="container h-[400px] object-cover rounded-xl border-2 border-green-400 bg-green-100"
                     alt=""
@@ -163,8 +193,8 @@ const Mint = ({
                   <div className="absolute left-[210px] top-[110px] p-4 text-sm">
                     {players[currentIndex3].split("(")[0]}
                   </div> */}
-                </div>
-              </div>
+              {/* </div>
+              </div> */}
               {/*footer*/}
               {/* Login Button -> Only shown when user is not logged in */}
               <div className="mb-5 flex w-full flex-col items-center justify-center gap-6 ">
