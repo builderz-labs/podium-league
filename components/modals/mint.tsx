@@ -41,7 +41,7 @@ const Mint = ({
   };
 
   const handleShare = () => {
-    const tweetText = "Check out my new NFT!";
+    const tweetText = "Just locked in my prediction for Monaco GP! Make your prediction here: https://podium-league.vercel.app/"; // Update per Grand Prix
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       tweetText,
     )}&url=${encodeURIComponent(image)}`;
