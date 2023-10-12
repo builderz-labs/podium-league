@@ -11,27 +11,10 @@ import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
 import axios from "axios";
 import { Spin } from "antd";
-import html2canvas from "html2canvas";
 import { drivers } from "../constants/drivers";
 import useUser from "../hooks/useUser";
 import { toast } from "sonner";
 import { useRouter } from "next/router";
-
-const saveAsPng = async () => {
-  const element = document.getElementById("element-to-capture");
-  if (!element) {
-    console.error("Element not found");
-    return;
-  }
-  const canvas = await html2canvas(element);
-  const imgData = canvas.toDataURL("image/png");
-
-  // Create a link to download the image
-  let link = document.createElement("a");
-  link.download = "screenshot.png";
-  link.href = imgData;
-  link.click();
-};
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
@@ -132,24 +115,25 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
       return;
     }
 
+    const first = drivers[currentIndex1].driver.replace(/\s/g, "-");
+    const second = drivers[currentIndex2].driver.replace(/\s/g, "-");
+    const third = drivers[currentIndex3].driver.replace(/\s/g, "-");
+    const race = ("Monaco Grand Prix").replace(/\s/g, "-");;
+
+    const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${first}&second=${second}&third=${third}&race=${race}`;
+    setImageUrl(image);
+
     if (user) {
       try {
         setLoading(true);
-        const first = drivers[currentIndex1].driver.replace(/\s/g, "-");
-        const second = drivers[currentIndex2].driver.replace(/\s/g, "-");
-        const third = drivers[currentIndex3].driver.replace(/\s/g, "-");
         const res = await axios.post("/api/create-nft", {
           first,
           second,
           third,
-          race: "Monaco Grand Prix",
+          race,
         });
         console.log(res.data);
 
-        const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${first}&second=${second}&third=${third}`;
-
-
-        setImageUrl(image);
         setIsMintOpen(true);
         setLoading(false);
       } catch (error) {
@@ -339,7 +323,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
       <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
       <Mint
         image={imageUrl}
-        saveAsPng={saveAsPng}
         isMintOpen={isMintOpen}
         toggleMint={toggleMint}
         currentIndex1={currentIndex1}

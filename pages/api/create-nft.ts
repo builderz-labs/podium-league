@@ -68,34 +68,12 @@ router.post(async (req, res) => {
   };
 
   // E.g. https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=Sergio-Perez&second=Max-Verstappen&third=Lewis-Hamilton
-  const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${first}&second=${second}&third=${third}`;
+  const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${first}&second=${second}&third=${third}&race=${race}`;
   console.log(image);
 
   try {
     if (!sessionData.id) {
       res.status(401).send("Unauthorized");
-      // // Mint to Authority wallet from where it can be transferred later
-      // const linkPda = findLinkPda(context, {
-      //   identifier: "podium-authority",
-      // })[0];
-      // const createRes = await axios.post(
-      //   "https://mainnet.underdogprotocol.com/v2/projects/1/nfts",
-      //   {
-      //     name,
-      //     description,
-      //     attributes,
-      //     image,
-      //     receiverAddress: linkPda,
-      //     delegated: true,
-      //   },
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
-      //     },
-      //   },
-      // );
-      // console.log(createRes.data);
-      // res.status(202).send(createRes.data);
     } else if (sessionData.id) {
       // Mint directly to user wallet
       const linkPda = findLinkPda(context, {
