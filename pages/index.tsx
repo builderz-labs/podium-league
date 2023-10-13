@@ -291,7 +291,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
 
           <div className="container flex h-full w-full flex-col items-center justify-start gap-0 md:w-1/3 ">
             <div className="flex w-full flex-col items-center justify-between">
-              <p className="align-center text-center text-[20px] font-[400]">
+              <p className="align-center text-center text-2xl mt-2 font-[800]">
                 Share your strategy!
               </p>
               <button className="border-1 mx-auto mt-4 flex items-center justify-center rounded-2xl border border-black bg-[#C7E8FF] p-3 transition-all duration-300 ease-in-out hover:scale-110">
@@ -311,9 +311,9 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
           </div>
         </div>
 
-        <div className="bg-red absolute bottom-4 right-1/2 translate-x-1/2 md:bottom-4 md:right-8">
+        {/* <div className="bg-red absolute bottom-4 left-1/2 translate-x-1/2 md:bottom-4 md:left-8">
           <Image src={racer} alt="" width={198} height={112} />
-        </div>
+        </div> */}
       </section>
 
       <Leaderboard
