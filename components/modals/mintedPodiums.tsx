@@ -1,21 +1,18 @@
 import { AiOutlineClose } from "react-icons/ai";
 import useUser from "../../hooks/useUser";
 
-
-
 type MintedPodiumsProps = {
   isMintedPodiumsOpen: boolean;
   toggleMintedPodiums: () => void;
 };
 
 const MintedPodiums = ({
-
   isMintedPodiumsOpen,
   toggleMintedPodiums,
 }: MintedPodiumsProps) => {
   const user = useUser();
   if (!isMintedPodiumsOpen) return null;
-  
+
   return (
     <div>
       <>
@@ -39,18 +36,19 @@ const MintedPodiums = ({
                 </div>
               </div>
               {/*body*/}
-              <div className="mb-[50px] mt-[20px] px-10 grid w-[100%] grid-cols-1 gap-4">
-          {user.user?.nfts.map((nft, index)=> {
-            return(
-            <div key={index} className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-            <p>{nft.attributes.Race}</p>
-            <p>View NFT</p>
-          </div>
-            )
-          })}
-          
-          
-        </div>
+              <div className="mb-[50px] mt-[20px] grid w-[100%] grid-cols-1 gap-4 px-10">
+                {user.user?.nfts.map((nft, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]"
+                    >
+                      <p>{nft.attributes.Race}</p>
+                      <p>View NFT</p>
+                    </div>
+                  );
+                })}
+              </div>
               {/*footer*/}
             </div>
           </div>

@@ -24,7 +24,7 @@ const Mint = ({
   image,
 }: MintProps) => {
   console.log(image);
-  
+
   const session = useSession();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -82,7 +82,13 @@ const Mint = ({
                   </button>
                 </div>
               </div>
-              <div style={{ paddingTop: "100%", position: "relative", margin: "35px" }}>
+              <div
+                style={{
+                  paddingTop: "100%",
+                  position: "relative",
+                  margin: "35px",
+                }}
+              >
                 <img
                   src={image}
                   style={{
@@ -92,7 +98,7 @@ const Mint = ({
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain" // or "cover", depending on your needs
+                    objectFit: "contain", // or "cover", depending on your needs
                   }}
                   onLoad={() => setIsLoading(false)}
                 />

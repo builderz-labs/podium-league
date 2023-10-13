@@ -51,7 +51,7 @@ const Profile: React.FC<ProfileProps> = ({
 
   return (
     <div className="flex  h-full  w-full flex-col items-center justify-center">
-      <section className="container mt-10 relative flex h-[750px] flex-col items-center justify-center rounded-md bg-bg-light ">
+      <section className="container relative mt-10 flex h-[750px] flex-col items-center justify-center rounded-md bg-bg-light ">
         <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PROFILE
@@ -63,68 +63,68 @@ const Profile: React.FC<ProfileProps> = ({
             245
           </div>
           <div className="ml-[17px] flex h-[60px] flex-col justify-between">
-            <p className="text-[20px] roboto-400">Brandon</p>
-            <p className="text-[20px] roboto-400">12 Points</p>
-          </div>
-        </div>
-        
-<div className="flex justify-center relative h-[300px] w-[100%] my-[30px]">
-        <div className=" top-0 h-[100%]  flex w-[60%] border-black absolute ">
-          <div className="box-border flex h-[300px]  w-[300px] flex-col items-center justify-center gap-[20px] rounded-[16px] border border-black bg-[#B5EAD6]">
-            <div className="pb-[50px] pt-[80px] text-[20px]">Preview Here</div>
-            <button className="h-[67px]  w-[266px] items-center rounded-[16px] border border-black bg-[#FFFFFF80] text-[23px]">
-              Mint!
-            </button>
-          </div>
-
-          <div className=" m-5 grid w-[70%] grid-cols-2 gap-[35px] pl-10  ">
-            <div className="flex  flex-col items-start justify-between px-[5px]">
-              <div className="num rowdies-300 w-[15%] pb-5 text-center text-[30px]">
-                Backgroud
-              </div>
-              <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#DFCCF1] px-2 text-[20px]">
-                <Image src={arrowLeft} alt="" className="h-8 w-8" /> Sunrise{" "}
-                <Image src={arrowRight} alt="" className="h-8 w-8" />
-              </button>
-            </div>
-            <div className="flex  flex-col items-start justify-between px-[5px]">
-              <div className="num rowdies-300 w-[15%] text-center text-[30px]">
-                Helmet
-              </div>
-              <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#F6EAC2] px-2 text-[20px]">
-                <Image src={arrowLeft} alt="" className="h-8 w-8" /> Alonso{" "}
-                <Image src={arrowRight} alt="" className="h-8 w-8" />
-              </button>
-            </div>
-            <div className="flex  flex-col items-start justify-between px-[5px]">
-              <div className="num rowdies-300 w-[15%] text-center text-[30px]">
-                Skin{"Tone "}
-              </div>
-              <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#D3F6C2] px-2 text-[20px]">
-                <Image src={arrowLeft} alt="" className="h-8 w-8" /> Dark{" "}
-                <Image src={arrowRight} alt="" className="h-8 w-8" />
-              </button>
-            </div>
-            <div className="flex  flex-col items-start justify-between px-[5px]">
-              <div className="num rowdies-300 w-[15%] text-center text-[30px]">
-                Suit
-              </div>
-              <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#FFB8B1] px-2 text-[20px]">
-                <Image src={arrowLeft} alt="" className="h-8 w-8" /> Ferrari{" "}
-                <Image src={arrowRight} alt="" className="h-8 w-8" />
-              </button>
-            </div>
+            <p className="roboto-400 text-[20px]">Brandon</p>
+            <p className="roboto-400 text-[20px]">12 Points</p>
           </div>
         </div>
 
-        <div className=" flex top-0 h-[105%] absolute z-10 w-[60%] bg-black bg-opacity-75 items-center justify-center rounded-[23px]">
-        <p className=" rowdies-400 font-outline-2 text-[74px] font-black text-[#55CBCD]">
-            Comng soon
-          </p>
-        </div>
-        </div>
+        <div className="relative my-[30px] flex h-[300px] w-[100%] justify-center">
+          <div className=" absolute top-0  flex h-[100%] w-[60%] border-black ">
+            <div className="box-border flex h-[300px]  w-[300px] flex-col items-center justify-center gap-[20px] rounded-[16px] border border-black bg-[#B5EAD6]">
+              <div className="pb-[50px] pt-[80px] text-[20px]">
+                Preview Here
+              </div>
+              <button className="h-[67px]  w-[266px] items-center rounded-[16px] border border-black bg-[#FFFFFF80] text-[23px]">
+                Mint!
+              </button>
+            </div>
 
+            <div className=" m-5 grid w-[70%] grid-cols-2 gap-[35px] pl-10  ">
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] pb-5 text-center text-[30px]">
+                  Backgroud
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#DFCCF1] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Sunrise{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  Helmet
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#F6EAC2] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Alonso{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  Skin{"Tone "}
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#D3F6C2] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Dark{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+              <div className="flex  flex-col items-start justify-between px-[5px]">
+                <div className="num rowdies-300 w-[15%] text-center text-[30px]">
+                  Suit
+                </div>
+                <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#FFB8B1] px-2 text-[20px]">
+                  <Image src={arrowLeft} alt="" className="h-8 w-8" /> Ferrari{" "}
+                  <Image src={arrowRight} alt="" className="h-8 w-8" />
+                </button>
+              </div>
+            </div>
+          </div>
 
+          <div className=" absolute top-0 z-10 flex h-[105%] w-[60%] items-center justify-center rounded-[23px] bg-black bg-opacity-75">
+            <p className=" rowdies-400 font-outline-2 text-[74px] font-black text-[#55CBCD]">
+              Comng soon
+            </p>
+          </div>
+        </div>
 
         <div className="flex w-[60%] items-center justify-between">
           <p className="text-[20px] font-[400]">Minted Podiums</p>
@@ -136,16 +136,17 @@ const Profile: React.FC<ProfileProps> = ({
           </button>
         </div>
         <div className="mb-[50px] mt-[20px] grid w-[60%] grid-cols-2 gap-4">
-          {user.user?.nfts.map((nft, index)=> {
-            return(
-            <div key={index} className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
-            <p>{nft.attributes.Race}</p>
-            <p>View NFT</p>
-          </div>
-            )
+          {user.user?.nfts.map((nft, index) => {
+            return (
+              <div
+                key={index}
+                className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]"
+              >
+                <p>{nft.attributes.Race}</p>
+                <p>View NFT</p>
+              </div>
+            );
           })}
-          
-          
         </div>
       </section>
       <Leaderboard

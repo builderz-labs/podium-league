@@ -49,10 +49,7 @@ const App = ({ Component, pageProps, session }: any) => {
           <link rel="icon" href="/images/helmet.png" />
           <meta name="twitter:card" content="summary_large_image"></meta>
           <meta name="twitter:site" content="@sportinglabs"></meta>
-          <meta
-            name="twitter:title"
-            content="Podium League"
-          ></meta>
+          <meta name="twitter:title" content="Podium League"></meta>
           <meta
             name="twitter:description"
             content="On-chain Fantasy Leagues powered by Sporting. Making Fantasy Leagues fun again."
