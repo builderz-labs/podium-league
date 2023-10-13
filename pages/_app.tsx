@@ -64,7 +64,7 @@ const App = ({ Component, pageProps, session }: any) => {
         </Head>
         <Toaster />
         <AnimatePresence>
-          <div className="flex h-screen w-full flex-col items-center justify-between">
+          <div className="flex w-full md:h-screen flex-col items-center justify-start md:justify-between">
             <Header
               toggleLeaderboard={toggleLeaderboard}
               toggleRules={toggleRules}
@@ -84,7 +84,7 @@ const App = ({ Component, pageProps, session }: any) => {
                 toggleMint={toggleMint}
                 isMintedPodiumsOpen={isMintedPodiumsOpen}
                 toggleMintedPodiums={toggleMintedPodiums}
-                // don't forget to pass the pageProps
+              // don't forget to pass the pageProps
               />
             </main>
 

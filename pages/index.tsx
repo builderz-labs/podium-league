@@ -150,7 +150,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
+    <div className="flex h-full w-full flex-col items-start  justify-start md:items-center md:justify-center mt-40 md:mt-0">
       <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
         <div className="-mt-14">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
@@ -162,10 +162,10 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         </div>
 
         {/* Canva */}
-        <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:gap-12">
+        <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:gap-12 mt-10 md:mt-0">
           <div className="container h-full w-full md:w-1/3">
-            <div className="flex w-full flex-row">
-              <p className="flex w-full flex-row items-center text-[20px] font-[400]">
+            <div className="flex w-full flex-row justify-start items-center">
+              <p className="flex w-full flex-row items-center text-3xl font-bold">
                 Pick your racer
               </p>
               <Image
@@ -184,7 +184,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 <Button
                   color={"#F6EAC2"}
                   currentIndex={currentIndex2}
-                  onSelectName={() => {}}
+                  onSelectName={() => { }}
                   onForwardClick={() =>
                     handleForwardClick(setCurrentIndex2, currentIndex2)
                   }
@@ -200,7 +200,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 </span>
                 <Button
                   currentIndex={currentIndex1}
-                  onSelectName={() => {}}
+                  onSelectName={() => { }}
                   onForwardClick={() =>
                     handleForwardClick(setCurrentIndex1, currentIndex1)
                   }
@@ -217,7 +217,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                 </span>
                 <Button
                   currentIndex={currentIndex3}
-                  onSelectName={() => {}}
+                  onSelectName={() => { }}
                   onForwardClick={() =>
                     handleForwardClick(setCurrentIndex3, currentIndex3)
                   }
@@ -284,7 +284,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </button>
               <div className="absolute -bottom-1 z-10 h-full w-full rounded-2xl bg-[#B5EAD6]"></div>
             </div>
-            <p className=" text-center text-[16px] font-[400] text-[#282828]">
+            <p className="w-[80%] mx-auto text-center text-[16px] font-[400] text-[#282828]">
               Dont keep the Podium fun to yourself - mint and share away!
             </p>
           </div>
@@ -300,18 +300,18 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
             </div>
             <div className="mt-[35px] h-[10px] w-full rounded-3xl bg-[#FFEFD8]"></div>
 
-            <p className="align-center mt-[40px] text-center text-[20px] font-[400]">
+            <p className="align-center mt-[40px] text-center text-[20px] font-[400] w-[90%] mx-auto">
               {
                 "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
               }
             </p>
-            <button className="outline-black-100 mx-auto mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110">
+            <button className="outline-black-100 mb-40 mx-auto mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110">
               View league
             </button>
           </div>
         </div>
 
-        <div className="bg-red absolute bottom-20 right-1 md:bottom-4 md:right-8">
+        <div className="bg-red absolute bottom-4 right-1/2 translate-x-1/2 md:bottom-4 md:right-8">
           <Image src={racer} alt="" width={198} height={112} />
         </div>
       </section>

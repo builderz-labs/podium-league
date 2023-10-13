@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import { signIn, useSession, signOut } from "next-auth/react";
 import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
@@ -7,6 +7,8 @@ import Logo from "../public/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import useUser from "../hooks/useUser";
+import Drawer from "./Drawer";
+import { useWindowScroll } from 'react-use';
 
 interface HeaderProps {
   toggleLeaderboard: MouseEventHandler;
@@ -15,9 +17,27 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
   const session = useSession();
-
   const user = useUser();
-  console.log(user);
+  const { y } = useWindowScroll();
+
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [headerClass, setHeaderClass] = useState("fixed z-50 w-screen bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollTop = y;
+      if (currentScrollTop > lastScrollTop) {
+        // Scrolling down
+        setHeaderClass("fixed z-50 w-screen bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16 transform transition-transform duration-500 -translate-y-full");
+      } else {
+        // Scrolling up
+        setHeaderClass("fixed z-50 w-screen bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16 transform transition-transform duration-500 translate-y-0");
+      }
+      setLastScrollTop(currentScrollTop);
+    };
+
+    handleScroll();
+  }, [y, lastScrollTop]);
 
   return (
     <header className="fixed z-50 w-screen  bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16">
@@ -104,20 +124,10 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
         </div>
 
         <div className="flex md:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-6 w-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
+          <Drawer
+            toggleLeaderboard={toggleLeaderboard}
+            toggleRules={toggleRules}
+          />
         </div>
       </div>
     </header>
