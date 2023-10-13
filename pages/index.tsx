@@ -152,7 +152,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
-        <div className="-mt-14">
+        <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PODIUM
           </p>

@@ -50,23 +50,24 @@ const Profile: React.FC<ProfileProps> = ({
   }
 
   return (
-    <div className="flex h-[800px] pt-20 w-full flex-col items-center justify-center">
-      <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
-        <div className="-mt-14">
+    <div className="flex  h-full  w-full flex-col items-center justify-center">
+      <section className="container mt-10 relative flex h-[750px] flex-col items-center justify-center rounded-md bg-bg-light ">
+        <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PROFILE
           </p>
         </div>
 
-        <div className="my-[30px] flex w-[60%]">
+        <div className="my-[30px] mb-2 flex w-[60%]">
           <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
             245
           </div>
           <div className="ml-[17px] flex h-[60px] flex-col justify-between">
-            <p className="text-[20px] font-[700]">Brandon</p>
-            <p className="text-[20px] font-[400]">12 Points</p>
+            <p className="text-[20px] roboto-400">Brandon</p>
+            <p className="text-[20px] roboto-400">12 Points</p>
           </div>
         </div>
+        
 <div className="flex justify-center relative h-[300px] w-[100%] my-[30px]">
         <div className=" top-0 h-[100%]  flex w-[60%] border-black absolute ">
           <div className="box-border flex h-[300px]  w-[300px] flex-col items-center justify-center gap-[20px] rounded-[16px] border border-black bg-[#B5EAD6]">
@@ -76,7 +77,7 @@ const Profile: React.FC<ProfileProps> = ({
             </button>
           </div>
 
-          <div className="mb-[5px] mt-[5px] grid w-[70%] grid-cols-2 gap-[35px] pl-10  ">
+          <div className=" m-5 grid w-[70%] grid-cols-2 gap-[35px] pl-10  ">
             <div className="flex  flex-col items-start justify-between px-[5px]">
               <div className="num rowdies-300 w-[15%] pb-5 text-center text-[30px]">
                 Backgroud
@@ -97,7 +98,7 @@ const Profile: React.FC<ProfileProps> = ({
             </div>
             <div className="flex  flex-col items-start justify-between px-[5px]">
               <div className="num rowdies-300 w-[15%] text-center text-[30px]">
-                Skin{" "}
+                Skin{"Tone "}
               </div>
               <button className="flex h-[67px] w-[266px] items-center justify-between rounded-[16px] border border-black bg-[#D3F6C2] px-2 text-[20px]">
                 <Image src={arrowLeft} alt="" className="h-8 w-8" /> Dark{" "}
@@ -116,8 +117,10 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         </div>
 
-        <div className=" top-0 h-[100%] absolute z-10 w-[60%] bg-black bg-opacity-75 rounded-[23px]">
-          Coming Soon
+        <div className=" flex top-0 h-[105%] absolute z-10 w-[60%] bg-black bg-opacity-75 items-center justify-center rounded-[23px]">
+        <p className=" rowdies-400 font-outline-2 text-[74px] font-black text-[#55CBCD]">
+            Comng soon
+          </p>
         </div>
         </div>
 
