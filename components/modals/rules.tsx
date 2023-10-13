@@ -40,20 +40,24 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
                 </div>
               </div>
               {/*body*/}
-              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10 text-[22px]">
-                <p className=" pb-5">
-                  Welcome to Podium: The on-chain mini league by Sporting labs
+              <div className="m-[35px] flex flex-col rounded-[20px] border border-black bg-green-100 p-10 text-xl">
+                <p className=" pb-5 font-bold text-2xl">
+                  Welcome to Podium: <br /> The on-chain mini league by Sporting labs
                 </p>
                 <p className=" pb-5">
-                  Before every race weekend you can mint a prediction for who 
-                  you think is going to come on the podium. 1st place gets 25
-                  points,  2nd gets 18, and 3rd place gets 15 points. Watch
-                  Formula 1 all season,  make your predictions, share with
+                  Before every race weekend you can mint a prediction for who
+                  you think is going to come on the podium.
+                  <span className='my-2 flex flex-col items-start justify-center gap-2'>
+                    <br /> 1st place gets 25 points,
+                    <br /> 2nd gets 18, and
+                    <br /> 3rd place gets 15 points.
+                  </span>
+                  <br />Watch Formula 1 all season,  make your predictions, share with
                   friends, & climb the leaderboard!
                 </p>
-                <p className=" pb-5 font-bold">Steps:</p>
+                <p className="pt-5 pb-5 text-xl font-bold">Steps:</p>
 
-                <ol className=" pb-8">
+                <ol className="pb-8">
                   {rules.map((rule) => (
                     <li key={rule.key}>
                       {rule.key + 1}. {rule.description}
