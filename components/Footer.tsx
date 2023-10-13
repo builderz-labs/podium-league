@@ -35,6 +35,7 @@ const Footer = ({ toggleDisclaimer, toggleUnofficial }: FooterProps) => {
           <Image
             src={UnderdogLogo}
             alt="'Underdog logo"
+            className='object-cover'
             width={160}
             height={30}
           />
