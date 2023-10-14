@@ -5,6 +5,7 @@ import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
 import { useState } from "react";
 import Image from "next/image";
+import { Spin } from 'antd';
 
 interface MintProps {
   isMintOpen: boolean;
@@ -87,7 +88,11 @@ const Mint = ({
                 margin: "35px",
               }}
             >
-              <img
+              {/* {isLoading ? <div className='w-full h-full flex items-center justify-center'> <Spin /> </div> : null} */}
+              <Image
+                alt='Podium Prediction'
+                width={500}
+                height={500}
                 src={image}
                 style={{
                   display: isLoading ? "none" : "block",
