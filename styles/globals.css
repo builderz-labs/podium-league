@@ -68,7 +68,7 @@ body {
 
 .num {
   color: black;
-  -webkit-text-fill-color: black;
+  -webkit-text-fill-color: white;
   -webkit-text-stroke: 0.9px black;
 }
 
