@@ -15,6 +15,7 @@ import { drivers } from "../constants/drivers";
 import useUser from "../hooks/useUser";
 import { toast } from "sonner";
 import { useRouter } from "next/router";
+import Head from 'next/head';
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
@@ -150,194 +151,209 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-start  justify-start md:items-center md:justify-center mt-40 md:mt-0">
-      <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
-        <div className="-mt-12">
-          <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
-            PODIUM
-          </p>
-        </div>
-        <div className="rounded-2xl bg-bg-mid px-4">
-          <p>The on-chain mini league</p>
-        </div>
+    <>
+      <Head>
+        <title>Podium League</title>
+        <link rel="icon" href="/images/helmet.png" />
+        <meta name="twitter:card" content="summary_large_image"></meta>
+        <meta name="twitter:site" content="@sportinglabs"></meta>
+        <meta name="twitter:title" content="Podium League"></meta>
+        <meta name="twitter:description" content="On-chain Fantasy Leagues powered by Sporting. Making Fantasy Leagues fun again."></meta>
+        <meta name="twitter:image" content="https://podium-league.vercel.app/images/podium-twitter-preview.png"></meta>
 
-        {/* Canva */}
-        <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:gap-12 mt-10 md:mt-0">
-          <div className="container h-full w-full md:w-1/3">
-            <div className="flex w-full flex-row justify-start items-center">
-              <p className="flex w-full flex-row items-center text-3xl font-bold">
-                Pick your racer
-              </p>
-              <Image
-                src={helmet}
-                className="h-[50px] w-[50px]"
-                alt=""
-                width={53}
-                height={59}
-              />
-            </div>
-            <div className="mt-3 grid w-full grid-cols-1 justify-start gap-2">
-              <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
-                <span className=" num rowdies-300 w-[15%] text-center text-[30px]">
-                  1st
-                </span>
-                <Button
-                  color={"#F6EAC2"}
-                  currentIndex={currentIndex2}
-                  onSelectName={() => { }}
-                  onForwardClick={() =>
-                    handleForwardClick(setCurrentIndex2, currentIndex2)
-                  }
-                  onBackwardClick={() =>
-                    handleBackwardClick(setCurrentIndex2, currentIndex2)
-                  }
-                />
-              </div>
+        {/* Add this line */}
+        <meta property="og:image" content="https://podium-league.vercel.app/images/podium-twitter-preview.png"></meta>
+      </Head>
 
-              <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
-                <span className="num rowdies-300 w-[15%] text-center text-[30px]">
-                  2nd
-                </span>
-                <Button
-                  currentIndex={currentIndex1}
-                  onSelectName={() => { }}
-                  onForwardClick={() =>
-                    handleForwardClick(setCurrentIndex1, currentIndex1)
-                  }
-                  onBackwardClick={() =>
-                    handleBackwardClick(setCurrentIndex1, currentIndex1)
-                  }
-                  color={"#DFCCF1"}
-                />
-              </div>
-
-              <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
-                <span className="num rowdies-300 w-[15%] text-center text-[30px]">
-                  3rd
-                </span>
-                <Button
-                  currentIndex={currentIndex3}
-                  onSelectName={() => { }}
-                  onForwardClick={() =>
-                    handleForwardClick(setCurrentIndex3, currentIndex3)
-                  }
-                  onBackwardClick={() =>
-                    handleBackwardClick(setCurrentIndex3, currentIndex3)
-                  }
-                  color={"#FFB8B1"}
-                />
-              </div>
-            </div>
+      <div className="flex h-full w-full flex-col items-start  justify-start md:items-center md:justify-center mt-40 md:mt-0">
+        <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
+          <div className="-mt-14">
+            <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
+              PODIUM
+            </p>
+          </div>
+          <div className="rounded-2xl bg-bg-mid px-4">
+            <p>The on-chain mini league</p>
           </div>
 
-          <div className="container mx-auto flex h-full w-full flex-col gap-4">
-            {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
-
-            <div className="relative w-full">
-              <div className="flex w-full items-center justify-center">
-                <div className="mx-auto h-full min-h-[350px] w-full rounded-lg border border-black  bg-background-illustration bg-cover bg-center bg-no-repeat md:h-1/3 md:min-h-[420px]"></div>
+          {/* Canva */}
+          <div className=" flex w-full flex-col items-center justify-center gap-8 px-8 py-4 md:flex-row md:gap-12 mt-10 md:mt-0">
+            <div className="container h-full w-full md:w-1/3">
+              <div className="flex w-full flex-row justify-start items-center">
+                <p className="flex w-full flex-row items-center text-3xl font-bold">
+                  Pick your racer
+                </p>
+                <Image
+                  src={helmet}
+                  className="h-[50px] w-[50px]"
+                  alt=""
+                  width={53}
+                  height={59}
+                />
               </div>
-
-              <div className="absolute inset-0 flex h-full w-full flex-row items-end justify-center gap-4 p-4">
-                <div className=" flex w-1/3 flex-col items-center justify-center">
-                  <img
-                    src="/images/podium_silver.webp"
-                    alt="second winner"
-                    className="relative z-10 h-full w-[95%]"
+              <div className="mt-3 grid w-full grid-cols-1 justify-start gap-2">
+                <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
+                  <span className=" num rowdies-300 w-[15%] text-center text-[30px]">
+                    1st
+                  </span>
+                  <Button
+                    color={"#F6EAC2"}
+                    currentIndex={currentIndex2}
+                    onSelectName={() => { }}
+                    onForwardClick={() =>
+                      handleForwardClick(setCurrentIndex2, currentIndex2)
+                    }
+                    onBackwardClick={() =>
+                      handleBackwardClick(setCurrentIndex2, currentIndex2)
+                    }
                   />
-                  <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-6 text-center">
-                    {drivers[currentIndex1].driver}
-                  </div>
                 </div>
 
-                <div className="-mt-12 flex w-1/3 flex-col items-center justify-center">
-                  <img
-                    src="/images/podium_gold.webp"
-                    alt="winner"
-                    className="relative z-10 h-full w-[100%]"
+                <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
+                  <span className="num rowdies-300 w-[15%] text-center text-[30px]">
+                    2nd
+                  </span>
+                  <Button
+                    currentIndex={currentIndex1}
+                    onSelectName={() => { }}
+                    onForwardClick={() =>
+                      handleForwardClick(setCurrentIndex1, currentIndex1)
+                    }
+                    onBackwardClick={() =>
+                      handleBackwardClick(setCurrentIndex1, currentIndex1)
+                    }
+                    color={"#DFCCF1"}
                   />
-                  <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-8 text-center">
-                    {drivers[currentIndex2].driver}
-                  </div>
                 </div>
 
-                <div className="flex w-1/3 flex-col items-center justify-center">
-                  <img
-                    src="/images/podium_bronze.webp"
-                    alt="third winner"
-                    className="relative z-10 h-full w-[95%]"
+                <div className="mt-5 flex h-[80px] w-full flex-row items-center justify-between gap-[24px]">
+                  <span className="num rowdies-300 w-[15%] text-center text-[30px]">
+                    3rd
+                  </span>
+                  <Button
+                    currentIndex={currentIndex3}
+                    onSelectName={() => { }}
+                    onForwardClick={() =>
+                      handleForwardClick(setCurrentIndex3, currentIndex3)
+                    }
+                    onBackwardClick={() =>
+                      handleBackwardClick(setCurrentIndex3, currentIndex3)
+                    }
+                    color={"#FFB8B1"}
                   />
-                  <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
-                    {drivers[currentIndex3].driver}
-                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="relative">
-              <button
-                onClick={handleMintNft}
-                className="relative z-20 h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[#FFF6EA] active:translate-x-[0px]
+            <div className="container mx-auto flex h-full w-full flex-col gap-4">
+              {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
+
+              <div className="relative w-full">
+                <div className="flex w-full items-center justify-center">
+                  <div className="mx-auto h-full min-h-[350px] w-full rounded-lg border border-black  bg-background-illustration bg-cover bg-center bg-no-repeat md:h-1/3 md:min-h-[420px]"></div>
+                </div>
+
+                <div className="absolute inset-0 flex h-full w-full flex-row items-end justify-center gap-4 p-4">
+                  <div className=" flex w-1/3 flex-col items-center justify-center">
+                    <img
+                      src="/images/podium_silver.webp"
+                      alt="second winner"
+                      className="relative z-10 h-full w-[95%]"
+                    />
+                    <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-6 text-center">
+                      {drivers[currentIndex1].driver}
+                    </div>
+                  </div>
+
+                  <div className="-mt-12 flex w-1/3 flex-col items-center justify-center">
+                    <img
+                      src="/images/podium_gold.webp"
+                      alt="winner"
+                      className="relative z-10 h-full w-[100%]"
+                    />
+                    <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-8 text-center">
+                      {drivers[currentIndex2].driver}
+                    </div>
+                  </div>
+
+                  <div className="flex w-1/3 flex-col items-center justify-center">
+                    <img
+                      src="/images/podium_bronze.webp"
+                      alt="third winner"
+                      className="relative z-10 h-full w-[95%]"
+                    />
+                    <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
+                      {drivers[currentIndex3].driver}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative">
+                <button
+                  onClick={handleMintNft}
+                  className="relative z-20 h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[#FFF6EA] active:translate-x-[0px]
                      active:translate-y-[0px] active:rounded-2xl active:shadow-none"
-              >
-                {loading && <Spin />} Mint!
-              </button>
-              <div className="absolute -bottom-1 z-10 h-full w-full rounded-2xl bg-[#B5EAD6]"></div>
-            </div>
-            <p className="w-[80%] mx-auto text-center text-[16px] font-[400] text-[#282828]">
-              Dont keep the Podium fun to yourself - mint and share away!
-            </p>
-          </div>
-
-          <div className="container flex h-full w-full flex-col items-center justify-start gap-0 md:w-1/3 ">
-            <div className="flex w-full flex-col items-center justify-between">
-              <p className="align-center text-center text-2xl mt-2 font-[800]">
-                Share your strategy!
+                >
+                  {loading && <Spin />} Mint!
+                </button>
+                <div className="absolute -bottom-1 z-10 h-full w-full rounded-2xl bg-[#B5EAD6]"></div>
+              </div>
+              <p className="w-[80%] mx-auto text-center text-[16px] font-[400] text-[#282828]">
+                Dont keep the Podium fun to yourself - mint and share away!
               </p>
-              <button className="border-1 mx-auto mt-4 flex items-center justify-center rounded-2xl border border-black bg-[#C7E8FF] p-3 transition-all duration-300 ease-in-out hover:scale-110">
-                <BsTwitter className="h-[48px] w-[48px] text-[#1D9BF0]" />
+            </div>
+
+            <div className="container flex h-full w-full flex-col items-center justify-start gap-0 md:w-1/3 ">
+              <div className="flex w-full flex-col items-center justify-between">
+                <p className="align-center text-center text-2xl mt-2 font-[800]">
+                  Share your strategy!
+                </p>
+                <button className="border-1 mx-auto mt-4 flex items-center justify-center rounded-2xl border border-black bg-[#C7E8FF] p-3 transition-all duration-300 ease-in-out hover:scale-110">
+                  <BsTwitter className="h-[48px] w-[48px] text-[#1D9BF0]" />
+                </button>
+              </div>
+              <div className="mt-[35px] h-[10px] w-full rounded-3xl bg-[#FFEFD8]"></div>
+
+              <p className="align-center mt-[40px] text-center text-[20px] font-[400] w-[90%] mx-auto">
+                {
+                  "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
+                }
+              </p>
+              <button className="outline-black-100 mb-40 mx-auto mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110">
+                View league
               </button>
             </div>
-            <div className="mt-[35px] h-[10px] w-full rounded-3xl bg-[#FFEFD8]"></div>
-
-            <p className="align-center mt-[40px] text-center text-[20px] font-[400] w-[90%] mx-auto">
-              {
-                "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
-              }
-            </p>
-            <button className="outline-black-100 mb-40 mx-auto mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110">
-              View league
-            </button>
           </div>
-        </div>
 
-        {/* <div className="bg-red absolute bottom-4 left-1/2 translate-x-1/2 md:bottom-4 md:left-8">
+          {/* <div className="bg-red absolute bottom-4 left-1/2 translate-x-1/2 md:bottom-4 md:left-8">
           <Image src={racer} alt="" width={198} height={112} />
         </div> */}
-      </section>
+        </section>
 
-      <Leaderboard
-        isLeaderboardOpen={isLeaderboardOpen}
-        toggleLeaderboard={toggleLeaderboard}
-      />
-      <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
-      <Mint
-        image={imageUrl}
-        isMintOpen={isMintOpen}
-        toggleMint={toggleMint}
-        currentIndex1={currentIndex1}
-        currentIndex2={currentIndex2}
-        currentIndex3={currentIndex3}
-      />
-      <Disclaimer
-        isDisclaimerOpen={isDisclaimerOpen}
-        toggleDisclaimer={toggleDisclaimer}
-      />
-      <Unofficial
-        isUnofficialOpen={isUnofficialOpen}
-        toggleUnofficial={toggleUnofficial}
-      />
-    </div>
+        <Leaderboard
+          isLeaderboardOpen={isLeaderboardOpen}
+          toggleLeaderboard={toggleLeaderboard}
+        />
+        <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
+        <Mint
+          image={imageUrl}
+          isMintOpen={isMintOpen}
+          toggleMint={toggleMint}
+          currentIndex1={currentIndex1}
+          currentIndex2={currentIndex2}
+          currentIndex3={currentIndex3}
+        />
+        <Disclaimer
+          isDisclaimerOpen={isDisclaimerOpen}
+          toggleDisclaimer={toggleDisclaimer}
+        />
+        <Unofficial
+          isUnofficialOpen={isUnofficialOpen}
+          toggleUnofficial={toggleUnofficial}
+        />
+      </div>
+    </>
   );
 };
 
