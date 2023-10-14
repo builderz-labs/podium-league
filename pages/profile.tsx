@@ -51,14 +51,14 @@ const Profile: React.FC<ProfileProps> = ({
 
   return (
     <div className="flex  h-full  w-full flex-col items-center justify-center">
-      <section className="container relative mt-10 flex h-[750px] flex-col items-center justify-center rounded-md bg-bg-light ">
+      <section className="container relative mt-10 flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
         <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PROFILE
           </p>
         </div>
 
-        <div className="my-[30px] mb-2 flex w-[60%]">
+        <div className="my-[30px] mb-1 flex w-[60%]">
           <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
             245
           </div>
@@ -136,7 +136,7 @@ const Profile: React.FC<ProfileProps> = ({
           </button>
         </div>
         <div className="mb-[50px] mt-[20px] grid w-[60%] grid-cols-2 gap-4">
-          {user.user?.nfts.map((nft, index) => {
+          {user.user?.nfts.slice(0, 4).map((nft, index) => {
             return (
               <div
                 key={index}
