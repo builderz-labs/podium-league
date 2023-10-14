@@ -62,47 +62,46 @@ const Mint = ({
   if (!isMintOpen) return null;
 
   return (
-    <div>
-      <>
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none w-full px-4 md:px-0 ">
-          <div className="relative mx-auto my-6 w-full max-w-3xl">
-            {/*content*/}
-            <div className="relative flex w-full md:w-[500px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
-              {/*header*/}
-              <div className="relative flex items-center justify-center">
-                <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]"></p>
-                <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
-                  <button
-                    className=" flex h-[40px] w-[40px] items-center justify-center rounded-lg border bg-white transition-all duration-150 ease-linear"
-                    type="button"
-                    onClick={toggleMint}
-                  >
-                    <AiOutlineClose />
-                  </button>
-                </div>
+    <>
+      <div className="fixed inset-0 z-50 w-full h-full flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none  px-4 md:px-0 ">
+        <div className="relative mx-auto my-6 w-full max-w-3xl">
+          {/*content*/}
+          <div className=" flex w-full md:w-[500px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none relative z-50">
+            {/*header*/}
+            <div className="relative flex items-center justify-center">
+              <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]"></p>
+              <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
+                <button
+                  className=" flex h-[40px] w-[40px] items-center justify-center rounded-lg border bg-white transition-all duration-150 ease-linear"
+                  type="button"
+                  onClick={toggleMint}
+                >
+                  <AiOutlineClose />
+                </button>
               </div>
-              <div
+            </div>
+            <div
+              style={{
+                paddingTop: "100%",
+                position: "relative",
+                margin: "35px",
+              }}
+            >
+              <img
+                src={image}
                 style={{
-                  paddingTop: "100%",
-                  position: "relative",
-                  margin: "35px",
+                  display: isLoading ? "none" : "block",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain", // or "cover", depending on your needs
                 }}
-              >
-                <img
-                  src={image}
-                  style={{
-                    display: isLoading ? "none" : "block",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain", // or "cover", depending on your needs
-                  }}
-                  onLoad={() => setIsLoading(false)}
-                />
-              </div>
-              {/* {isLoading ? (
+                onLoad={() => setIsLoading(false)}
+              />
+            </div>
+            {/* {isLoading ? (
                 <div className="skeleton-loader"></div>
               ) : (
                 <Image
@@ -111,9 +110,9 @@ const Mint = ({
                   className="m-[35px]"
                 />
               )} */}
-              {/*body*/}
-              {/* <div className="m-[35px] flex flex-col rounded-[20px]  bg-green-100 p-10"> */}
-              {/* <div className="-mt-7 ml-20 ">
+            {/*body*/}
+            {/* <div className="m-[35px] flex flex-col rounded-[20px]  bg-green-100 p-10"> */}
+            {/* <div className="-mt-7 ml-20 ">
                   <Image
                     alt="Sporting Lab Logo"
                     src={Logo}
@@ -124,8 +123,8 @@ const Mint = ({
                     PODIUM
                   </p>
                 </div> */}
-              {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
-              {/* <div className="relative h-[328px] w-[362px]">
+            {/* TODO: This has to be refactored so different formats of the webpage don't affect this */}
+            {/* <div className="relative h-[328px] w-[362px]">
                   <div className="flex w-full items-center justify-center">
                     <div className="mx-auto h-full min-h-[350px] w-full rounded-lg border border-black  bg-background-illustration bg-cover bg-center bg-no-repeat md:h-1/3 md:min-h-[320px]"></div>
                   </div>
@@ -173,16 +172,16 @@ const Mint = ({
                       />
                     </div>
                     <div className="mb-2 mt-3 flex h-[20px] w-[100px] items-center justify-center "> */}
-              {/* <Image
+            {/* <Image
                         src={KrakenLogo}
                         alt="'Underdog logo"
                         width={80}
                         height={17}
                       /> */}
-              {/* </div>
+            {/* </div>
                   </div> */}
 
-              {/* <Image
+            {/* <Image
                     src={podium}
                     className="container h-[400px] object-cover rounded-xl border-2 border-green-400 bg-green-100"
                     alt=""
@@ -198,46 +197,45 @@ const Mint = ({
                   <div className="absolute left-[210px] top-[110px] p-4 text-sm">
                     {players[currentIndex3].split("(")[0]}
                   </div> */}
-              {/* </div>
+            {/* </div>
               </div> */}
-              {/*footer*/}
-              {/* Login Button -> Only shown when user is not logged in */}
-              <div className="mb-5 flex w-full flex-col items-center justify-center gap-6 ">
-                {session.status !== "authenticated" && (
-                  <div className="">
-                    <button
-                      onClick={handleLoginAndTransfer}
-                      className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 text-[16px] outline outline-1 outline-offset-2"
-                    >
-                      <FcGoogle className="h-[26px] w-[26px]" /> Login to claim
-                    </button>
-                  </div>
-                )}
-                <div className="mb-4 flex space-x-6">
+            {/*footer*/}
+            {/* Login Button -> Only shown when user is not logged in */}
+            <div className="mb-5 flex w-full flex-col items-center justify-center gap-6 ">
+              {session.status !== "authenticated" && (
+                <div className="">
                   <button
-                    onClick={handleShare}
-                    className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 outline-offset-2"
+                    onClick={handleLoginAndTransfer}
+                    className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 text-[16px] outline outline-1 outline-offset-2"
                   >
-                    <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" />{" "}
-                    Share on Twitter
-                  </button>
-                  <button
-                    onClick={
-                      // Call the function when you want to save the part as PNG
-                      handleDownload
-                    }
-                    className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px]  bg-white p-2 outline outline-1 outline-offset-2"
-                  >
-                    <BsDownload className=" h-[32px] w-[32px] justify-center" />
+                    <FcGoogle className="h-[26px] w-[26px]" /> Login to claim
                   </button>
                 </div>
+              )}
+              <div className="mb-4 flex space-x-6">
+                <button
+                  onClick={handleShare}
+                  className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 outline-offset-2"
+                >
+                  <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" />{" "}
+                  Share on Twitter
+                </button>
+                <button
+                  onClick={
+                    // Call the function when you want to save the part as PNG
+                    handleDownload
+                  }
+                  className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px]  bg-white p-2 outline outline-1 outline-offset-2"
+                >
+                  <BsDownload className=" h-[32px] w-[32px] justify-center" />
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
-      </>
-    </div>
+      </div>
+      <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+    </>
   );
 };
 

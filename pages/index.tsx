@@ -331,28 +331,29 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         </div> */}
         </section>
 
-        <Leaderboard
-          isLeaderboardOpen={isLeaderboardOpen}
-          toggleLeaderboard={toggleLeaderboard}
-        />
-        <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
-        <Mint
-          image={imageUrl}
-          isMintOpen={isMintOpen}
-          toggleMint={toggleMint}
-          currentIndex1={currentIndex1}
-          currentIndex2={currentIndex2}
-          currentIndex3={currentIndex3}
-        />
-        <Disclaimer
-          isDisclaimerOpen={isDisclaimerOpen}
-          toggleDisclaimer={toggleDisclaimer}
-        />
-        <Unofficial
-          isUnofficialOpen={isUnofficialOpen}
-          toggleUnofficial={toggleUnofficial}
-        />
+
       </div>
+      <Leaderboard
+        isLeaderboardOpen={isLeaderboardOpen}
+        toggleLeaderboard={toggleLeaderboard}
+      />
+      <Rules isRulesOpen={isRulesOpen} toggleRules={toggleRules} />
+      <Mint
+        image={imageUrl}
+        isMintOpen={isMintOpen}
+        toggleMint={toggleMint}
+        currentIndex1={currentIndex1}
+        currentIndex2={currentIndex2}
+        currentIndex3={currentIndex3}
+      />
+      <Disclaimer
+        isDisclaimerOpen={isDisclaimerOpen}
+        toggleDisclaimer={toggleDisclaimer}
+      />
+      <Unofficial
+        isUnofficialOpen={isUnofficialOpen}
+        toggleUnofficial={toggleUnofficial}
+      />
     </>
   );
 };
