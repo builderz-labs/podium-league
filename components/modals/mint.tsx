@@ -83,7 +83,6 @@ const Mint = ({
             </div>
             <div
               style={{
-                paddingTop: "100%",
                 position: "relative",
                 margin: "35px",
               }}
