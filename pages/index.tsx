@@ -165,7 +165,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         <meta property="og:image" content="https://podium-league.vercel.app/images/podium-twitter-preview.png"></meta>
       </Head>
 
-      <div className="flex h-full w-full flex-col items-start  justify-start md:items-center md:justify-center mt-40 md:mt-0">
+      <div className="flex h-full w-full flex-col items-start  justify-start md:items-center md:justify-center mt-40 md:mt-0 lg:scale-75 2xl:scale-90">
         <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
           <div className="-mt-14">
             <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">

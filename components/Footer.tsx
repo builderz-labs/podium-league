@@ -9,7 +9,7 @@ interface FooterProps {
 
 const Footer = ({ toggleDisclaimer, toggleUnofficial }: FooterProps) => {
   return (
-    <footer className="footer relative z-10 flex w-[100%] flex-col-reverse md:flex-col items-center justify-between bg-white p-4 text-center text-[20px]  text-black">
+    <footer className="footer relative lg:absolute lg:bottom-0 z-10 flex w-[100%] flex-col-reverse md:flex-col items-center justify-between bg-white p-4 text-center text-[20px]  text-black">
       <div className="flex w-full md:w-[75%] my-5 md;My-0 flex-row items-center justify-between  ">
         <p className="text-[15px] font-[400] text-[#969696]">
           All rights reserved

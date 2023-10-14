@@ -54,9 +54,8 @@ const Mint = ({
       currentIndex3,
       mint: true,
     });
-    const callbackUrl = `${window.location.origin}${
-      window.location.pathname
-    }?props=${encodeURIComponent(propsAsString)}`;
+    const callbackUrl = `${window.location.origin}${window.location.pathname
+      }?props=${encodeURIComponent(propsAsString)}`;
     await signIn("google", { callbackUrl });
   };
 
@@ -65,10 +64,10 @@ const Mint = ({
   return (
     <div>
       <>
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none  ">
-          <div className="relative mx-auto my-6 w-auto max-w-3xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none w-full px-4 md:px-0 ">
+          <div className="relative mx-auto my-6 w-full max-w-3xl">
             {/*content*/}
-            <div className="relative flex w-[500px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
+            <div className="relative flex w-full md:w-[500px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
               {/*header*/}
               <div className="relative flex items-center justify-center">
                 <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]"></p>
@@ -208,7 +207,7 @@ const Mint = ({
                   <div className="">
                     <button
                       onClick={handleLoginAndTransfer}
-                      className="outline-black-100 roboto-400 flex h-[63px] w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 text-[16px] outline outline-1 outline-offset-2"
+                      className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 text-[16px] outline outline-1 outline-offset-2"
                     >
                       <FcGoogle className="h-[26px] w-[26px]" /> Login to claim
                     </button>
@@ -217,7 +216,7 @@ const Mint = ({
                 <div className="mb-4 flex space-x-6">
                   <button
                     onClick={handleShare}
-                    className="outline-black-100 roboto-400 flex h-[63px] w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 outline-offset-2"
+                    className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 outline-offset-2"
                   >
                     <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" />{" "}
                     Share on Twitter

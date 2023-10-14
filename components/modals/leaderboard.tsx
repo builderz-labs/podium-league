@@ -16,15 +16,15 @@ const Leaderboard = ({
   return (
     <div>
       <>
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none ">
           <div className="relative mx-auto my-6 w-auto max-w-3xl">
             {/*content*/}
             <div className="relative flex w-full flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
               {/*header*/}
-              <div className="relative flex items-center justify-center">
-                <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]">
+              <div className="relative flex items-center justify-center w-full">
+                <h1 className="font-outline-2 text-3xl mt-10 md:text-[50px] font-black text-[#55CBCD]">
                   LEADERBOARD
-                </p>
+                </h1>
                 <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
                   <button
                     className=" flex h-[40px] w-[40px] items-center justify-center rounded-lg border bg-white transition-all duration-150 ease-linear"
@@ -47,15 +47,14 @@ const Leaderboard = ({
                         {i + 1}
                       </div>
                       <div
-                        className={`flex ${
-                          i === 0
-                            ? "bg-[#F6EAC2]"
-                            : i === 1
+                        className={`flex ${i === 0
+                          ? "bg-[#F6EAC2]"
+                          : i === 1
                             ? "bg-[#DFCCF1]"
                             : i === 2
-                            ? "bg-[#FFB8B1]"
-                            : "bg-[#FFFFFF]"
-                        } roboto-400 h-[60px] w-[550px] items-center justify-between rounded-[10px] border border-black  px-4 text-center text-[20px]`}
+                              ? "bg-[#FFB8B1]"
+                              : "bg-[#FFFFFF]"
+                          } roboto-400 h-[60px] w-full md:w-[550px] items-center justify-between rounded-[10px] border border-black  px-4 text-center text-[20px]`}
                       >
                         <p>{player.driver}</p>
                         <p>245 Points</p>

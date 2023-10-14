@@ -20,7 +20,7 @@ const Rules = ({ isRulesOpen, toggleRules }: RulesProps) => {
   return (
     <div>
       <>
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none mt-20 md:mt-0">
           <div className="relative mx-auto my-6 w-auto max-w-3xl">
             {/*content*/}
             <div className="relative flex w-full flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none">
