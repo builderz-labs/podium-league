@@ -56,6 +56,39 @@ router.post(async (req, res) => {
     return;
   }
 
+  try {
+    if (sessionData.id) {
+      // Mint directly to user wallet
+      const linkPda = findLinkPda(context, {
+        identifier: sessionData.id,
+      })[0];
+      const response = await axios.get(
+        `https://mainnet.underdogprotocol.com/v2/projects/2/nfts?ownerAddress=${linkPda}`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
+          },
+        },
+      );
+
+      const exists = response.data.results
+        .filter((nft: any) => nft.projectId === 2)
+        .some((nft: any) => nft.attributes["Race"] === raceName);
+
+      if (exists) {
+        res.status(400).send("You already minted 1 Podium for this race");
+        return;
+      }
+    } else {
+      res.status(500).send("No Id to create PDA");
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+
+  // Action
+
   const name = "Podium Prediction";
   const description = "Podium: The on-chain Mini League";
 
@@ -64,7 +97,7 @@ router.post(async (req, res) => {
   const attributes = {
     "Pos 1.": racerSecond?.driver,
     "Pos 2.": racerFirst?.driver,
-    "Pos 3.": racerSecond?.driver,
+    "Pos 3.": racerThird?.driver,
     Race: raceName,
     Points: "To be evaluated", // TODO: If race results exist, points can be evaluated and rendered here
   };
@@ -74,16 +107,14 @@ router.post(async (req, res) => {
   console.log(image);
 
   try {
-    if (!sessionData.id) {
-      res.status(401).send("Unauthorized");
-    } else if (sessionData.id) {
+    if (sessionData.id) {
       // Mint directly to user wallet
       const linkPda = findLinkPda(context, {
         identifier: sessionData.id,
       })[0];
 
       const createRes = await axios.post(
-        "https://mainnet.underdogprotocol.com/v2/projects/1/nfts",
+        "https://mainnet.underdogprotocol.com/v2/projects/2/nfts",
         {
           name,
           description,
@@ -104,7 +135,7 @@ router.post(async (req, res) => {
         .status(202)
         .send({ ...createRes.data, url: image, ownerWallet: linkPda });
     } else {
-      res.status(500).send("Something went wrong");
+      res.status(500).send("No Id to create PDA");
     }
   } catch (error) {
     console.log(error);

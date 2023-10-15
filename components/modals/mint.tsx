@@ -5,7 +5,6 @@ import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
 import { useState } from "react";
 import Image from "next/image";
-import { Spin } from 'antd';
 
 interface MintProps {
   isMintOpen: boolean;
@@ -24,8 +23,6 @@ const Mint = ({
   currentIndex3,
   image,
 }: MintProps) => {
-  console.log(image);
-
   const session = useSession();
 
   const [isLoading, setIsLoading] = useState(true);

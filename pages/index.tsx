@@ -9,7 +9,7 @@ import Rules from "../components/modals/rules";
 import Mint from "../components/modals/mint";
 import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Spin } from "antd";
 import { drivers } from "../constants/drivers";
 import useUser from "../hooks/useUser";
@@ -72,10 +72,11 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
       passedProps.currentIndex3 !== undefined &&
       passedProps.mint
     ) {
+      console.log("Props Are good");
+      
       setCurrentIndex1(passedProps.currentIndex1);
       setCurrentIndex2(passedProps.currentIndex2);
       setCurrentIndex3(passedProps.currentIndex3);
-      router.replace(router.pathname);
     }
   }, [passedProps]);
 
@@ -83,11 +84,14 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     if (
       currentIndex1 === passedProps.currentIndex1 &&
       currentIndex2 === passedProps.currentIndex2 &&
-      currentIndex3 === passedProps.currentIndex3
+      currentIndex3 === passedProps.currentIndex3 &&
+      user
     ) {
+      console.log("Starting Mint");
       handleMintNft();
+      router.replace(router.pathname);
     }
-  }, [currentIndex1, currentIndex2, currentIndex3]);
+  }, [currentIndex1, currentIndex2, currentIndex3, passedProps, user]);
 
   const [imageUrl, setImageUrl] = useState("");
 
@@ -129,10 +133,6 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     const third = drivers[currentIndex3].driver.replace(/\s/g, "-");
     const race = "United States GP".replace(/\s/g, "-");
 
-    // console.log("first: ", first);
-    // console.log("second: ", second);
-    // console.log("third: ", third);
-
     const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${second}&second=${third}&third=${first}&race=${race}`;
     console.log(image);
     
@@ -147,14 +147,13 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
           third,
           race,
         });
-        console.log(res.data);
 
         setIsMintOpen(true);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        const axiosError = error as AxiosError;
         setLoading(false);
-      }
+        toast(typeof axiosError.response?.data === 'string' ? axiosError.response?.data : JSON.stringify(axiosError.response?.data));      }
     } else {
       setLoading(true);
       setTimeout(() => {
