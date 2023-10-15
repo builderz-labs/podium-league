@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
   }, [y, lastScrollTop]);
 
   return (
-    <header className="fixed z-50 w-screen  bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16">
+    <header className="fixed z-50 w-screen  !bg-white p-3 px-4 md:bg-transparent md:p-4 md:px-16">
       {/* desktop and tablet */}
       <div className="flex h-full w-full items-center justify-between">
         <div className="flex h-[45px] w-[270px] cursor-pointer items-center justify-center border border-[#B5EAD6] bg-[#E2FFF4]">
@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
               </>
             ) : (
               <div className="dropdown relative inline-block">
-                <button className="inline-flex h-[52px] w-[179px] items-center rounded-[16px] border border-[#282828] bg-[#FFF6EA] px-4 py-2 font-semibold text-[#282828]">
+                <button className="inline-flex h-[52px] w-auto items-center rounded-[16px] border border-[#282828] bg-[#FFF6EA] px-4 py-2 font-semibold text-[#282828]">
                   <span className="mr-1">{session.data?.user?.name}</span>
                   <svg
                     className="h-4 w-4 fill-current"
@@ -106,13 +106,13 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
                   </svg>
                 </button>
 
-                <ul className="dropdown-menu absolute hidden w-full  pt-1 text-[#282828] ">
-                  <li className="whitespace-no-wrap block bg-[#FFF] px-4 py-2">
+                <ul className="dropdown-menu absolute hidden w-full  text-[#282828] border border-black rounded-md overflow-hidden z-50">
+                  <li className="whitespace-no-wrap block bg-[#FFF] px-4 py-2 hover:bg-[#e6e6e6] ">
                     <Link className=" " href="/profile">
                       Profile
                     </Link>
                   </li>
-                  <li className=" whitespace-no-wrap block bg-[#FFF] px-4 py-2">
+                  <li className=" whitespace-no-wrap block bg-[#FFF] px-4 py-2 hover:bg-[#e6e6e6]">
                     <div className="cursor-pointer" onClick={() => signOut()}>
                       Logout
                     </div>

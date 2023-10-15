@@ -49,24 +49,24 @@ const Profile: React.FC<ProfileProps> = ({
 
   return (
     <div className="flex  h-full  w-full flex-col items-center justify-start">
-      <section className="container mt-40 relative  flex h-auto flex-col items-center justify-start rounded-md bg-bg-light ">
+      <section className="container mt-40 relative  flex h-auto flex-col items-center justify-start rounded-md bg-bg-light scale-90">
         <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PROFILE
           </p>
         </div>
 
-        <div className="my-[30px] mb-1 flex w-[60%]">
-          {/* <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
+        {/* <div className="my-[30px] mb-1 flex w-[60%]">
+          <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
             465
-          </div> */}
+          </div>
           <div className="ml-[17px] flex h-[60px] flex-col justify-between">
             <p className="roboto-400 text-[20px] font-bold">{user.user?.name}</p>
             <p className="roboto-400 text-[20px]">0 Points</p>
           </div>
-        </div>
+        </div> */}
 
-        <div className="relative my-[30px] flex h-[300px] w-[100%] justify-center">
+        <div className="relative my-[30px] flex h-[300px] w-[100%] justify-center py-4">
           <div className=" absolute top-0  flex h-[100%] w-[60%] border-black ">
             <div className="box-border flex h-[300px]  w-[300px] flex-col items-center justify-center gap-[20px] rounded-[16px] border border-black bg-[#B5EAD6]">
               <div className="pb-[50px] pt-[80px] text-[20px]">
@@ -117,25 +117,25 @@ const Profile: React.FC<ProfileProps> = ({
             </div>
           </div>
 
-          <div className=" absolute top-0 z-10 flex h-[105%] w-[60%] items-center justify-center rounded-[18px] bg-black bg-opacity-75 backdrop-blur-lg">
-            <p className=" rowdies-400 opacity-60 text-[74px] font-black text-[#55CBCD]">
+          <div className="absolute top-0 z-10 flex h-[105%] w-[100%] items-center justify-center  bg-black bg-opacity-60 backdrop-blur-lg">
+            <p className=" rowdies-400 opacity-60 text-[74px] font-black text-center text-[#55CBCD]">
               Coming soon
             </p>
           </div>
         </div>
 
-        <div className="flex w-[60%] items-center justify-between mt-10">
-          <p className="text-[20px] font-[400]">Minted Podiums</p>
+        <div className="flex  w-full md:w-[60%] items-center justify-between mt-10">
+          <p className="text-2xl font-semibold">Minted Podiums</p>
         </div>
         {user.loading && <Spin />}
-        <div className="mb-[400px] mt-[20px] grid w-[60%] grid-cols-2 gap-4 ">
+        <div className="mb-[400px] mt-[20px] grid w-full md:w-[60%] grid-cols-1 md:grid-cols-2 gap-4 ">
           {user.user?.nfts.slice(0, 4).map((nft, index) => {
             return (
               <div key={index} className='rounded-lg flex flex-col items-center justify-start gap-4'>
                 <img src={nft.image} alt='image' className='rounded-md' />
-                <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+                <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px] ">
                   <p>{nft.attributes.Race}</p>
-                  <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`} className='hover:scale-110 transition-all duration-300 ease-in-out'>View NFT</a>
+                  <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`} className='hover:scale-110 transition-all duration-300 ease-in-out border border-slate-200 text-black px-4 py-1 rounded-md'>View NFT</a>
                 </div>
               </div>
             );

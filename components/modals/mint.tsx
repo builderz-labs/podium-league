@@ -6,6 +6,9 @@ import { BsDownload } from "react-icons/bs";
 import { useState } from "react";
 import Image from "next/image";
 import { grandPrix } from "../../pages";
+import { Skeleton } from 'antd';
+
+
 
 interface MintProps {
   isMintOpen: boolean;
@@ -217,7 +220,7 @@ const Mint = ({
               <div className="mb-4 flex space-x-6">
                 <button
                   onClick={handleShare}
-                  className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 "
+                  className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center gap-2 rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 "
                 >
                   <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" />{" "}
                   Share on Twitter
