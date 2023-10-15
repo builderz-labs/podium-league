@@ -76,10 +76,18 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
       setCurrentIndex2(passedProps.currentIndex2);
       setCurrentIndex3(passedProps.currentIndex3);
       router.replace(router.pathname);
-
-      handleMintNft();
     }
   }, [passedProps]);
+
+  useEffect(() => {
+    if (
+      currentIndex1 === passedProps.currentIndex1 &&
+      currentIndex2 === passedProps.currentIndex2 &&
+      currentIndex3 === passedProps.currentIndex3
+    ) {
+      handleMintNft();
+    }
+  }, [currentIndex1, currentIndex2, currentIndex3]);
 
   const [imageUrl, setImageUrl] = useState("");
 
@@ -151,8 +159,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
   };
 
   const handleTwitterShare = () => {
-    const tweetText =
-      "I just tried out Podium League by @sportinglabs";
+    const tweetText = "I just tried out Podium League by @sportinglabs";
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       tweetText,
     )}&url=https://podium-league.vercel.app/`;
@@ -341,7 +348,10 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                   "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
                 }
               </p>
-              <button onClick={() => window.open('https://sporting.gg', '_blank')} className="outline-black-100 mx-auto mb-40 mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110">
+              <button
+                onClick={() => window.open("https://sporting.gg", "_blank")}
+                className="outline-black-100 mx-auto mb-40 mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110"
+              >
                 View league
               </button>
             </div>
