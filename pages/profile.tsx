@@ -9,7 +9,6 @@ import Leaderboard from "../components/modals/leaderboard";
 import Rules from "../components/modals/rules";
 import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
-import MintedPodiums from "../components/modals/mintedPodiums";
 
 type ProfileProps = {
   isLeaderboardOpen: boolean;
@@ -33,8 +32,6 @@ const Profile: React.FC<ProfileProps> = ({
   toggleDisclaimer,
   isUnofficialOpen,
   toggleUnofficial,
-  isMintedPodiumsOpen,
-  toggleMintedPodiums,
 }) => {
   const router = useRouter();
   const user = useUser();
@@ -128,22 +125,16 @@ const Profile: React.FC<ProfileProps> = ({
 
         <div className="flex w-[60%] items-center justify-between">
           <p className="text-[20px] font-[400]">Minted Podiums</p>
-          <button
-            onClick={toggleMintedPodiums}
-            className="color-[#282828] h-[40px] w-[115px] rounded-[8px] border border-black bg-white"
-          >
-            View All
-          </button>
         </div>
         <div className="mb-[50px] mt-[20px] grid w-[60%] grid-cols-2 gap-4">
           {user.user?.nfts.slice(0, 4).map((nft, index) => {
             return (
-              <div
-                key={index}
-                className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]"
-              >
-                <p>{nft.attributes.Race}</p>
-                <p>View NFT</p>
+              <div key={index}>
+                <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
+                  <p>{nft.attributes.Race}</p>
+                  <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`}>View NFT</a>
+                </div>
+                <img src={nft.image} />
               </div>
             );
           })}
@@ -162,10 +153,6 @@ const Profile: React.FC<ProfileProps> = ({
       <Unofficial
         isUnofficialOpen={isUnofficialOpen}
         toggleUnofficial={toggleUnofficial}
-      />
-      <MintedPodiums
-        isMintedPodiumsOpen={isMintedPodiumsOpen}
-        toggleMintedPodiums={toggleMintedPodiums}
       />
     </div>
   );
