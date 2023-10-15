@@ -25,7 +25,7 @@ const Leaderboard = ({
                 <h1 className="font-outline-2 text-3xl mt-10 md:text-[50px] font-black text-[#55CBCD]">
                   LEADERBOARD
                 </h1>
-                <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
+                <div className="absolute right-0 flex items-center justify-end rounded-b border-solid border-slate-200 p-6">
                   <button
                     className=" flex h-[40px] w-[40px] items-center justify-center rounded-lg border bg-white transition-all duration-150 ease-linear"
                     type="button"

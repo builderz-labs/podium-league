@@ -65,13 +65,13 @@ const Mint = ({
   return (
     <>
       <div className="fixed inset-0 z-50 w-full h-full flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none  px-4 md:px-0 ">
-        <div className="relative mx-auto my-6 w-full max-w-3xl">
+        <div className="relative mx-auto my-6 w-full max-w-3xl flex items-center justify-center">
           {/*content*/}
           <div className=" flex w-full md:w-[500px] flex-col rounded-lg border-0 bg-orange-50 shadow-lg  outline-none focus:outline-none relative z-50">
             {/*header*/}
             <div className="relative flex items-center justify-center">
               <p className="font-outline-2 text-[50px] font-black text-[#55CBCD]"></p>
-              <div className="absolute right-0 flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
+              <div className="absolute right-0 flex items-center justify-end rounded-b  border-solid border-slate-200 p-6">
                 <button
                   className=" flex h-[40px] w-[40px] items-center justify-center rounded-lg border bg-white transition-all duration-150 ease-linear"
                   type="button"
@@ -219,7 +219,7 @@ const Mint = ({
               <div className="mb-4 flex space-x-6">
                 <button
                   onClick={handleShare}
-                  className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 outline-offset-2"
+                  className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 "
                 >
                   <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" />{" "}
                   Share on Twitter

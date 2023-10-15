@@ -9,6 +9,7 @@ import Leaderboard from "../components/modals/leaderboard";
 import Rules from "../components/modals/rules";
 import Disclaimer from "../components/modals/disclaimer";
 import Unofficial from "../components/modals/unofficial";
+import { Spin } from 'antd';
 
 type ProfileProps = {
   isLeaderboardOpen: boolean;
@@ -35,6 +36,7 @@ const Profile: React.FC<ProfileProps> = ({
 }) => {
   const router = useRouter();
   const user = useUser();
+  const { loading } = useUser();
 
   console.log(user.user?.nfts);
 
@@ -47,15 +49,15 @@ const Profile: React.FC<ProfileProps> = ({
   }
 
   return (
-    <div className="flex  h-full  w-full flex-col items-center justify-center">
-      <section className="container relative mt-10 flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
+    <div className="flex  h-full  w-full flex-col items-center justify-start">
+      <section className="container mt-40 relative  flex h-auto flex-col items-center justify-start rounded-md bg-bg-light ">
         <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PROFILE
           </p>
         </div>
 
-        <div className="my-[30px] mb-1 flex w-[60%]">
+        {/* <div className="my-[30px] mb-1 flex w-[60%]">
           <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
             245
           </div>
@@ -63,7 +65,7 @@ const Profile: React.FC<ProfileProps> = ({
             <p className="roboto-400 text-[20px]">Brandon</p>
             <p className="roboto-400 text-[20px]">12 Points</p>
           </div>
-        </div>
+        </div> */}
 
         <div className="relative my-[30px] flex h-[300px] w-[100%] justify-center">
           <div className=" absolute top-0  flex h-[100%] w-[60%] border-black ">
@@ -116,29 +118,30 @@ const Profile: React.FC<ProfileProps> = ({
             </div>
           </div>
 
-          <div className=" absolute top-0 z-10 flex h-[105%] w-[60%] items-center justify-center rounded-[23px] bg-black bg-opacity-75">
-            <p className=" rowdies-400 font-outline-2 text-[74px] font-black text-[#55CBCD]">
-              Comng soon
+          <div className=" absolute top-0 z-10 flex h-[105%] w-[60%] items-center justify-center rounded-[18px] bg-black bg-opacity-75 backdrop-blur-lg">
+            <p className=" rowdies-400 opacity-60 text-[74px] font-black text-[#55CBCD]">
+              Coming soon
             </p>
           </div>
         </div>
 
-        <div className="flex w-[60%] items-center justify-between">
+        <div className="flex w-[60%] items-center justify-between mt-10">
           <p className="text-[20px] font-[400]">Minted Podiums</p>
         </div>
-        <div className="mb-[50px] mt-[20px] grid w-[60%] grid-cols-2 gap-4">
+        <div className="mb-[400px] mt-[20px] grid w-[60%] grid-cols-2 gap-4 ">
           {user.user?.nfts.slice(0, 4).map((nft, index) => {
             return (
-              <div key={index}>
+              <div key={index} className='rounded-lg flex flex-col items-center justify-start gap-4'>
+                <img src={nft.image} alt='image' className=' rounded-md' />
                 <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
                   <p>{nft.attributes.Race}</p>
-                  <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`}>View NFT</a>
+                  <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`} className='hover:scale-110 transition-all duration-300 ease-in-out'>View NFT</a>
                 </div>
-                <img src={nft.image} />
               </div>
             );
           })}
         </div>
+        { }
       </section>
       <Leaderboard
         isLeaderboardOpen={isLeaderboardOpen}
