@@ -5,6 +5,7 @@ import { signIn, useSession } from "next-auth/react";
 import { BsDownload } from "react-icons/bs";
 import { useState } from "react";
 import Image from "next/image";
+import { grandPrix } from "../../pages";
 
 interface MintProps {
   isMintOpen: boolean;
@@ -38,7 +39,7 @@ const Mint = ({
 
   const handleShare = () => {
     const tweetText =
-      "Just locked in my prediction for Monaco GP! Make your prediction here:"; // Update per Grand Prix
+      `Just locked in my prediction for ${grandPrix}! Make your prediction here:`; // Update per Grand Prix
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       tweetText,
     )}&url=${encodeURIComponent("https://podium-league.vercel.app/")}`;
