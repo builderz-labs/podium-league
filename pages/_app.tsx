@@ -56,7 +56,7 @@ const App = ({ Component, pageProps, session }: any) => {
           ></meta>
           <meta
             name="twitter:image"
-            content="https://podium-league.vercel.app/images/podium-twitter-preview.png"
+            content="https://podium-league.vercel.app/images/podium-twitter-preview.png?utm_source=recache"
           ></meta>
         </Head>
         <Toaster />
