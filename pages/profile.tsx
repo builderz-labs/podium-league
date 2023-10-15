@@ -36,7 +36,6 @@ const Profile: React.FC<ProfileProps> = ({
 }) => {
   const router = useRouter();
   const user = useUser();
-  const { loading } = useUser();
 
   console.log(user.user?.nfts);
 
@@ -57,15 +56,15 @@ const Profile: React.FC<ProfileProps> = ({
           </p>
         </div>
 
-        {/* <div className="my-[30px] mb-1 flex w-[60%]">
-          <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
-            245
-          </div>
+        <div className="my-[30px] mb-1 flex w-[60%]">
+          {/* <div className="num rowdies-300 flex h-[64px] w-[120px] items-center justify-center rounded-[16px] border border-black bg-[#f6eac2]  text-center text-[30px]">
+            465
+          </div> */}
           <div className="ml-[17px] flex h-[60px] flex-col justify-between">
-            <p className="roboto-400 text-[20px]">Brandon</p>
-            <p className="roboto-400 text-[20px]">12 Points</p>
+            <p className="roboto-400 text-[20px] font-bold">{user.user?.name}</p>
+            <p className="roboto-400 text-[20px]">0 Points</p>
           </div>
-        </div> */}
+        </div>
 
         <div className="relative my-[30px] flex h-[300px] w-[100%] justify-center">
           <div className=" absolute top-0  flex h-[100%] w-[60%] border-black ">
@@ -128,11 +127,12 @@ const Profile: React.FC<ProfileProps> = ({
         <div className="flex w-[60%] items-center justify-between mt-10">
           <p className="text-[20px] font-[400]">Minted Podiums</p>
         </div>
+        {user.loading && <Spin />}
         <div className="mb-[400px] mt-[20px] grid w-[60%] grid-cols-2 gap-4 ">
           {user.user?.nfts.slice(0, 4).map((nft, index) => {
             return (
               <div key={index} className='rounded-lg flex flex-col items-center justify-start gap-4'>
-                <img src={nft.image} alt='image' className=' rounded-md' />
+                <img src={nft.image} alt='image' className='rounded-md' />
                 <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px]">
                   <p>{nft.attributes.Race}</p>
                   <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`} className='hover:scale-110 transition-all duration-300 ease-in-out'>View NFT</a>
