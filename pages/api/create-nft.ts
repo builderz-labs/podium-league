@@ -59,16 +59,18 @@ router.post(async (req, res) => {
   const name = "Podium Prediction";
   const description = "Podium: The on-chain Mini League";
 
+  console.log(racerFirst?.driver, racerSecond?.driver, racerThird?.driver);
+
   const attributes = {
-    "Pos 1.": racerFirst?.driver,
-    "Pos 2.": racerSecond?.driver,
-    "Pos 3.": racerThird?.driver,
+    "Pos 1.": racerSecond?.driver,
+    "Pos 2.": racerFirst?.driver,
+    "Pos 3.": racerSecond?.driver,
     Race: raceName,
     Points: "To be evaluated", // TODO: If race results exist, points can be evaluated and rendered here
   };
 
   // E.g. https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=Sergio-Perez&second=Max-Verstappen&third=Lewis-Hamilton
-  const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${first}&second=${second}&third=${third}&race=${race}`;
+  const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${second}&second=${third}&third=${first}&race=${race}`;
   console.log(image);
 
   try {

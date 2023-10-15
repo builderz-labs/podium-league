@@ -129,7 +129,13 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
     const third = drivers[currentIndex3].driver.replace(/\s/g, "-");
     const race = "United States GP".replace(/\s/g, "-");
 
+    // console.log("first: ", first);
+    // console.log("second: ", second);
+    // console.log("third: ", third);
+
     const image = `https://us-central1-sporting-d8875.cloudfunctions.net/api/nfts/image?first=${second}&second=${third}&third=${first}&race=${race}`;
+    console.log(image);
+    
     setImageUrl(image);
 
     if (user) {
