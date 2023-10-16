@@ -39,7 +39,7 @@ const Mint = ({
   };
 
   const handleShare = () => {
-    const tweetText = `Just locked in my prediction for ${grandPrix}! Make your prediction here:`; // Update per Grand Prix
+    const tweetText = `Just locked in my prediction for ${grandPrix}! @sportinglabs - Make your prediction here:`; // Update per Grand Prix
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       tweetText,
     )}&url=${encodeURIComponent("https://podium-league.vercel.app/")}`;
@@ -116,7 +116,7 @@ const Mint = ({
                   </button>
                 </div>
               )}
-              <div className="px-4 mb-4 flex w-full justify-between items-center space-x-6">
+              <div className="px-4 mb-4 flex w-full justify-center items-center space-x-4">
                 <button
                   onClick={handleShare}
                   className="outline-black-100 roboto-400 flex h-[63px] w-full items-center justify-center gap-2 rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 md:w-[337px] "
@@ -129,7 +129,7 @@ const Mint = ({
                     // Call the function when you want to save the part as PNG
                     handleDownload
                   }
-                  className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px]  bg-white p-2 outline outline-1 outline-offset-2"
+                  className="outline-black-100 flex h-[63px] w-[62px] items-center justify-center rounded-[16px] bg-white p-2 outline outline-1 outline-offset-2"
                 >
                   <BsDownload className=" h-[32px] w-[32px] justify-center" />
                 </button>
