@@ -208,10 +208,10 @@ const Mint = ({
             {/* Login Button -> Only shown when user is not logged in */}
             <div className="mb-5 flex w-full flex-col items-center justify-center gap-6 ">
               {session.status !== "authenticated" && (
-                <div className="">
+                <div className=" flex w-full justify-center">
                   <button
                     onClick={handleLoginAndTransfer}
-                    className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[413px] items-center justify-between rounded-[16px] bg-[#E2F0CB] p-2 text-[16px] outline outline-1 outline-offset-2"
+                    className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[413px] items-center justify-center rounded-[16px] bg-[#E2F0CB] p-2 text-[16px] outline outline-1 outline-offset-2"
                   >
                     <FcGoogle className="h-[26px] w-[26px]" /> Login to claim
                   </button>
@@ -220,7 +220,7 @@ const Mint = ({
               <div className="mb-4 flex space-x-6 w-full">
                 <button
                   onClick={handleShare}
-                  className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center gap-2 rounded-[16px] bg-[#C7E8FF] p-2 text-[16px] outline outline-1 "
+                  className="outline-black-100 roboto-400 flex h-[63px] w-full md:w-[337px] items-center justify-center gap-2 rounded-[16px] bg-[#C7E8FF] p-2 ml-10 text-[16px] outline outline-1 "
                 >
                   <BsTwitter className="h-[20px] w-[25px] text-[#1D9BF0]" />{" "}
                   Share on Twitter
