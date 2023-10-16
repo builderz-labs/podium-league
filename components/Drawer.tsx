@@ -77,7 +77,7 @@ export default function SwipeableTemporaryDrawer({
                 <ListItem onClick={toggleLeaderboard} className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out">
                     <ListItemText primary="Leaderboard" />
                 </ListItem>
-                <li className="whitespace-no-wrap block bg-[#FFF] px-4 py-2">
+                <li className="whitespace-no-wrap block bg-[#FFF] px-4 py-2 mb-10">
                     <Link className=" " href="/profile">
                         Profile
                     </Link>
