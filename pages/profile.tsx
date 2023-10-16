@@ -49,7 +49,7 @@ const Profile: React.FC<ProfileProps> = ({
 
   return (
     <div className="flex  h-full  w-full flex-col items-center justify-start">
-      <section className="container mt-40 relative  flex h-auto flex-col items-center justify-start rounded-md bg-bg-light scale-90">
+      <section className="container mt-20 md:mt-40 relative  flex h-auto flex-col items-center justify-start rounded-md bg-bg-light scale-90">
         <div className="-mt-12">
           <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
             PROFILE
@@ -77,7 +77,7 @@ const Profile: React.FC<ProfileProps> = ({
               </button>
             </div>
 
-            <div className=" m-5 grid w-[70%] grid-cols-2 gap-[35px] pl-10  ">
+            {/* <div className=" m-5 grid w-[70%] grid-cols-2 gap-[35px] pl-10  ">
               <div className="flex  flex-col items-start justify-between px-[5px]">
                 <div className="num rowdies-300 w-[15%] pb-5 text-center text-[30px]">
                   Backgroud
@@ -114,7 +114,7 @@ const Profile: React.FC<ProfileProps> = ({
                   <Image src={arrowRight} alt="" className="h-8 w-8" />
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="absolute top-0 z-10 flex h-[105%] w-[100%] items-center justify-center  bg-black bg-opacity-60 backdrop-blur-lg">
@@ -124,11 +124,11 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         </div>
 
-        <div className="flex  w-full md:w-[60%] items-center justify-between mt-10">
+        <div className="flex  w-full md:w-[60%] items-center justify-between mt-10 px-4">
           <p className="text-2xl font-semibold">Minted Podiums</p>
         </div>
         {user.loading && <Spin />}
-        <div className="mb-[400px] mt-[20px] grid w-full md:w-[60%] grid-cols-1 md:grid-cols-2 gap-4 ">
+        <div className="mb-[400px] mt-[20px] grid w-full md:w-[60%] grid-cols-1 md:grid-cols-2 gap-4 px-4">
           {user.user?.nfts.slice(0, 4).map((nft, index) => {
             return (
               <div key={index} className='rounded-lg flex flex-col items-center justify-start gap-4'>

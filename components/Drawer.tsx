@@ -77,6 +77,11 @@ export default function SwipeableTemporaryDrawer({
                 <ListItem onClick={toggleLeaderboard} className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out">
                     <ListItemText primary="Leaderboard" />
                 </ListItem>
+                <li className="whitespace-no-wrap block bg-[#FFF] px-4 py-2">
+                    <Link className=" " href="/profile">
+                        Profile
+                    </Link>
+                </li>
                 {session.status !== "authenticated" ? (
                     <div className='flex flex-col gap-2'>
                         <ListItem onClick={() => signIn("google")} className="z-10 flex cursor-pointer items-center justify-center rounded-2xl border border-gray-300 bg-white bg-opacity-60 p-2  transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[#FFF6EA] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">
