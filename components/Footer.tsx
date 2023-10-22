@@ -10,12 +10,12 @@ interface FooterProps {
 const Footer = ({ toggleDisclaimer, toggleUnofficial }: FooterProps) => {
   return (
     <footer className="container mx-auto footer relative z-10 flex w-[100%] items-center justify-between bg-white px-0 py-4 text-center text-[20px] text-black lg:absolute  lg:bottom-0">
-      <div className="flex w-full items-center justify-between">
-        <div className="text-[12px] text-start text-sm w-[387px] font-[400] text-[#55CBCD]">
+      <div className="flex flex-wrap w-full items-center justify-between">
+        <div className="text-[12px] text-start text-sm w-full md:w-[387px] font-[400] text-[#55CBCD]">
         This website is unofficial and is not associated in any way with the Formula 1 companies. F1, FORMULA ONE, 
         FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trade marks of Formula One Licensing B.V.
         </div>
-        <div className="flex items-center justify-center gap-[15px]">
+        <div className="flex items-center justify-center gap-[15px] w-full md:w-auto">
           <p className="text-[20px] roboto-400 font-[400] text-[#5c3030]"> Supported by</p>
           <div className="flex h-[50px] w-[200px] items-center justify-center rounded-[8px] border border-[#000000] object-cover">
             <Image
@@ -29,7 +29,7 @@ const Footer = ({ toggleDisclaimer, toggleUnofficial }: FooterProps) => {
         </div>
         
 
-        <div className="text-[12px] text-center text-sm w-[400px] font-[400] text-[#55CBCD] ">
+        <div className="text-[12px] text-center text-sm w-full md:w-[400px] font-[400] text-[#55CBCD] ">
         Podium remains a non-profit making venture, and is presented as
 merely a fun game for fans rather than a business; and
  Podium, as far as possible, abides by the Guidelines, to show
