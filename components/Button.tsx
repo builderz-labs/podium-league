@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
         onClick={() => currentIndex !== 0 && onBackwardClick()}
       />
       {/* <Image src="/images/arrow-left.png" alt="" className='h-8 w-8' width={50} height={50} /> */}
-      {currentName}
+      {currentName}&trade;
       <Image
         src={arrowRight}
         alt=""

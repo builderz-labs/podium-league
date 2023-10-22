@@ -293,7 +293,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                       className="relative z-10 h-full w-[95%]"
                     />
                     <div className="relative z-0 -mt-4 rounded-lg border border-black bg-second-place p-4 py-6 text-center">
-                      {drivers[currentIndex1].driver}
+                      {drivers[currentIndex1].driver}&trade;
                     </div>
                   </div>
 
@@ -304,7 +304,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                       className="relative z-10 h-full w-[100%]"
                     />
                     <div className="relative z-0 -mt-4 rounded-lg border border-black bg-first-place p-4 py-8 text-center">
-                      {drivers[currentIndex2].driver}
+                      {drivers[currentIndex2].driver}&trade;
                     </div>
                   </div>
 
@@ -315,7 +315,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
                       className="relative z-10 h-full w-[95%]"
                     />
                     <div className="relative z-0  -mt-4 rounded-lg border border-black bg-third-place p-4 text-center">
-                      {drivers[currentIndex3].driver}
+                      {drivers[currentIndex3].driver}&trade;
                     </div>
                   </div>
                 </div>
@@ -324,7 +324,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               <div className="relative">
                 <button
                   onClick={handleMintNft}
-                  className="relative z-20 h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[#FFF6EA] active:translate-x-[0px]
+                  className="relative z-20 roboto-400 text-[35px] h-[90px] w-full rounded-[16px] border-[0.5px] border-black bg-white transition-all duration-300  ease-in-out hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:bg-opacity-100 hover:shadow-[#FFF6EA] active:translate-x-[0px]
                      active:translate-y-[0px] active:rounded-2xl active:shadow-none"
                 >
                   {loading && <Spin />} Mint!
