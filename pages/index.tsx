@@ -4,6 +4,7 @@ import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import racer from "../public/images/racercar.png";
 import helmet from "../public/images/helmet.png";
+import videocover from "../public/images/Video cover pjynoXnzUEw.png";
 import Leaderboard from "../components/modals/leaderboard";
 import Rules from "../components/modals/rules";
 import Mint from "../components/modals/mint";
@@ -16,6 +17,8 @@ import useUser from "../hooks/useUser";
 import { toast } from "sonner";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Link from "next/link";
+
 
 export const grandPrix = "United States GP";
 
@@ -350,11 +353,21 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
               </div>
               <div className="mt-[35px] h-[10px] w-full rounded-3xl bg-[#FFEFD8]"></div>
 
-              <p className="align-center mx-auto mt-[40px] w-[90%] text-center text-[20px] font-[400]">
-                {
+              <div className="align-center mx-auto cursor-pointer mt-[40px] w-[90%] text-center text-[20px] font-[400]">
+              
+              <Image
+                  src={videocover}
+                  className="h-[170px] w-[300px]"
+                  alt=""
+                  width={300}
+                  height={170}
+                  onClick={() => window.open("https://www.youtube.com/watch?v=pjynoXnzUEw", "_blank")}
+                />
+             
+                {/* {
                   "Intrigued by what you've seen? Join our main league to participate in exciting races and earn rewards!"
-                }
-              </p>
+                } */}
+              </div>
               <button
                 onClick={() => window.open("https://sporting.gg", "_blank")}
                 className="outline-black-100 mx-auto mb-40 mt-[35px] h-[65px] w-[175px] rounded-xl bg-white p-2 py-0 text-[20px] outline outline-1 outline-offset-2 transition-all duration-300 ease-in-out hover:scale-110"
