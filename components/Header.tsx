@@ -62,12 +62,12 @@ const Header: React.FC<HeaderProps> = ({ toggleLeaderboard, toggleRules }) => {
             >
               Rules
             </li>
-            {/* <li
+            <li
               onClick={toggleLeaderboard}
               className="text-textColor hover:text-headingColor cursor-pointer text-base transition-all duration-100 ease-in-out"
             >
               Leaderboard
-            </li> */}
+            </li>
             {session.status !== "authenticated" ? (
               <>
                 <li>

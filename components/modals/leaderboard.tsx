@@ -1,17 +1,25 @@
 import { AiOutlineClose } from "react-icons/ai";
-import { drivers } from "../../constants/drivers";
+import useLeaderboard from "../../hooks/useLeaderboard";
 type LeaderboardProps = {
   isLeaderboardOpen: boolean;
   toggleLeaderboard: () => void;
 };
 
+function truncate(str: string) {
+  if (str.length <= 8) {
+    return str;
+  }
+  return str.slice(0, 4) + '...' + str.slice(-4);
+}
+
 const Leaderboard = ({
   isLeaderboardOpen,
   toggleLeaderboard,
 }: LeaderboardProps) => {
-  if (!isLeaderboardOpen) return null;
+  const leaderboard = useLeaderboard();
+  console.log(leaderboard);
 
-  const newplayers = drivers.slice(0, 10);
+  if (!isLeaderboardOpen) return null;
 
   return (
     <div>
@@ -37,7 +45,7 @@ const Leaderboard = ({
               </div>
               {/*body*/}
               <div className="m-[35px] flex flex-col">
-                {newplayers.map((player, i) => {
+                {leaderboard.slice(0, 10).map((player, i) => {
                   return (
                     <div
                       key={i}
@@ -56,8 +64,8 @@ const Leaderboard = ({
                               : "bg-[#FFFFFF]"
                           } roboto-400 h-[60px] w-full md:w-[550px] items-center justify-between rounded-[10px] border border-black  px-4 text-center text-[20px]`}
                       >
-                        <p>{player.driver}</p>
-                        <p>245 Points</p>
+                        <p>{truncate(player.ownerAddress)}</p>
+                        <p>{player.totalPoints} Points</p>
                       </div>
                     </div>
                   );
