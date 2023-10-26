@@ -19,7 +19,7 @@ const fetchAllData = async (
       limit,
     },
     headers: {
-      Authorization: `Bearer aa57c0f95480e8.b4976920d8ca4f519b9e9e9d3fc31ab3`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
     },
   });
 
