@@ -20,7 +20,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 
-export const grandPrix = "United States GP";
+export const grandPrix = "FORMULA 1 CRYPTO.COM MEXICO GRAND PRIX 2023";
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
