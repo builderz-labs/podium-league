@@ -134,8 +134,8 @@ const Profile: React.FC<ProfileProps> = ({
               <div key={index} className='rounded-lg flex flex-col items-center justify-start gap-4'>
                 <img src={nft.image} alt='image' className='rounded-md' />
                 <div className="flex h-[60px] w-[100%] items-center justify-between rounded-[16px] border border-black px-[20px] ">
-                  <p>{nft.attributes.Race}</p>
-                  <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`} className='hover:scale-110 transition-all duration-300 ease-in-out border border-slate-200 text-black px-7 whitespace-nowrap py-1 rounded-md'>View NFT</a>
+                  <p className="sm:text-[18px] sm:leading-[20px]">{nft.attributes.Race}</p>
+                  <a target="_blank" href={`https://xray.helius.xyz/token/${nft.mintAddress}?network=mainnet`} className='hover:scale-110 transition-all duration-300 ease-in-out border border-slate-200 text-black px-5 whitespace-nowrap py-1 rounded-md'>View NFT</a>
                 </div>
               </div>
             );
