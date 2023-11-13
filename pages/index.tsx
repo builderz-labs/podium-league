@@ -20,7 +20,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 
-export const grandPrix = "FORMULA 1 ROLEX GRANDE PRÊMIO DE SÃO PAULO 2023";
+export const grandPrix = "FORMULA 1 HEINEKEN SILVER LAS VEGAS GRAND PRIX 2023";
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
@@ -200,7 +200,7 @@ const Homecontainer: React.FC<HomeContainerProps> = ({
         ></meta>
       </Head>
 
-      <div className="mt-40 flex h-full w-full flex-col  items-start justify-start md:mt-0 md:items-center md:justify-center lg:scale-75 2xl:scale-90">
+      <div className="mt-40 flex h-full w-full flex-col  items-start justify-start md:mt-0 md:items-center md:justify-center lg:scale-50 2xl:scale-90">
         <section className="container relative flex h-auto flex-col items-center justify-center rounded-md bg-bg-light ">
           <div className="-mt-14">
             <p className=" rowdies-400 font-outline-2 text-[70px] font-black text-[#55CBCD]">
