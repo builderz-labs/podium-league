@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={() => onSelectName(currentName)}
       style={{ backgroundColor: color }}
-      className={` bg-[${color}] outline-black-100 flex h-[60px] w-[266px] items-center justify-between rounded-xl p-2 px-2 text-[20px] outline outline-1 outline-offset-0`}
+      className={` bg-[${color}] outline-black-100 flex h-[60px] w-[270px] items-center justify-between rounded-xl p-2 px-2 text-[13px] outline outline-1 outline-offset-0`}
     >
       <Image
         src={arrowLeft}
