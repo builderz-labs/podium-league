@@ -20,7 +20,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 
-export const grandPrix = "FORMULA 1 HEINEKEN SILVER LAS VEGAS GRAND PRIX 2023";
+export const grandPrix = "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2023";
 
 type HomeContainerProps = {
   isLeaderboardOpen: boolean;
